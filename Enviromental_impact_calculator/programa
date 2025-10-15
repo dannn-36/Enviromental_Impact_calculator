@@ -2,10 +2,8 @@ from antlr4 import *
 import os
 import sys
 
-# Agregar los directorios de las gramáticas al path
+# Agregar el directorio de la gramática C al path
 current_dir = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(os.path.join(current_dir, '..', 'Python_grammar'))
-sys.path.append(os.path.join(current_dir, '..', 'Java_grammar'))
 sys.path.append(os.path.join(current_dir, '..', 'C_grammar'))
 
 # Importaciones de Python
@@ -21,11 +19,10 @@ from Java20ParserVisitor import Java20ParserVisitor
 # Importaciones de C
 from CLexer import CLexer
 from CParser import CParser
-from CVisitor import CParserListener
+from CVisitor import CVisitor
 
 class ImpactVisitor(ParseTreeVisitor):
     def __init__(self):
-        super().__init__()
         self.impact_scores = {
             'arithmetic': 1,  # Operaciones aritméticas básicas
             'loop': 2,       # Bucles
@@ -72,15 +69,17 @@ class LanguageSpecificVisitor:
             self.analyze_operation('loop')
             return self.visitChildren(ctx)
 
-    class CVisitor(CParserListener, ImpactVisitor):
+    class CVisitor(CVisitor, ImpactVisitor):
         def __init__(self):
             super().__init__()
 
-        def enterForStatement(self, ctx):
+        def visitFor_statement(self, ctx):
             self.analyze_operation('loop')
+            return self.visitChildren(ctx)
 
-        def enterWhileStatement(self, ctx):
+        def visitWhile_statement(self, ctx):
             self.analyze_operation('loop')
+            return self.visitChildren(ctx)
 
 class EnvironmentalImpactAnalyzer:
     def __init__(self):
@@ -114,7 +113,6 @@ class EnvironmentalImpactAnalyzer:
                 'impact_score': visitor.total_impact,
                 'operations': visitor.operations
             }
-
         except Exception as e:
             print(f"Error al analizar el código: {str(e)}")
             return None
