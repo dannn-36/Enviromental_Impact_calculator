@@ -1,7 +1,3 @@
 {
-    "python.analysis.extraPaths": [
-        "./C_grammar",
-        "./Java_grammar",
-        "./Python_grammar"
-    ]
+    
 }
