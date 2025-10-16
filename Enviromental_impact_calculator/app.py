@@ -119,12 +119,15 @@ def detect_loops_regex(code: str, language: str):
 
 def detect_assignments_regex(code: str, language: str):
     src = strip_comments_and_strings(code, language)
+    # contar operadores de asignación compuesta en C/Java/C#/Go
+    compound = len(re.findall(r'(\+=|-=|\*=|/=|%=|&=|\|=|\^=|<<=|>>=)', src))
     if language == "go":
         colon = len(re.findall(r':=', src))
         single = len(re.findall(r'(?<![:!<>=+\-*/%&|^])=(?![=~>])', src))
-        return colon + single
+        return colon + compound + single
     else:
-        return len(re.findall(r'(?<![!<>=+\-*/%&|^:])=(?![=~>])', src))
+        single = len(re.findall(r'(?<![!<>=+\-*/%&|^:])=(?![=~>])', src))
+        return compound + single
 
 # -------------------------
 # Analyzer "real" that uses ANTLR if available
@@ -152,6 +155,7 @@ class RealAnalyzer:
                 parser = Python3Parser(tokens)
                 tree = parser.file_input()
                 return True, tree
+            
             elif self.lang in ("c",):
                 from generated.CLexer import CLexer
                 from generated.CParser import CParser
@@ -161,19 +165,22 @@ class RealAnalyzer:
                 parser = CParser(tokens)
                 tree = parser.compilationUnit()
                 return True, tree
+            
             elif self.lang in ("java",):
                 try:
                     from generated.JavaLexer import JavaLexer
                     from generated.JavaParser import JavaParser
                 except Exception:
-                    from generated.Java20Lexer import Java20Lexer as JavaLexer
-                    from generated.Java20Parser import Java20Parser as JavaParser
+                    # Fallback correcto a la gramática Java20
+                    from generated.JavaLexer import Java20Lexer as JavaLexer
+                    from generated.JavaParser import Java20Parser as JavaParser
                 input_stream = InputStream(code)
                 lexer = JavaLexer(input_stream)
                 tokens = CommonTokenStream(lexer)
                 parser = JavaParser(tokens)
                 tree = parser.compilationUnit()
                 return True, tree
+            
             elif self.lang in ("c#", "csharp"):
                 from generated.CSharpLexer import CSharpLexer
                 from generated.CSharpParser import CSharpParser
@@ -183,6 +190,7 @@ class RealAnalyzer:
                 parser = CSharpParser(tokens)
                 tree = parser.compilation_unit()
                 return True, tree
+            
             elif self.lang == "go":
                 from generated.GoLexer import GoLexer
                 from generated.GoParser import GoParser
@@ -192,26 +200,84 @@ class RealAnalyzer:
                 parser = GoParser(tokens)
                 tree = parser.sourceFile()
                 return True, tree
+            
             else:
                 return False, f"language {self.lang} not supported for ANTLR parse"
         except Exception as e:
             # devuelve el stack para diagnóstico
             return False, f"antlr parse error: {e}\n{traceback.format_exc()}"
 
+    def _count_loops_with_antlr(self, tree):
+        if not ANTLR_AVAILABLE:
+            return None
+        try:
+            from antlr4 import ParseTreeWalker
+            walker = ParseTreeWalker()
+
+            if self.lang == "python":
+                from generated.Python3ParserListener import Python3ParserListener
+                class L(Python3ParserListener):
+                    def __init__(self): self.count = 0
+                    def enterFor_stmt(self, ctx): self.count += 1
+                    def enterWhile_stmt(self, ctx): self.count += 1
+                l = L(); walker.walk(l, tree); return l.count
+                
+
+            if self.lang == "java":
+                from generated.JavaParserListener import JavaParserListener
+                class L(JavaParserListener):
+                    def __init__(self): self.count = 0
+                    def enterBasicForStatement(self, ctx): self.count += 1
+                    def enterEnhancedForStatement(self, ctx): self.count += 1
+                    def enterWhileStatement(self, ctx): self.count += 1
+                l = L(); walker.walk(l, tree); return l.count
+                
+
+            if self.lang == "c":
+                from generated.CListener import CParserListener
+                class L(CParserListener):
+                    def __init__(self): self.count = 0
+                    def enterIterationStatement(self, ctx): self.count += 1
+                l = L(); walker.walk(l, tree); return l.count
+                
+
+            if self.lang == "go":
+                from generated.GoParserListener import GoParserListener
+                class L(GoParserListener):
+                    def __init__(self): self.count = 0
+                    def enterForStmt(self, ctx): self.count += 1
+                l = L(); walker.walk(l, tree); return l.count
+                
+                
+            if self.lang in ("c#", "csharp"):
+                from generated.CSharpParserListener import CSharpParserListener
+                class L(CSharpParserListener):
+                    def __init__(self): self.count = 0
+                    def enterIteration_statement(self, ctx): self.count += 1
+                l = L(); walker.walk(l, tree); return l.count
+                
+
+        except Exception:
+            return None
+        return None
+
     def analyze(self, code: str):
         parsed, parse_info = self.parse_with_antlr(code)
 
-        loops = detect_loops_regex(code, self.lang)
+        # loops: usa ANTLR si se pudo parsear; si no, regex
+        loops = None
+        if parsed:
+            loops = self._count_loops_with_antlr(parse_info)
+        if loops is None:
+            loops = detect_loops_regex(code, self.lang)
+
         functions = detect_functions_regex(code, self.lang)
         assignments = detect_assignments_regex(code, self.lang)
-
         func_count = len(functions)
 
-        # recursión: buscar name( SOLO dentro del cuerpo (sin la firma)
         recursion_count = 0
         recursive_functions = []
         for name, body_only in functions:
-            # nombre de función llamado como llamada (no parte de identificador mayor)
             if re.search(r'(?<!\w)' + re.escape(name) + r'\s*\(', body_only):
                 recursion_count += 1
                 recursive_functions.append(name)

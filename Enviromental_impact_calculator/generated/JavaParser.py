@@ -1188,6 +1188,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_compilationUnit
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCompilationUnit" ):
+                listener.enterCompilationUnit(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCompilationUnit" ):
+                listener.exitCompilationUnit(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitCompilationUnit" ):
                 return visitor.visitCompilationUnit(self)
@@ -1304,6 +1312,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_modularCompulationUnit
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterModularCompulationUnit" ):
+                listener.enterModularCompulationUnit(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitModularCompulationUnit" ):
+                listener.exitModularCompulationUnit(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitModularCompulationUnit" ):
                 return visitor.visitModularCompulationUnit(self)
@@ -1367,6 +1383,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_packageDeclaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPackageDeclaration" ):
+                listener.enterPackageDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPackageDeclaration" ):
+                listener.exitPackageDeclaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitPackageDeclaration" ):
@@ -1437,6 +1461,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_importDeclaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterImportDeclaration" ):
+                listener.enterImportDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitImportDeclaration" ):
+                listener.exitImportDeclaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitImportDeclaration" ):
@@ -1524,6 +1556,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_typeDeclaration
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTypeDeclaration" ):
+                listener.enterTypeDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTypeDeclaration" ):
+                listener.exitTypeDeclaration(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitTypeDeclaration" ):
                 return visitor.visitTypeDeclaration(self)
@@ -1610,6 +1650,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_modifier
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterModifier" ):
+                listener.enterModifier(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitModifier" ):
+                listener.exitModifier(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitModifier" ):
@@ -1705,6 +1753,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_classOrInterfaceModifier
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterClassOrInterfaceModifier" ):
+                listener.enterClassOrInterfaceModifier(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitClassOrInterfaceModifier" ):
+                listener.exitClassOrInterfaceModifier(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitClassOrInterfaceModifier" ):
@@ -1802,6 +1858,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_variableModifier
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterVariableModifier" ):
+                listener.enterVariableModifier(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitVariableModifier" ):
+                listener.exitVariableModifier(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitVariableModifier" ):
                 return visitor.visitVariableModifier(self)
@@ -1885,6 +1949,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_classDeclaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterClassDeclaration" ):
+                listener.enterClassDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitClassDeclaration" ):
+                listener.exitClassDeclaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitClassDeclaration" ):
@@ -1984,6 +2056,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_typeParameters
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTypeParameters" ):
+                listener.enterTypeParameters(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTypeParameters" ):
+                listener.exitTypeParameters(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitTypeParameters" ):
                 return visitor.visitTypeParameters(self)
@@ -2054,6 +2134,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_typeParameter
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTypeParameter" ):
+                listener.enterTypeParameter(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTypeParameter" ):
+                listener.exitTypeParameter(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitTypeParameter" ):
@@ -2136,6 +2224,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_typeBound
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTypeBound" ):
+                listener.enterTypeBound(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTypeBound" ):
+                listener.exitTypeBound(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitTypeBound" ):
                 return visitor.visitTypeBound(self)
@@ -2215,6 +2311,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_enumDeclaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEnumDeclaration" ):
+                listener.enterEnumDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEnumDeclaration" ):
+                listener.exitEnumDeclaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitEnumDeclaration" ):
@@ -2306,6 +2410,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_enumConstants
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEnumConstants" ):
+                listener.enterEnumConstants(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEnumConstants" ):
+                listener.exitEnumConstants(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitEnumConstants" ):
                 return visitor.visitEnumConstants(self)
@@ -2373,6 +2485,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_enumConstant
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEnumConstant" ):
+                listener.enterEnumConstant(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEnumConstant" ):
+                listener.exitEnumConstant(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitEnumConstant" ):
@@ -2446,6 +2566,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_enumBodyDeclarations
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEnumBodyDeclarations" ):
+                listener.enterEnumBodyDeclarations(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEnumBodyDeclarations" ):
+                listener.exitEnumBodyDeclarations(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitEnumBodyDeclarations" ):
@@ -2521,6 +2649,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_interfaceDeclaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInterfaceDeclaration" ):
+                listener.enterInterfaceDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInterfaceDeclaration" ):
+                listener.exitInterfaceDeclaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitInterfaceDeclaration" ):
@@ -2604,6 +2740,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_classBody
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterClassBody" ):
+                listener.enterClassBody(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitClassBody" ):
+                listener.exitClassBody(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitClassBody" ):
                 return visitor.visitClassBody(self)
@@ -2665,6 +2809,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_interfaceBody
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInterfaceBody" ):
+                listener.enterInterfaceBody(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInterfaceBody" ):
+                listener.exitInterfaceBody(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitInterfaceBody" ):
@@ -2735,6 +2887,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_classBodyDeclaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterClassBodyDeclaration" ):
+                listener.enterClassBodyDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitClassBodyDeclaration" ):
+                listener.exitClassBodyDeclaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitClassBodyDeclaration" ):
@@ -2850,6 +3010,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_memberDeclaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMemberDeclaration" ):
+                listener.enterMemberDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMemberDeclaration" ):
+                listener.exitMemberDeclaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitMemberDeclaration" ):
@@ -2983,6 +3151,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_methodDeclaration
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMethodDeclaration" ):
+                listener.enterMethodDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMethodDeclaration" ):
+                listener.exitMethodDeclaration(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitMethodDeclaration" ):
                 return visitor.visitMethodDeclaration(self)
@@ -3055,6 +3231,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_methodBody
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMethodBody" ):
+                listener.enterMethodBody(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMethodBody" ):
+                listener.exitMethodBody(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitMethodBody" ):
                 return visitor.visitMethodBody(self)
@@ -3110,6 +3294,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_typeTypeOrVoid
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTypeTypeOrVoid" ):
+                listener.enterTypeTypeOrVoid(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTypeTypeOrVoid" ):
+                listener.exitTypeTypeOrVoid(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitTypeTypeOrVoid" ):
@@ -3168,6 +3360,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_genericMethodDeclaration
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterGenericMethodDeclaration" ):
+                listener.enterGenericMethodDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitGenericMethodDeclaration" ):
+                listener.exitGenericMethodDeclaration(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitGenericMethodDeclaration" ):
                 return visitor.visitGenericMethodDeclaration(self)
@@ -3213,6 +3413,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_genericConstructorDeclaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterGenericConstructorDeclaration" ):
+                listener.enterGenericConstructorDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitGenericConstructorDeclaration" ):
+                listener.exitGenericConstructorDeclaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitGenericConstructorDeclaration" ):
@@ -3271,6 +3479,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_constructorDeclaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterConstructorDeclaration" ):
+                listener.enterConstructorDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitConstructorDeclaration" ):
+                listener.exitConstructorDeclaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitConstructorDeclaration" ):
@@ -3339,6 +3555,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_compactConstructorDeclaration
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCompactConstructorDeclaration" ):
+                listener.enterCompactConstructorDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCompactConstructorDeclaration" ):
+                listener.exitCompactConstructorDeclaration(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitCompactConstructorDeclaration" ):
                 return visitor.visitCompactConstructorDeclaration(self)
@@ -3399,6 +3623,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_fieldDeclaration
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFieldDeclaration" ):
+                listener.enterFieldDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFieldDeclaration" ):
+                listener.exitFieldDeclaration(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitFieldDeclaration" ):
                 return visitor.visitFieldDeclaration(self)
@@ -3452,6 +3684,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_interfaceBodyDeclaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInterfaceBodyDeclaration" ):
+                listener.enterInterfaceBodyDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInterfaceBodyDeclaration" ):
+                listener.exitInterfaceBodyDeclaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitInterfaceBodyDeclaration" ):
@@ -3544,6 +3784,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_interfaceMemberDeclaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInterfaceMemberDeclaration" ):
+                listener.enterInterfaceMemberDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInterfaceMemberDeclaration" ):
+                listener.exitInterfaceMemberDeclaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitInterfaceMemberDeclaration" ):
@@ -3650,6 +3898,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_constDeclaration
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterConstDeclaration" ):
+                listener.enterConstDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitConstDeclaration" ):
+                listener.exitConstDeclaration(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitConstDeclaration" ):
                 return visitor.visitConstDeclaration(self)
@@ -3726,6 +3982,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_constantDeclarator
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterConstantDeclarator" ):
+                listener.enterConstantDeclarator(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitConstantDeclarator" ):
+                listener.exitConstantDeclarator(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitConstantDeclarator" ):
                 return visitor.visitConstantDeclarator(self)
@@ -3789,6 +4053,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_interfaceMethodDeclaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInterfaceMethodDeclaration" ):
+                listener.enterInterfaceMethodDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInterfaceMethodDeclaration" ):
+                listener.exitInterfaceMethodDeclaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitInterfaceMethodDeclaration" ):
@@ -3855,6 +4127,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_interfaceMethodModifier
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInterfaceMethodModifier" ):
+                listener.enterInterfaceMethodModifier(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInterfaceMethodModifier" ):
+                listener.exitInterfaceMethodModifier(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitInterfaceMethodModifier" ):
@@ -3939,6 +4219,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_genericInterfaceMethodDeclaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterGenericInterfaceMethodDeclaration" ):
+                listener.enterGenericInterfaceMethodDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitGenericInterfaceMethodDeclaration" ):
+                listener.exitGenericInterfaceMethodDeclaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitGenericInterfaceMethodDeclaration" ):
@@ -4031,6 +4319,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_interfaceCommonBodyDeclaration
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInterfaceCommonBodyDeclaration" ):
+                listener.enterInterfaceCommonBodyDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInterfaceCommonBodyDeclaration" ):
+                listener.exitInterfaceCommonBodyDeclaration(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitInterfaceCommonBodyDeclaration" ):
                 return visitor.visitInterfaceCommonBodyDeclaration(self)
@@ -4120,6 +4416,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_variableDeclarators
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterVariableDeclarators" ):
+                listener.enterVariableDeclarators(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitVariableDeclarators" ):
+                listener.exitVariableDeclarators(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitVariableDeclarators" ):
                 return visitor.visitVariableDeclarators(self)
@@ -4179,6 +4483,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_variableDeclarator
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterVariableDeclarator" ):
+                listener.enterVariableDeclarator(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitVariableDeclarator" ):
+                listener.exitVariableDeclarator(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitVariableDeclarator" ):
@@ -4242,6 +4554,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_variableDeclaratorId
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterVariableDeclaratorId" ):
+                listener.enterVariableDeclaratorId(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitVariableDeclaratorId" ):
+                listener.exitVariableDeclaratorId(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitVariableDeclaratorId" ):
                 return visitor.visitVariableDeclaratorId(self)
@@ -4298,6 +4618,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_variableInitializer
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterVariableInitializer" ):
+                listener.enterVariableInitializer(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitVariableInitializer" ):
+                listener.exitVariableInitializer(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitVariableInitializer" ):
@@ -4366,6 +4694,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_arrayInitializer
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterArrayInitializer" ):
+                listener.enterArrayInitializer(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitArrayInitializer" ):
+                listener.exitArrayInitializer(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitArrayInitializer" ):
@@ -4468,6 +4804,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_classType
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterClassType" ):
+                listener.enterClassType(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitClassType" ):
+                listener.exitClassType(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitClassType" ):
@@ -4590,6 +4934,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_packageName
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPackageName" ):
+                listener.enterPackageName(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPackageName" ):
+                listener.exitPackageName(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitPackageName" ):
                 return visitor.visitPackageName(self)
@@ -4658,6 +5010,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_typeArgument
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTypeArgument" ):
+                listener.enterTypeArgument(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTypeArgument" ):
+                listener.exitTypeArgument(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitTypeArgument" ):
@@ -4747,6 +5107,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_qualifiedNameList
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterQualifiedNameList" ):
+                listener.enterQualifiedNameList(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitQualifiedNameList" ):
+                listener.exitQualifiedNameList(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitQualifiedNameList" ):
                 return visitor.visitQualifiedNameList(self)
@@ -4822,6 +5190,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_formalParameters
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFormalParameters" ):
+                listener.enterFormalParameters(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFormalParameters" ):
+                listener.exitFormalParameters(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitFormalParameters" ):
@@ -4914,6 +5290,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_receiverParameter
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterReceiverParameter" ):
+                listener.enterReceiverParameter(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitReceiverParameter" ):
+                listener.exitReceiverParameter(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitReceiverParameter" ):
                 return visitor.visitReceiverParameter(self)
@@ -4977,6 +5361,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_formalParameterList
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFormalParameterList" ):
+                listener.enterFormalParameterList(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFormalParameterList" ):
+                listener.exitFormalParameterList(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitFormalParameterList" ):
@@ -5051,6 +5443,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_formalParameter
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFormalParameter" ):
+                listener.enterFormalParameter(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFormalParameter" ):
+                listener.exitFormalParameter(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitFormalParameter" ):
@@ -5133,6 +5533,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_lambdaLVTIList
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLambdaLVTIList" ):
+                listener.enterLambdaLVTIList(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLambdaLVTIList" ):
+                listener.exitLambdaLVTIList(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLambdaLVTIList" ):
                 return visitor.visitLambdaLVTIList(self)
@@ -5196,6 +5604,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_lambdaLVTIParameter
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLambdaLVTIParameter" ):
+                listener.enterLambdaLVTIParameter(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLambdaLVTIParameter" ):
+                listener.exitLambdaLVTIParameter(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLambdaLVTIParameter" ):
                 return visitor.visitLambdaLVTIParameter(self)
@@ -5257,6 +5673,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_qualifiedName
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterQualifiedName" ):
+                listener.enterQualifiedName(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitQualifiedName" ):
+                listener.exitQualifiedName(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitQualifiedName" ):
@@ -5329,6 +5753,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_literal
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLiteral" ):
+                listener.enterLiteral(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLiteral" ):
+                listener.exitLiteral(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLiteral" ):
@@ -5416,6 +5848,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_integerLiteral
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIntegerLiteral" ):
+                listener.enterIntegerLiteral(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIntegerLiteral" ):
+                listener.exitIntegerLiteral(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitIntegerLiteral" ):
                 return visitor.visitIntegerLiteral(self)
@@ -5463,6 +5903,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_floatLiteral
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFloatLiteral" ):
+                listener.enterFloatLiteral(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFloatLiteral" ):
+                listener.exitFloatLiteral(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitFloatLiteral" ):
@@ -5521,6 +5969,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_altAnnotationQualifiedName
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAltAnnotationQualifiedName" ):
+                listener.enterAltAnnotationQualifiedName(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAltAnnotationQualifiedName" ):
+                listener.exitAltAnnotationQualifiedName(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAltAnnotationQualifiedName" ):
@@ -5583,6 +6039,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_annotation
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAnnotation" ):
+                listener.enterAnnotation(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAnnotation" ):
+                listener.exitAnnotation(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAnnotation" ):
@@ -5649,6 +6113,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_annotationFieldValues
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAnnotationFieldValues" ):
+                listener.enterAnnotationFieldValues(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAnnotationFieldValues" ):
+                listener.exitAnnotationFieldValues(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAnnotationFieldValues" ):
@@ -5719,6 +6191,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_annotationFieldValue
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAnnotationFieldValue" ):
+                listener.enterAnnotationFieldValue(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAnnotationFieldValue" ):
+                listener.exitAnnotationFieldValue(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAnnotationFieldValue" ):
@@ -5803,6 +6283,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_annotationValue
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAnnotationValue" ):
+                listener.enterAnnotationValue(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAnnotationValue" ):
+                listener.exitAnnotationValue(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAnnotationValue" ):
@@ -5903,6 +6391,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_elementValue
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterElementValue" ):
+                listener.enterElementValue(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitElementValue" ):
+                listener.exitElementValue(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitElementValue" ):
                 return visitor.visitElementValue(self)
@@ -5976,6 +6472,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_elementValueArrayInitializer
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterElementValueArrayInitializer" ):
+                listener.enterElementValueArrayInitializer(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitElementValueArrayInitializer" ):
+                listener.exitElementValueArrayInitializer(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitElementValueArrayInitializer" ):
@@ -6059,6 +6563,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_annotationTypeDeclaration
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAnnotationTypeDeclaration" ):
+                listener.enterAnnotationTypeDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAnnotationTypeDeclaration" ):
+                listener.exitAnnotationTypeDeclaration(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAnnotationTypeDeclaration" ):
                 return visitor.visitAnnotationTypeDeclaration(self)
@@ -6113,6 +6625,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_annotationTypeBody
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAnnotationTypeBody" ):
+                listener.enterAnnotationTypeBody(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAnnotationTypeBody" ):
+                listener.exitAnnotationTypeBody(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAnnotationTypeBody" ):
@@ -6176,6 +6696,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_annotationTypeElementDeclaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAnnotationTypeElementDeclaration" ):
+                listener.enterAnnotationTypeElementDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAnnotationTypeElementDeclaration" ):
+                listener.exitAnnotationTypeElementDeclaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAnnotationTypeElementDeclaration" ):
@@ -6267,6 +6795,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_annotationTypeElementRest
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAnnotationTypeElementRest" ):
+                listener.enterAnnotationTypeElementRest(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAnnotationTypeElementRest" ):
+                listener.exitAnnotationTypeElementRest(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAnnotationTypeElementRest" ):
@@ -6393,6 +6929,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_annotationMethodOrConstantRest
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAnnotationMethodOrConstantRest" ):
+                listener.enterAnnotationMethodOrConstantRest(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAnnotationMethodOrConstantRest" ):
+                listener.exitAnnotationMethodOrConstantRest(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAnnotationMethodOrConstantRest" ):
                 return visitor.visitAnnotationMethodOrConstantRest(self)
@@ -6456,6 +7000,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_annotationMethodRest
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAnnotationMethodRest" ):
+                listener.enterAnnotationMethodRest(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAnnotationMethodRest" ):
+                listener.exitAnnotationMethodRest(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAnnotationMethodRest" ):
                 return visitor.visitAnnotationMethodRest(self)
@@ -6509,6 +7061,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_annotationConstantRest
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAnnotationConstantRest" ):
+                listener.enterAnnotationConstantRest(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAnnotationConstantRest" ):
+                listener.exitAnnotationConstantRest(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAnnotationConstantRest" ):
                 return visitor.visitAnnotationConstantRest(self)
@@ -6551,6 +7111,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_defaultValue
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDefaultValue" ):
+                listener.enterDefaultValue(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDefaultValue" ):
+                listener.exitDefaultValue(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitDefaultValue" ):
@@ -6619,6 +7187,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_moduleDeclaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterModuleDeclaration" ):
+                listener.enterModuleDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitModuleDeclaration" ):
+                listener.exitModuleDeclaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitModuleDeclaration" ):
@@ -6734,6 +7310,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_moduleDirective
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterModuleDirective" ):
+                listener.enterModuleDirective(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitModuleDirective" ):
+                listener.exitModuleDirective(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitModuleDirective" ):
@@ -6897,6 +7481,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_requiresModifier
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRequiresModifier" ):
+                listener.enterRequiresModifier(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRequiresModifier" ):
+                listener.exitRequiresModifier(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitRequiresModifier" ):
                 return visitor.visitRequiresModifier(self)
@@ -6964,6 +7556,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_recordDeclaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRecordDeclaration" ):
+                listener.enterRecordDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRecordDeclaration" ):
+                listener.exitRecordDeclaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitRecordDeclaration" ):
@@ -7036,6 +7636,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_recordHeader
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRecordHeader" ):
+                listener.enterRecordHeader(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRecordHeader" ):
+                listener.exitRecordHeader(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitRecordHeader" ):
                 return visitor.visitRecordHeader(self)
@@ -7095,6 +7703,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_recordComponentList
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRecordComponentList" ):
+                listener.enterRecordComponentList(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRecordComponentList" ):
+                listener.exitRecordComponentList(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitRecordComponentList" ):
@@ -7166,6 +7782,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_recordComponent
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRecordComponent" ):
+                listener.enterRecordComponent(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRecordComponent" ):
+                listener.exitRecordComponent(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitRecordComponent" ):
@@ -7255,6 +7879,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_recordBody
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRecordBody" ):
+                listener.enterRecordBody(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRecordBody" ):
+                listener.exitRecordBody(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitRecordBody" ):
                 return visitor.visitRecordBody(self)
@@ -7329,6 +7961,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_block
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBlock" ):
+                listener.enterBlock(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBlock" ):
+                listener.exitBlock(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitBlock" ):
                 return visitor.visitBlock(self)
@@ -7392,6 +8032,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_blockStatement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBlockStatement" ):
+                listener.enterBlockStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBlockStatement" ):
+                listener.exitBlockStatement(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitBlockStatement" ):
@@ -7478,6 +8126,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_localVariableDeclaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLocalVariableDeclaration" ):
+                listener.enterLocalVariableDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLocalVariableDeclaration" ):
+                listener.exitLocalVariableDeclaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLocalVariableDeclaration" ):
@@ -7597,6 +8253,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_identifier
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIdentifier" ):
+                listener.enterIdentifier(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIdentifier" ):
+                listener.exitIdentifier(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitIdentifier" ):
                 return visitor.visitIdentifier(self)
@@ -7675,6 +8339,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_typeIdentifier
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTypeIdentifier" ):
+                listener.enterTypeIdentifier(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTypeIdentifier" ):
+                listener.exitTypeIdentifier(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitTypeIdentifier" ):
                 return visitor.visitTypeIdentifier(self)
@@ -7739,6 +8411,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_localTypeDeclaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLocalTypeDeclaration" ):
+                listener.enterLocalTypeDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLocalTypeDeclaration" ):
+                listener.exitLocalTypeDeclaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLocalTypeDeclaration" ):
@@ -7928,6 +8608,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_statement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterStatement" ):
+                listener.enterStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitStatement" ):
+                listener.exitStatement(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitStatement" ):
@@ -8316,6 +9004,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_catchClause
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCatchClause" ):
+                listener.enterCatchClause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCatchClause" ):
+                listener.exitCatchClause(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitCatchClause" ):
                 return visitor.visitCatchClause(self)
@@ -8386,6 +9082,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_catchType
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCatchType" ):
+                listener.enterCatchType(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCatchType" ):
+                listener.exitCatchType(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitCatchType" ):
                 return visitor.visitCatchType(self)
@@ -8442,6 +9146,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_finallyBlock
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFinallyBlock" ):
+                listener.enterFinallyBlock(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFinallyBlock" ):
+                listener.exitFinallyBlock(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitFinallyBlock" ):
                 return visitor.visitFinallyBlock(self)
@@ -8492,6 +9204,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_resourceSpecification
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterResourceSpecification" ):
+                listener.enterResourceSpecification(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitResourceSpecification" ):
+                listener.exitResourceSpecification(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitResourceSpecification" ):
@@ -8554,6 +9274,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_resources
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterResources" ):
+                listener.enterResources(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitResources" ):
+                listener.exitResources(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitResources" ):
@@ -8636,6 +9364,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_resource
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterResource" ):
+                listener.enterResource(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitResource" ):
+                listener.exitResource(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitResource" ):
@@ -8737,6 +9473,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_switchBlockStatementGroup
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSwitchBlockStatementGroup" ):
+                listener.enterSwitchBlockStatementGroup(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSwitchBlockStatementGroup" ):
+                listener.exitSwitchBlockStatementGroup(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitSwitchBlockStatementGroup" ):
                 return visitor.visitSwitchBlockStatementGroup(self)
@@ -8821,6 +9565,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_switchLabel
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSwitchLabel" ):
+                listener.enterSwitchLabel(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSwitchLabel" ):
+                listener.exitSwitchLabel(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitSwitchLabel" ):
@@ -8915,6 +9667,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_forControl
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterForControl" ):
+                listener.enterForControl(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitForControl" ):
+                listener.exitForControl(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitForControl" ):
                 return visitor.visitForControl(self)
@@ -8999,6 +9759,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_forInit
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterForInit" ):
+                listener.enterForInit(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitForInit" ):
+                listener.exitForInit(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitForInit" ):
                 return visitor.visitForInit(self)
@@ -9072,6 +9840,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_enhancedForControl
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEnhancedForControl" ):
+                listener.enterEnhancedForControl(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEnhancedForControl" ):
+                listener.exitEnhancedForControl(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitEnhancedForControl" ):
@@ -9151,6 +9927,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_expressionList
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpressionList" ):
+                listener.enterExpressionList(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpressionList" ):
+                listener.exitExpressionList(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitExpressionList" ):
                 return visitor.visitExpressionList(self)
@@ -9213,6 +9997,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_methodCall
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMethodCall" ):
+                listener.enterMethodCall(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMethodCall" ):
+                listener.exitMethodCall(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitMethodCall" ):
@@ -9292,6 +10084,14 @@ class JavaParser ( JavaParserBase ):
         def QUESTION(self):
             return self.getToken(JavaParser.QUESTION, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTernaryExpression" ):
+                listener.enterTernaryExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTernaryExpression" ):
+                listener.exitTernaryExpression(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitTernaryExpression" ):
                 return visitor.visitTernaryExpression(self)
@@ -9317,6 +10117,14 @@ class JavaParser ( JavaParserBase ):
         def pattern(self):
             return self.getTypedRuleContext(JavaParser.PatternContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInstanceOfOperatorExpression" ):
+                listener.enterInstanceOfOperatorExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInstanceOfOperatorExpression" ):
+                listener.exitInstanceOfOperatorExpression(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitInstanceOfOperatorExpression" ):
@@ -9348,6 +10156,14 @@ class JavaParser ( JavaParserBase ):
         def BANG(self):
             return self.getToken(JavaParser.BANG, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUnaryOperatorExpression" ):
+                listener.enterUnaryOperatorExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUnaryOperatorExpression" ):
+                listener.exitUnaryOperatorExpression(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitUnaryOperatorExpression" ):
                 return visitor.visitUnaryOperatorExpression(self)
@@ -9364,6 +10180,14 @@ class JavaParser ( JavaParserBase ):
         def primary(self):
             return self.getTypedRuleContext(JavaParser.PrimaryContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPrimaryExpression" ):
+                listener.enterPrimaryExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPrimaryExpression" ):
+                listener.exitPrimaryExpression(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitPrimaryExpression" ):
@@ -9384,6 +10208,14 @@ class JavaParser ( JavaParserBase ):
             return self.getTypedRuleContext(JavaParser.CreatorContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterObjectCreationExpression" ):
+                listener.enterObjectCreationExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitObjectCreationExpression" ):
+                listener.exitObjectCreationExpression(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitObjectCreationExpression" ):
                 return visitor.visitObjectCreationExpression(self)
@@ -9400,6 +10232,14 @@ class JavaParser ( JavaParserBase ):
         def lambdaExpression(self):
             return self.getTypedRuleContext(JavaParser.LambdaExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpressionLambda" ):
+                listener.enterExpressionLambda(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpressionLambda" ):
+                listener.exitExpressionLambda(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitExpressionLambda" ):
@@ -9422,6 +10262,14 @@ class JavaParser ( JavaParserBase ):
             return self.getToken(JavaParser.INC, 0)
         def DEC(self):
             return self.getToken(JavaParser.DEC, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPostIncrementDecrementOperatorExpression" ):
+                listener.enterPostIncrementDecrementOperatorExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPostIncrementDecrementOperatorExpression" ):
+                listener.exitPostIncrementDecrementOperatorExpression(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitPostIncrementDecrementOperatorExpression" ):
@@ -9467,6 +10315,14 @@ class JavaParser ( JavaParserBase ):
             return self.getTypedRuleContext(JavaParser.NonWildcardTypeArgumentsContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMemberReferenceExpression" ):
+                listener.enterMemberReferenceExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMemberReferenceExpression" ):
+                listener.exitMemberReferenceExpression(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitMemberReferenceExpression" ):
                 return visitor.visitMemberReferenceExpression(self)
@@ -9483,6 +10339,14 @@ class JavaParser ( JavaParserBase ):
         def switchExpression(self):
             return self.getTypedRuleContext(JavaParser.SwitchExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpressionSwitch" ):
+                listener.enterExpressionSwitch(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpressionSwitch" ):
+                listener.exitExpressionSwitch(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitExpressionSwitch" ):
@@ -9567,6 +10431,14 @@ class JavaParser ( JavaParserBase ):
         def MOD_ASSIGN(self):
             return self.getToken(JavaParser.MOD_ASSIGN, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBinaryOperatorExpression" ):
+                listener.enterBinaryOperatorExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBinaryOperatorExpression" ):
+                listener.exitBinaryOperatorExpression(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitBinaryOperatorExpression" ):
                 return visitor.visitBinaryOperatorExpression(self)
@@ -9583,6 +10455,14 @@ class JavaParser ( JavaParserBase ):
         def methodCall(self):
             return self.getTypedRuleContext(JavaParser.MethodCallContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMethodCallExpression" ):
+                listener.enterMethodCallExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMethodCallExpression" ):
+                listener.exitMethodCallExpression(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitMethodCallExpression" ):
@@ -9617,6 +10497,14 @@ class JavaParser ( JavaParserBase ):
             return self.getTypedRuleContext(JavaParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMethodReferenceExpression" ):
+                listener.enterMethodReferenceExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMethodReferenceExpression" ):
+                listener.exitMethodReferenceExpression(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitMethodReferenceExpression" ):
                 return visitor.visitMethodReferenceExpression(self)
@@ -9640,6 +10528,14 @@ class JavaParser ( JavaParserBase ):
             return self.getToken(JavaParser.LBRACK, 0)
         def RBRACK(self):
             return self.getToken(JavaParser.RBRACK, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSquareBracketExpression" ):
+                listener.enterSquareBracketExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSquareBracketExpression" ):
+                listener.exitSquareBracketExpression(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitSquareBracketExpression" ):
@@ -9678,6 +10574,14 @@ class JavaParser ( JavaParserBase ):
                 return self.getTokens(JavaParser.BITAND)
             else:
                 return self.getToken(JavaParser.BITAND, i)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCastExpression" ):
+                listener.enterCastExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCastExpression" ):
+                listener.exitCastExpression(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitCastExpression" ):
@@ -10267,6 +11171,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_pattern
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPattern" ):
+                listener.enterPattern(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPattern" ):
+                listener.exitPattern(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitPattern" ):
                 return visitor.visitPattern(self)
@@ -10365,6 +11277,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_componentPatternList
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterComponentPatternList" ):
+                listener.enterComponentPatternList(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitComponentPatternList" ):
+                listener.exitComponentPatternList(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitComponentPatternList" ):
                 return visitor.visitComponentPatternList(self)
@@ -10418,6 +11338,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_componentPattern
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterComponentPattern" ):
+                listener.enterComponentPattern(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitComponentPattern" ):
+                listener.exitComponentPattern(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitComponentPattern" ):
                 return visitor.visitComponentPattern(self)
@@ -10464,6 +11392,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_lambdaExpression
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLambdaExpression" ):
+                listener.enterLambdaExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLambdaExpression" ):
+                listener.exitLambdaExpression(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLambdaExpression" ):
@@ -10531,6 +11467,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_lambdaParameters
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLambdaParameters" ):
+                listener.enterLambdaParameters(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLambdaParameters" ):
+                listener.exitLambdaParameters(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLambdaParameters" ):
@@ -10638,6 +11582,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_lambdaBody
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLambdaBody" ):
+                listener.enterLambdaBody(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLambdaBody" ):
+                listener.exitLambdaBody(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLambdaBody" ):
                 return visitor.visitLambdaBody(self)
@@ -10732,6 +11684,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_primary
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPrimary" ):
+                listener.enterPrimary(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPrimary" ):
+                listener.exitPrimary(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitPrimary" ):
@@ -10862,6 +11822,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_switchExpression
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSwitchExpression" ):
+                listener.enterSwitchExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSwitchExpression" ):
+                listener.exitSwitchExpression(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitSwitchExpression" ):
                 return visitor.visitSwitchExpression(self)
@@ -10958,6 +11926,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_switchLabeledRule
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSwitchLabeledRule" ):
+                listener.enterSwitchLabeledRule(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSwitchLabeledRule" ):
+                listener.exitSwitchLabeledRule(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitSwitchLabeledRule" ):
@@ -11083,6 +12059,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_guard
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterGuard" ):
+                listener.enterGuard(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitGuard" ):
+                listener.exitGuard(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitGuard" ):
                 return visitor.visitGuard(self)
@@ -11124,6 +12108,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_casePattern
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCasePattern" ):
+                listener.enterCasePattern(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCasePattern" ):
+                listener.exitCasePattern(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitCasePattern" ):
@@ -11171,6 +12163,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_switchRuleOutcome
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSwitchRuleOutcome" ):
+                listener.enterSwitchRuleOutcome(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSwitchRuleOutcome" ):
+                listener.exitSwitchRuleOutcome(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitSwitchRuleOutcome" ):
@@ -11234,6 +12234,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_classOrInterfaceType
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterClassOrInterfaceType" ):
+                listener.enterClassOrInterfaceType(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitClassOrInterfaceType" ):
+                listener.exitClassOrInterfaceType(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitClassOrInterfaceType" ):
                 return visitor.visitClassOrInterfaceType(self)
@@ -11285,6 +12293,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_creator
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreator" ):
+                listener.enterCreator(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreator" ):
+                listener.exitCreator(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitCreator" ):
@@ -11371,6 +12387,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_createdName
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreatedName" ):
+                listener.enterCreatedName(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreatedName" ):
+                listener.exitCreatedName(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitCreatedName" ):
@@ -11462,6 +12486,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_innerCreator
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInnerCreator" ):
+                listener.enterInnerCreator(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInnerCreator" ):
+                listener.exitInnerCreator(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitInnerCreator" ):
                 return visitor.visitInnerCreator(self)
@@ -11531,6 +12563,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_arrayCreatorRest
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterArrayCreatorRest" ):
+                listener.enterArrayCreatorRest(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitArrayCreatorRest" ):
+                listener.exitArrayCreatorRest(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitArrayCreatorRest" ):
@@ -11633,6 +12673,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_classCreatorRest
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterClassCreatorRest" ):
+                listener.enterClassCreatorRest(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitClassCreatorRest" ):
+                listener.exitClassCreatorRest(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitClassCreatorRest" ):
                 return visitor.visitClassCreatorRest(self)
@@ -11685,6 +12733,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_explicitGenericInvocation
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExplicitGenericInvocation" ):
+                listener.enterExplicitGenericInvocation(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExplicitGenericInvocation" ):
+                listener.exitExplicitGenericInvocation(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitExplicitGenericInvocation" ):
                 return visitor.visitExplicitGenericInvocation(self)
@@ -11732,6 +12788,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_typeArgumentsOrDiamond
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTypeArgumentsOrDiamond" ):
+                listener.enterTypeArgumentsOrDiamond(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTypeArgumentsOrDiamond" ):
+                listener.exitTypeArgumentsOrDiamond(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitTypeArgumentsOrDiamond" ):
@@ -11794,6 +12858,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_nonWildcardTypeArgumentsOrDiamond
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNonWildcardTypeArgumentsOrDiamond" ):
+                listener.enterNonWildcardTypeArgumentsOrDiamond(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNonWildcardTypeArgumentsOrDiamond" ):
+                listener.exitNonWildcardTypeArgumentsOrDiamond(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitNonWildcardTypeArgumentsOrDiamond" ):
                 return visitor.visitNonWildcardTypeArgumentsOrDiamond(self)
@@ -11855,6 +12927,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_nonWildcardTypeArguments
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNonWildcardTypeArguments" ):
+                listener.enterNonWildcardTypeArguments(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNonWildcardTypeArguments" ):
+                listener.exitNonWildcardTypeArguments(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitNonWildcardTypeArguments" ):
                 return visitor.visitNonWildcardTypeArguments(self)
@@ -11907,6 +12987,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_typeList
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTypeList" ):
+                listener.enterTypeList(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTypeList" ):
+                listener.exitTypeList(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitTypeList" ):
@@ -11983,6 +13071,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_typeType
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTypeType" ):
+                listener.enterTypeType(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTypeType" ):
+                listener.exitTypeType(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitTypeType" ):
@@ -12090,6 +13186,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_primitiveType
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPrimitiveType" ):
+                listener.enterPrimitiveType(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPrimitiveType" ):
+                listener.exitPrimitiveType(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitPrimitiveType" ):
                 return visitor.visitPrimitiveType(self)
@@ -12150,6 +13254,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_typeArguments
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTypeArguments" ):
+                listener.enterTypeArguments(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTypeArguments" ):
+                listener.exitTypeArguments(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitTypeArguments" ):
@@ -12218,6 +13330,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_superSuffix
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSuperSuffix" ):
+                listener.enterSuperSuffix(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSuperSuffix" ):
+                listener.exitSuperSuffix(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitSuperSuffix" ):
@@ -12302,6 +13422,14 @@ class JavaParser ( JavaParserBase ):
         def getRuleIndex(self):
             return JavaParser.RULE_explicitGenericInvocationSuffix
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExplicitGenericInvocationSuffix" ):
+                listener.enterExplicitGenericInvocationSuffix(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExplicitGenericInvocationSuffix" ):
+                listener.exitExplicitGenericInvocationSuffix(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitExplicitGenericInvocationSuffix" ):
                 return visitor.visitExplicitGenericInvocationSuffix(self)
@@ -12364,6 +13492,14 @@ class JavaParser ( JavaParserBase ):
 
         def getRuleIndex(self):
             return JavaParser.RULE_arguments
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterArguments" ):
+                listener.enterArguments(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitArguments" ):
+                listener.exitArguments(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitArguments" ):

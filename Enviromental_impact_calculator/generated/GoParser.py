@@ -724,6 +724,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_sourceFile
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSourceFile" ):
+                listener.enterSourceFile(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSourceFile" ):
+                listener.exitSourceFile(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitSourceFile" ):
+                return visitor.visitSourceFile(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -807,6 +821,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_packageClause
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPackageClause" ):
+                listener.enterPackageClause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPackageClause" ):
+                listener.exitPackageClause(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPackageClause" ):
+                return visitor.visitPackageClause(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -844,6 +872,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_packageName
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPackageName" ):
+                listener.enterPackageName(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPackageName" ):
+                listener.exitPackageName(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPackageName" ):
+                return visitor.visitPackageName(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -876,6 +918,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_identifier
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIdentifier" ):
+                listener.enterIdentifier(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIdentifier" ):
+                listener.exitIdentifier(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitIdentifier" ):
+                return visitor.visitIdentifier(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -929,6 +985,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_importDecl
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterImportDecl" ):
+                listener.enterImportDecl(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitImportDecl" ):
+                listener.exitImportDecl(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitImportDecl" ):
+                return visitor.visitImportDecl(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -1000,6 +1070,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_importSpec
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterImportSpec" ):
+                listener.enterImportSpec(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitImportSpec" ):
+                listener.exitImportSpec(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitImportSpec" ):
+                return visitor.visitImportSpec(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -1050,6 +1134,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_importPath
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterImportPath" ):
+                listener.enterImportPath(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitImportPath" ):
+                listener.exitImportPath(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitImportPath" ):
+                return visitor.visitImportPath(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -1091,6 +1189,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_declaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDeclaration" ):
+                listener.enterDeclaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDeclaration" ):
+                listener.exitDeclaration(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitDeclaration" ):
+                return visitor.visitDeclaration(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -1162,6 +1274,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_constDecl
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterConstDecl" ):
+                listener.enterConstDecl(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitConstDecl" ):
+                listener.exitConstDecl(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitConstDecl" ):
+                return visitor.visitConstDecl(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -1237,6 +1363,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_constSpec
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterConstSpec" ):
+                listener.enterConstSpec(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitConstSpec" ):
+                listener.exitConstSpec(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitConstSpec" ):
+                return visitor.visitConstSpec(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -1297,6 +1437,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_identifierList
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIdentifierList" ):
+                listener.enterIdentifierList(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIdentifierList" ):
+                listener.exitIdentifierList(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitIdentifierList" ):
+                return visitor.visitIdentifierList(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -1352,6 +1506,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_expressionList
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpressionList" ):
+                listener.enterExpressionList(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpressionList" ):
+                listener.exitExpressionList(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitExpressionList" ):
+                return visitor.visitExpressionList(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -1418,6 +1586,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_typeDecl
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTypeDecl" ):
+                listener.enterTypeDecl(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTypeDecl" ):
+                listener.exitTypeDecl(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitTypeDecl" ):
+                return visitor.visitTypeDecl(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -1486,6 +1668,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_typeSpec
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTypeSpec" ):
+                listener.enterTypeSpec(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTypeSpec" ):
+                listener.exitTypeSpec(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitTypeSpec" ):
+                return visitor.visitTypeSpec(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -1543,6 +1739,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_aliasDecl
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAliasDecl" ):
+                listener.enterAliasDecl(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAliasDecl" ):
+                listener.exitAliasDecl(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAliasDecl" ):
+                return visitor.visitAliasDecl(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -1596,6 +1806,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_typeDef
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTypeDef" ):
+                listener.enterTypeDef(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTypeDef" ):
+                listener.exitTypeDef(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitTypeDef" ):
+                return visitor.visitTypeDef(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -1656,6 +1880,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_typeParameters
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTypeParameters" ):
+                listener.enterTypeParameters(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTypeParameters" ):
+                listener.exitTypeParameters(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitTypeParameters" ):
+                return visitor.visitTypeParameters(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -1711,6 +1949,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_typeParameterDecl
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTypeParameterDecl" ):
+                listener.enterTypeParameterDecl(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTypeParameterDecl" ):
+                listener.exitTypeParameterDecl(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitTypeParameterDecl" ):
+                return visitor.visitTypeParameterDecl(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -1755,6 +2007,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_typeElement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTypeElement" ):
+                listener.enterTypeElement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTypeElement" ):
+                listener.exitTypeElement(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitTypeElement" ):
+                return visitor.visitTypeElement(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -1805,6 +2071,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_typeTerm
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTypeTerm" ):
+                listener.enterTypeTerm(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTypeTerm" ):
+                listener.exitTypeTerm(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitTypeTerm" ):
+                return visitor.visitTypeTerm(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -1861,6 +2141,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_functionDecl
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFunctionDecl" ):
+                listener.enterFunctionDecl(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFunctionDecl" ):
+                listener.exitFunctionDecl(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitFunctionDecl" ):
+                return visitor.visitFunctionDecl(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -1931,6 +2225,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_methodDecl
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMethodDecl" ):
+                listener.enterMethodDecl(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMethodDecl" ):
+                listener.exitMethodDecl(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitMethodDecl" ):
+                return visitor.visitMethodDecl(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -1978,6 +2286,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_receiver
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterReceiver" ):
+                listener.enterReceiver(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitReceiver" ):
+                listener.exitReceiver(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitReceiver" ):
+                return visitor.visitReceiver(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -2031,6 +2353,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_varDecl
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterVarDecl" ):
+                listener.enterVarDecl(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitVarDecl" ):
+                listener.exitVarDecl(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitVarDecl" ):
+                return visitor.visitVarDecl(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -2106,6 +2442,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_varSpec
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterVarSpec" ):
+                listener.enterVarSpec(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitVarSpec" ):
+                listener.exitVarSpec(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitVarSpec" ):
+                return visitor.visitVarSpec(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -2172,6 +2522,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_block
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBlock" ):
+                listener.enterBlock(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBlock" ):
+                listener.exitBlock(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitBlock" ):
+                return visitor.visitBlock(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -2231,6 +2595,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_statementList
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterStatementList" ):
+                listener.enterStatementList(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitStatementList" ):
+                listener.exitStatementList(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitStatementList" ):
+                return visitor.visitStatementList(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -2349,6 +2727,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_statement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterStatement" ):
+                listener.enterStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitStatement" ):
+                listener.exitStatement(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitStatement" ):
+                return visitor.visitStatement(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -2491,6 +2883,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_simpleStmt
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSimpleStmt" ):
+                listener.enterSimpleStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSimpleStmt" ):
+                listener.exitSimpleStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitSimpleStmt" ):
+                return visitor.visitSimpleStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -2556,6 +2962,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_expressionStmt
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpressionStmt" ):
+                listener.enterExpressionStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpressionStmt" ):
+                listener.exitExpressionStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitExpressionStmt" ):
+                return visitor.visitExpressionStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -2596,6 +3016,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_sendStmt
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSendStmt" ):
+                listener.enterSendStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSendStmt" ):
+                listener.exitSendStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitSendStmt" ):
+                return visitor.visitSendStmt(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -2640,6 +3074,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_incDecStmt
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIncDecStmt" ):
+                listener.enterIncDecStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIncDecStmt" ):
+                listener.exitIncDecStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitIncDecStmt" ):
+                return visitor.visitIncDecStmt(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -2689,6 +3137,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_assignment
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAssignment" ):
+                listener.enterAssignment(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAssignment" ):
+                listener.exitAssignment(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAssignment" ):
+                return visitor.visitAssignment(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -2760,6 +3222,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_assign_op
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAssign_op" ):
+                listener.enterAssign_op(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAssign_op" ):
+                listener.exitAssign_op(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAssign_op" ):
+                return visitor.visitAssign_op(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -2815,6 +3291,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_shortVarDecl
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterShortVarDecl" ):
+                listener.enterShortVarDecl(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitShortVarDecl" ):
+                listener.exitShortVarDecl(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitShortVarDecl" ):
+                return visitor.visitShortVarDecl(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -2858,6 +3348,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_labeledStmt
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLabeledStmt" ):
+                listener.enterLabeledStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLabeledStmt" ):
+                listener.exitLabeledStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLabeledStmt" ):
+                return visitor.visitLabeledStmt(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -2906,6 +3410,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_returnStmt
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterReturnStmt" ):
+                listener.enterReturnStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitReturnStmt" ):
+                listener.exitReturnStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitReturnStmt" ):
+                return visitor.visitReturnStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -2949,6 +3467,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_breakStmt
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBreakStmt" ):
+                listener.enterBreakStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBreakStmt" ):
+                listener.exitBreakStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitBreakStmt" ):
+                return visitor.visitBreakStmt(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -2994,6 +3526,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_continueStmt
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterContinueStmt" ):
+                listener.enterContinueStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitContinueStmt" ):
+                listener.exitContinueStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitContinueStmt" ):
+                return visitor.visitContinueStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -3038,6 +3584,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_gotoStmt
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterGotoStmt" ):
+                listener.enterGotoStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitGotoStmt" ):
+                listener.exitGotoStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitGotoStmt" ):
+                return visitor.visitGotoStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -3072,6 +3632,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_fallthroughStmt
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFallthroughStmt" ):
+                listener.enterFallthroughStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFallthroughStmt" ):
+                listener.exitFallthroughStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitFallthroughStmt" ):
+                return visitor.visitFallthroughStmt(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -3109,6 +3683,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_deferStmt
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDeferStmt" ):
+                listener.enterDeferStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDeferStmt" ):
+                listener.exitDeferStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitDeferStmt" ):
+                return visitor.visitDeferStmt(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -3172,6 +3760,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_ifStmt
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIfStmt" ):
+                listener.enterIfStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIfStmt" ):
+                listener.exitIfStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitIfStmt" ):
+                return visitor.visitIfStmt(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -3271,6 +3873,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_switchStmt
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSwitchStmt" ):
+                listener.enterSwitchStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSwitchStmt" ):
+                listener.exitSwitchStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitSwitchStmt" ):
+                return visitor.visitSwitchStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -3341,6 +3957,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_exprSwitchStmt
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExprSwitchStmt" ):
+                listener.enterExprSwitchStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExprSwitchStmt" ):
+                listener.exitExprSwitchStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitExprSwitchStmt" ):
+                return visitor.visitExprSwitchStmt(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -3434,6 +4064,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_exprCaseClause
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExprCaseClause" ):
+                listener.enterExprCaseClause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExprCaseClause" ):
+                listener.exitExprCaseClause(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitExprCaseClause" ):
+                return visitor.visitExprCaseClause(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -3477,6 +4121,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_exprSwitchCase
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExprSwitchCase" ):
+                listener.enterExprSwitchCase(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExprSwitchCase" ):
+                listener.exitExprSwitchCase(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitExprSwitchCase" ):
+                return visitor.visitExprSwitchCase(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -3550,6 +4208,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_typeSwitchStmt
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTypeSwitchStmt" ):
+                listener.enterTypeSwitchStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTypeSwitchStmt" ):
+                listener.exitTypeSwitchStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitTypeSwitchStmt" ):
+                return visitor.visitTypeSwitchStmt(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -3643,6 +4315,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_typeSwitchGuard
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTypeSwitchGuard" ):
+                listener.enterTypeSwitchGuard(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTypeSwitchGuard" ):
+                listener.exitTypeSwitchGuard(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitTypeSwitchGuard" ):
+                return visitor.visitTypeSwitchGuard(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -3702,6 +4388,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_typeCaseClause
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTypeCaseClause" ):
+                listener.enterTypeCaseClause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTypeCaseClause" ):
+                listener.exitTypeCaseClause(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitTypeCaseClause" ):
+                return visitor.visitTypeCaseClause(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -3745,6 +4445,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_typeSwitchCase
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTypeSwitchCase" ):
+                listener.enterTypeSwitchCase(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTypeSwitchCase" ):
+                listener.exitTypeSwitchCase(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitTypeSwitchCase" ):
+                return visitor.visitTypeSwitchCase(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -3809,6 +4523,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_typeList
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTypeList" ):
+                listener.enterTypeList(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTypeList" ):
+                listener.exitTypeList(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitTypeList" ):
+                return visitor.visitTypeList(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -3893,6 +4621,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_selectStmt
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSelectStmt" ):
+                listener.enterSelectStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSelectStmt" ):
+                listener.exitSelectStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitSelectStmt" ):
+                return visitor.visitSelectStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -3949,6 +4691,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_commClause
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCommClause" ):
+                listener.enterCommClause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCommClause" ):
+                listener.exitCommClause(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitCommClause" ):
+                return visitor.visitCommClause(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -3996,6 +4752,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_commCase
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCommCase" ):
+                listener.enterCommCase(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCommCase" ):
+                listener.exitCommCase(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitCommCase" ):
+                return visitor.visitCommCase(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -4073,6 +4843,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_recvStmt
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRecvStmt" ):
+                listener.enterRecvStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRecvStmt" ):
+                listener.exitRecvStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitRecvStmt" ):
+                return visitor.visitRecvStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -4138,6 +4922,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_forStmt
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterForStmt" ):
+                listener.enterForStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitForStmt" ):
+                listener.exitForStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitForStmt" ):
+                return visitor.visitForStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -4190,6 +4988,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_condition
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCondition" ):
+                listener.enterCondition(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCondition" ):
+                listener.exitCondition(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitCondition" ):
+                return visitor.visitCondition(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -4239,6 +5051,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_forClause
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterForClause" ):
+                listener.enterForClause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitForClause" ):
+                listener.exitForClause(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitForClause" ):
+                return visitor.visitForClause(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -4317,6 +5143,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_rangeClause
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRangeClause" ):
+                listener.enterRangeClause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRangeClause" ):
+                listener.exitRangeClause(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitRangeClause" ):
+                return visitor.visitRangeClause(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -4372,6 +5212,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_goStmt
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterGoStmt" ):
+                listener.enterGoStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitGoStmt" ):
+                listener.exitGoStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitGoStmt" ):
+                return visitor.visitGoStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -4425,6 +5279,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_type_
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterType_" ):
+                listener.enterType_(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitType_" ):
+                listener.exitType_(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitType_" ):
+                return visitor.visitType_(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -4500,6 +5368,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_typeArgs
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTypeArgs" ):
+                listener.enterTypeArgs(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTypeArgs" ):
+                listener.exitTypeArgs(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitTypeArgs" ):
+                return visitor.visitTypeArgs(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -4549,6 +5431,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_typeName
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTypeName" ):
+                listener.enterTypeName(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTypeName" ):
+                listener.exitTypeName(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitTypeName" ):
+                return visitor.visitTypeName(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -4624,6 +5520,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_typeLit
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTypeLit" ):
+                listener.enterTypeLit(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTypeLit" ):
+                listener.exitTypeLit(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitTypeLit" ):
+                return visitor.visitTypeLit(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -4718,6 +5628,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_arrayType
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterArrayType" ):
+                listener.enterArrayType(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitArrayType" ):
+                listener.exitArrayType(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitArrayType" ):
+                return visitor.visitArrayType(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -4758,6 +5682,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_arrayLength
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterArrayLength" ):
+                listener.enterArrayLength(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitArrayLength" ):
+                listener.exitArrayLength(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitArrayLength" ):
+                return visitor.visitArrayLength(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -4791,6 +5729,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_elementType
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterElementType" ):
+                listener.enterElementType(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitElementType" ):
+                listener.exitElementType(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitElementType" ):
+                return visitor.visitElementType(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -4828,6 +5780,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_pointerType
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPointerType" ):
+                listener.enterPointerType(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPointerType" ):
+                listener.exitPointerType(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPointerType" ):
+                return visitor.visitPointerType(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -4890,6 +5856,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_interfaceType
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInterfaceType" ):
+                listener.enterInterfaceType(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInterfaceType" ):
+                listener.exitInterfaceType(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitInterfaceType" ):
+                return visitor.visitInterfaceType(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -4960,6 +5940,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_sliceType
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSliceType" ):
+                listener.enterSliceType(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSliceType" ):
+                listener.exitSliceType(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitSliceType" ):
+                return visitor.visitSliceType(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -5011,6 +6005,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_mapType
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMapType" ):
+                listener.enterMapType(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMapType" ):
+                listener.exitMapType(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitMapType" ):
+                return visitor.visitMapType(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -5058,6 +6066,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_channelType
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterChannelType" ):
+                listener.enterChannelType(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitChannelType" ):
+                listener.exitChannelType(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitChannelType" ):
+                return visitor.visitChannelType(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -5127,6 +6149,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_methodSpec
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMethodSpec" ):
+                listener.enterMethodSpec(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMethodSpec" ):
+                listener.exitMethodSpec(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitMethodSpec" ):
+                return visitor.visitMethodSpec(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -5183,6 +6219,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_functionType
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFunctionType" ):
+                listener.enterFunctionType(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFunctionType" ):
+                listener.exitFunctionType(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitFunctionType" ):
+                return visitor.visitFunctionType(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -5222,6 +6272,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_signature
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSignature" ):
+                listener.enterSignature(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSignature" ):
+                listener.exitSignature(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitSignature" ):
+                return visitor.visitSignature(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -5268,6 +6332,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_result
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterResult" ):
+                listener.enterResult(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitResult" ):
+                listener.exitResult(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitResult" ):
+                return visitor.visitResult(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -5330,6 +6408,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_parameters
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParameters" ):
+                listener.enterParameters(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParameters" ):
+                listener.exitParameters(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitParameters" ):
+                return visitor.visitParameters(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -5403,6 +6495,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_parameterDecl
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParameterDecl" ):
+                listener.enterParameterDecl(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParameterDecl" ):
+                listener.exitParameterDecl(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitParameterDecl" ):
+                return visitor.visitParameterDecl(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -5527,6 +6633,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_expression
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpression" ):
+                listener.enterExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpression" ):
+                listener.exitExpression(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitExpression" ):
+                return visitor.visitExpression(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -5733,6 +6853,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_primaryExpr
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPrimaryExpr" ):
+                listener.enterPrimaryExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPrimaryExpr" ):
+                listener.exitPrimaryExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPrimaryExpr" ):
+                return visitor.visitPrimaryExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -5849,6 +6983,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_conversion
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterConversion" ):
+                listener.enterConversion(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitConversion" ):
+                listener.exitConversion(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitConversion" ):
+                return visitor.visitConversion(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -5915,6 +7063,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_operand
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOperand" ):
+                listener.enterOperand(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOperand" ):
+                listener.exitOperand(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitOperand" ):
+                return visitor.visitOperand(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -5989,6 +7151,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_literal
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLiteral" ):
+                listener.enterLiteral(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLiteral" ):
+                listener.exitLiteral(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLiteral" ):
+                return visitor.visitLiteral(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -6050,6 +7226,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_basicLit
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBasicLit" ):
+                listener.enterBasicLit(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBasicLit" ):
+                listener.exitBasicLit(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitBasicLit" ):
+                return visitor.visitBasicLit(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -6122,6 +7312,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_integer
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInteger" ):
+                listener.enterInteger(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInteger" ):
+                listener.exitInteger(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitInteger" ):
+                return visitor.visitInteger(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -6164,6 +7368,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_operandName
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOperandName" ):
+                listener.enterOperandName(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOperandName" ):
+                listener.exitOperandName(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitOperandName" ):
+                return visitor.visitOperandName(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -6217,6 +7435,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_qualifiedIdent
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterQualifiedIdent" ):
+                listener.enterQualifiedIdent(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitQualifiedIdent" ):
+                listener.exitQualifiedIdent(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitQualifiedIdent" ):
+                return visitor.visitQualifiedIdent(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -6258,6 +7490,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_compositeLit
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCompositeLit" ):
+                listener.enterCompositeLit(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCompositeLit" ):
+                listener.exitCompositeLit(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitCompositeLit" ):
+                return visitor.visitCompositeLit(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -6327,6 +7573,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_literalType
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLiteralType" ):
+                listener.enterLiteralType(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLiteralType" ):
+                listener.exitLiteralType(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLiteralType" ):
+                return visitor.visitLiteralType(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -6423,6 +7683,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_literalValue
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLiteralValue" ):
+                listener.enterLiteralValue(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLiteralValue" ):
+                listener.exitLiteralValue(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLiteralValue" ):
+                return visitor.visitLiteralValue(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -6485,6 +7759,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_elementList
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterElementList" ):
+                listener.enterElementList(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitElementList" ):
+                listener.exitElementList(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitElementList" ):
+                return visitor.visitElementList(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -6539,6 +7827,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_keyedElement
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterKeyedElement" ):
+                listener.enterKeyedElement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitKeyedElement" ):
+                listener.exitKeyedElement(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitKeyedElement" ):
+                return visitor.visitKeyedElement(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -6586,6 +7888,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_key
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterKey" ):
+                listener.enterKey(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitKey" ):
+                listener.exitKey(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitKey" ):
+                return visitor.visitKey(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -6637,6 +7953,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_element
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterElement" ):
+                listener.enterElement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitElement" ):
+                listener.exitElement(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitElement" ):
+                return visitor.visitElement(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -6704,6 +8034,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_structType
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterStructType" ):
+                listener.enterStructType(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitStructType" ):
+                listener.exitStructType(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitStructType" ):
+                return visitor.visitStructType(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -6768,6 +8112,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_fieldDecl
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFieldDecl" ):
+                listener.enterFieldDecl(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFieldDecl" ):
+                listener.exitFieldDecl(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitFieldDecl" ):
+                return visitor.visitFieldDecl(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -6826,6 +8184,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_string_
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterString_" ):
+                listener.enterString_(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitString_" ):
+                listener.exitString_(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitString_" ):
+                return visitor.visitString_(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -6872,6 +8244,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_embeddedField
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEmbeddedField" ):
+                listener.enterEmbeddedField(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEmbeddedField" ):
+                listener.exitEmbeddedField(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitEmbeddedField" ):
+                return visitor.visitEmbeddedField(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -6931,6 +8317,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_functionLit
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFunctionLit" ):
+                listener.enterFunctionLit(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFunctionLit" ):
+                listener.exitFunctionLit(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitFunctionLit" ):
+                return visitor.visitFunctionLit(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -6974,6 +8374,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_index
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIndex" ):
+                listener.enterIndex(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIndex" ):
+                listener.exitIndex(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitIndex" ):
+                return visitor.visitIndex(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -7027,6 +8441,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_slice_
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSlice_" ):
+                listener.enterSlice_(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSlice_" ):
+                listener.exitSlice_(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitSlice_" ):
+                return visitor.visitSlice_(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -7117,6 +8545,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_typeAssertion
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTypeAssertion" ):
+                listener.enterTypeAssertion(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTypeAssertion" ):
+                listener.exitTypeAssertion(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitTypeAssertion" ):
+                return visitor.visitTypeAssertion(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -7175,6 +8617,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_arguments
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterArguments" ):
+                listener.enterArguments(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitArguments" ):
+                listener.exitArguments(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitArguments" ):
+                return visitor.visitArguments(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -7265,6 +8721,20 @@ class GoParser ( GoParserBase ):
         def getRuleIndex(self):
             return GoParser.RULE_methodExpr
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMethodExpr" ):
+                listener.enterMethodExpr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMethodExpr" ):
+                listener.exitMethodExpr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitMethodExpr" ):
+                return visitor.visitMethodExpr(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -7304,6 +8774,20 @@ class GoParser ( GoParserBase ):
 
         def getRuleIndex(self):
             return GoParser.RULE_eos
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEos" ):
+                listener.enterEos(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEos" ):
+                listener.exitEos(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitEos" ):
+                return visitor.visitEos(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 

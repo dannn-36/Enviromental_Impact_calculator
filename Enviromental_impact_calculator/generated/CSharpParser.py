@@ -1775,6 +1775,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_compilation_unit
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCompilation_unit" ):
+                listener.enterCompilation_unit(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCompilation_unit" ):
+                listener.exitCompilation_unit(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitCompilation_unit" ):
                 return visitor.visitCompilation_unit(self)
@@ -1879,6 +1887,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_namespace_or_type_name
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNamespace_or_type_name" ):
+                listener.enterNamespace_or_type_name(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNamespace_or_type_name" ):
+                listener.exitNamespace_or_type_name(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitNamespace_or_type_name" ):
                 return visitor.visitNamespace_or_type_name(self)
@@ -1979,6 +1995,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_type_
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterType_" ):
+                listener.enterType_(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitType_" ):
+                listener.exitType_(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitType_" ):
                 return visitor.visitType_(self)
@@ -2060,6 +2084,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_base_type
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBase_type" ):
+                listener.enterBase_type(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBase_type" ):
+                listener.exitBase_type(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitBase_type" ):
                 return visitor.visitBase_type(self)
@@ -2140,6 +2172,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_tuple_type
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTuple_type" ):
+                listener.enterTuple_type(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTuple_type" ):
+                listener.exitTuple_type(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitTuple_type" ):
                 return visitor.visitTuple_type(self)
@@ -2203,6 +2243,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_tuple_element
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTuple_element" ):
+                listener.enterTuple_element(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTuple_element" ):
+                listener.exitTuple_element(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitTuple_element" ):
                 return visitor.visitTuple_element(self)
@@ -2254,6 +2302,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_simple_type
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSimple_type" ):
+                listener.enterSimple_type(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSimple_type" ):
+                listener.exitSimple_type(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitSimple_type" ):
@@ -2314,6 +2370,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_numeric_type
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNumeric_type" ):
+                listener.enterNumeric_type(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNumeric_type" ):
+                listener.exitNumeric_type(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitNumeric_type" ):
@@ -2396,6 +2460,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_integral_type
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIntegral_type" ):
+                listener.enterIntegral_type(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIntegral_type" ):
+                listener.exitIntegral_type(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitIntegral_type" ):
                 return visitor.visitIntegral_type(self)
@@ -2443,6 +2515,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_floating_point_type
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFloating_point_type" ):
+                listener.enterFloating_point_type(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFloating_point_type" ):
+                listener.exitFloating_point_type(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitFloating_point_type" ):
@@ -2498,6 +2578,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_class_type
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterClass_type" ):
+                listener.enterClass_type(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitClass_type" ):
+                listener.exitClass_type(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitClass_type" ):
@@ -2579,6 +2667,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_type_argument_list
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterType_argument_list" ):
+                listener.enterType_argument_list(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitType_argument_list" ):
+                listener.exitType_argument_list(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitType_argument_list" ):
                 return visitor.visitType_argument_list(self)
@@ -2644,6 +2740,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_argument_list
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterArgument_list" ):
+                listener.enterArgument_list(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitArgument_list" ):
+                listener.exitArgument_list(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitArgument_list" ):
@@ -2721,6 +2825,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_argument
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterArgument" ):
+                listener.enterArgument(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitArgument" ):
+                listener.exitArgument(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitArgument" ):
@@ -2820,6 +2932,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_expression
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpression" ):
+                listener.enterExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpression" ):
+                listener.exitExpression(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitExpression" ):
                 return visitor.visitExpression(self)
@@ -2888,6 +3008,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_non_assignment_expression
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNon_assignment_expression" ):
+                listener.enterNon_assignment_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNon_assignment_expression" ):
+                listener.exitNon_assignment_expression(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitNon_assignment_expression" ):
@@ -2962,6 +3090,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_assignment
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAssignment" ):
+                listener.enterAssignment(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAssignment" ):
+                listener.exitAssignment(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAssignment" ):
@@ -3053,6 +3189,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_assignment_operator
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAssignment_operator" ):
+                listener.enterAssignment_operator(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAssignment_operator" ):
+                listener.exitAssignment_operator(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAssignment_operator" ):
@@ -3165,6 +3309,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_conditional_expression
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterConditional_expression" ):
+                listener.enterConditional_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitConditional_expression" ):
+                listener.exitConditional_expression(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitConditional_expression" ):
                 return visitor.visitConditional_expression(self)
@@ -3229,6 +3381,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_null_coalescing_expression
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNull_coalescing_expression" ):
+                listener.enterNull_coalescing_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNull_coalescing_expression" ):
+                listener.exitNull_coalescing_expression(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitNull_coalescing_expression" ):
@@ -3301,6 +3461,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_conditional_or_expression
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterConditional_or_expression" ):
+                listener.enterConditional_or_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitConditional_or_expression" ):
+                listener.exitConditional_or_expression(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitConditional_or_expression" ):
                 return visitor.visitConditional_or_expression(self)
@@ -3362,6 +3530,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_conditional_and_expression
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterConditional_and_expression" ):
+                listener.enterConditional_and_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitConditional_and_expression" ):
+                listener.exitConditional_and_expression(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitConditional_and_expression" ):
@@ -3425,6 +3601,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_inclusive_or_expression
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInclusive_or_expression" ):
+                listener.enterInclusive_or_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInclusive_or_expression" ):
+                listener.exitInclusive_or_expression(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitInclusive_or_expression" ):
                 return visitor.visitInclusive_or_expression(self)
@@ -3487,6 +3671,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_exclusive_or_expression
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExclusive_or_expression" ):
+                listener.enterExclusive_or_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExclusive_or_expression" ):
+                listener.exitExclusive_or_expression(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitExclusive_or_expression" ):
                 return visitor.visitExclusive_or_expression(self)
@@ -3548,6 +3740,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_and_expression
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAnd_expression" ):
+                listener.enterAnd_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAnd_expression" ):
+                listener.exitAnd_expression(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAnd_expression" ):
@@ -3616,6 +3816,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_equality_expression
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEquality_expression" ):
+                listener.enterEquality_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEquality_expression" ):
+                listener.exitEquality_expression(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitEquality_expression" ):
@@ -3729,6 +3937,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_relational_expression
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRelational_expression" ):
+                listener.enterRelational_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRelational_expression" ):
+                listener.exitRelational_expression(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitRelational_expression" ):
                 return visitor.visitRelational_expression(self)
@@ -3824,6 +4040,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_shift_expression
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterShift_expression" ):
+                listener.enterShift_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitShift_expression" ):
+                listener.exitShift_expression(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitShift_expression" ):
                 return visitor.visitShift_expression(self)
@@ -3903,6 +4127,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_additive_expression
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAdditive_expression" ):
+                listener.enterAdditive_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAdditive_expression" ):
+                listener.exitAdditive_expression(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAdditive_expression" ):
@@ -3984,6 +4216,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_multiplicative_expression
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMultiplicative_expression" ):
+                listener.enterMultiplicative_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMultiplicative_expression" ):
+                listener.exitMultiplicative_expression(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitMultiplicative_expression" ):
                 return visitor.visitMultiplicative_expression(self)
@@ -4058,6 +4298,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_switch_expression
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSwitch_expression" ):
+                listener.enterSwitch_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSwitch_expression" ):
+                listener.exitSwitch_expression(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitSwitch_expression" ):
@@ -4137,6 +4385,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_switch_expression_arms
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSwitch_expression_arms" ):
+                listener.enterSwitch_expression_arms(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSwitch_expression_arms" ):
+                listener.exitSwitch_expression_arms(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitSwitch_expression_arms" ):
                 return visitor.visitSwitch_expression_arms(self)
@@ -4202,6 +4458,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_switch_expression_arm
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSwitch_expression_arm" ):
+                listener.enterSwitch_expression_arm(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSwitch_expression_arm" ):
+                listener.exitSwitch_expression_arm(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitSwitch_expression_arm" ):
                 return visitor.visitSwitch_expression_arm(self)
@@ -4260,6 +4524,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_range_expression
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRange_expression" ):
+                listener.enterRange_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRange_expression" ):
+                listener.exitRange_expression(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitRange_expression" ):
@@ -4368,6 +4640,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_unary_expression
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUnary_expression" ):
+                listener.enterUnary_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUnary_expression" ):
+                listener.exitUnary_expression(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitUnary_expression" ):
@@ -4512,6 +4792,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_cast_expression
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCast_expression" ):
+                listener.enterCast_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCast_expression" ):
+                listener.exitCast_expression(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitCast_expression" ):
                 return visitor.visitCast_expression(self)
@@ -4610,6 +4898,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_primary_expression
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPrimary_expression" ):
+                listener.enterPrimary_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPrimary_expression" ):
+                listener.exitPrimary_expression(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitPrimary_expression" ):
@@ -4754,6 +5050,14 @@ class CSharpParser ( CSharpParserBase ):
         def LITERAL_ACCESS(self):
             return self.getToken(CSharpParser.LITERAL_ACCESS, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLiteralAccessExpression" ):
+                listener.enterLiteralAccessExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLiteralAccessExpression" ):
+                listener.exitLiteralAccessExpression(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLiteralAccessExpression" ):
                 return visitor.visitLiteralAccessExpression(self)
@@ -4776,6 +5080,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def CLOSE_PARENS(self):
             return self.getToken(CSharpParser.CLOSE_PARENS, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDefaultValueExpression" ):
+                listener.enterDefaultValueExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDefaultValueExpression" ):
+                listener.exitDefaultValueExpression(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitDefaultValueExpression" ):
@@ -4808,6 +5120,14 @@ class CSharpParser ( CSharpParserBase ):
             return self.getTypedRuleContext(CSharpParser.Type_argument_listContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBaseAccessExpression" ):
+                listener.enterBaseAccessExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBaseAccessExpression" ):
+                listener.exitBaseAccessExpression(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitBaseAccessExpression" ):
                 return visitor.visitBaseAccessExpression(self)
@@ -4831,6 +5151,14 @@ class CSharpParser ( CSharpParserBase ):
         def CLOSE_PARENS(self):
             return self.getToken(CSharpParser.CLOSE_PARENS, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSizeofExpression" ):
+                listener.enterSizeofExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSizeofExpression" ):
+                listener.exitSizeofExpression(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitSizeofExpression" ):
                 return visitor.visitSizeofExpression(self)
@@ -4852,6 +5180,14 @@ class CSharpParser ( CSharpParserBase ):
         def CLOSE_PARENS(self):
             return self.getToken(CSharpParser.CLOSE_PARENS, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParenthesisExpressions" ):
+                listener.enterParenthesisExpressions(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParenthesisExpressions" ):
+                listener.exitParenthesisExpressions(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitParenthesisExpressions" ):
                 return visitor.visitParenthesisExpressions(self)
@@ -4867,6 +5203,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def THIS(self):
             return self.getToken(CSharpParser.THIS, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterThisReferenceExpression" ):
+                listener.enterThisReferenceExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitThisReferenceExpression" ):
+                listener.exitThisReferenceExpression(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitThisReferenceExpression" ):
@@ -4912,6 +5256,14 @@ class CSharpParser ( CSharpParserBase ):
         def CLOSE_BRACKET(self):
             return self.getToken(CSharpParser.CLOSE_BRACKET, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterObjectCreationExpression" ):
+                listener.enterObjectCreationExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitObjectCreationExpression" ):
+                listener.exitObjectCreationExpression(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitObjectCreationExpression" ):
                 return visitor.visitObjectCreationExpression(self)
@@ -4940,6 +5292,14 @@ class CSharpParser ( CSharpParserBase ):
             return self.getTypedRuleContext(CSharpParser.Explicit_anonymous_function_parameter_listContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAnonymousMethodExpression" ):
+                listener.enterAnonymousMethodExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAnonymousMethodExpression" ):
+                listener.exitAnonymousMethodExpression(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAnonymousMethodExpression" ):
                 return visitor.visitAnonymousMethodExpression(self)
@@ -4967,6 +5327,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def VOID(self):
             return self.getToken(CSharpParser.VOID, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTypeofExpression" ):
+                listener.enterTypeofExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTypeofExpression" ):
+                listener.exitTypeofExpression(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitTypeofExpression" ):
@@ -4997,6 +5365,14 @@ class CSharpParser ( CSharpParserBase ):
             else:
                 return self.getToken(CSharpParser.COMMA, i)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTupleExpression" ):
+                listener.enterTupleExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTupleExpression" ):
+                listener.exitTupleExpression(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitTupleExpression" ):
                 return visitor.visitTupleExpression(self)
@@ -5020,6 +5396,14 @@ class CSharpParser ( CSharpParserBase ):
         def CLOSE_PARENS(self):
             return self.getToken(CSharpParser.CLOSE_PARENS, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUncheckedExpression" ):
+                listener.enterUncheckedExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUncheckedExpression" ):
+                listener.exitUncheckedExpression(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitUncheckedExpression" ):
                 return visitor.visitUncheckedExpression(self)
@@ -5040,6 +5424,14 @@ class CSharpParser ( CSharpParserBase ):
             return self.getTypedRuleContext(CSharpParser.Type_argument_listContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSimpleNameExpression" ):
+                listener.enterSimpleNameExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSimpleNameExpression" ):
+                listener.exitSimpleNameExpression(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitSimpleNameExpression" ):
                 return visitor.visitSimpleNameExpression(self)
@@ -5059,6 +5451,14 @@ class CSharpParser ( CSharpParserBase ):
         def qualified_alias_member(self):
             return self.getTypedRuleContext(CSharpParser.Qualified_alias_memberContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMemberAccessExpression" ):
+                listener.enterMemberAccessExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMemberAccessExpression" ):
+                listener.exitMemberAccessExpression(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitMemberAccessExpression" ):
@@ -5083,6 +5483,14 @@ class CSharpParser ( CSharpParserBase ):
         def CLOSE_PARENS(self):
             return self.getToken(CSharpParser.CLOSE_PARENS, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCheckedExpression" ):
+                listener.enterCheckedExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCheckedExpression" ):
+                listener.exitCheckedExpression(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitCheckedExpression" ):
                 return visitor.visitCheckedExpression(self)
@@ -5099,6 +5507,14 @@ class CSharpParser ( CSharpParserBase ):
         def literal(self):
             return self.getTypedRuleContext(CSharpParser.LiteralContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLiteralExpression" ):
+                listener.enterLiteralExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLiteralExpression" ):
+                listener.exitLiteralExpression(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLiteralExpression" ):
@@ -5130,6 +5546,14 @@ class CSharpParser ( CSharpParserBase ):
                 return self.getTokens(CSharpParser.DOT)
             else:
                 return self.getToken(CSharpParser.DOT, i)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNameofExpression" ):
+                listener.enterNameofExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNameofExpression" ):
+                listener.exitNameofExpression(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitNameofExpression" ):
@@ -5532,6 +5956,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_throwable_expression
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterThrowable_expression" ):
+                listener.enterThrowable_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitThrowable_expression" ):
+                listener.exitThrowable_expression(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitThrowable_expression" ):
                 return visitor.visitThrowable_expression(self)
@@ -5588,6 +6020,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_throw_expression
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterThrow_expression" ):
+                listener.enterThrow_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitThrow_expression" ):
+                listener.exitThrow_expression(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitThrow_expression" ):
                 return visitor.visitThrow_expression(self)
@@ -5639,6 +6079,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_member_access
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMember_access" ):
+                listener.enterMember_access(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMember_access" ):
+                listener.exitMember_access(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitMember_access" ):
@@ -5717,6 +6165,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_bracket_expression
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBracket_expression" ):
+                listener.enterBracket_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBracket_expression" ):
+                listener.exitBracket_expression(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitBracket_expression" ):
                 return visitor.visitBracket_expression(self)
@@ -5788,6 +6244,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_indexer_argument
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIndexer_argument" ):
+                listener.enterIndexer_argument(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIndexer_argument" ):
+                listener.exitIndexer_argument(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitIndexer_argument" ):
@@ -5880,6 +6344,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_predefined_type
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPredefined_type" ):
+                listener.enterPredefined_type(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPredefined_type" ):
+                listener.exitPredefined_type(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitPredefined_type" ):
                 return visitor.visitPredefined_type(self)
@@ -5934,6 +6406,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_expression_list
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpression_list" ):
+                listener.enterExpression_list(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpression_list" ):
+                listener.exitExpression_list(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitExpression_list" ):
@@ -5991,6 +6471,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_object_or_collection_initializer
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterObject_or_collection_initializer" ):
+                listener.enterObject_or_collection_initializer(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitObject_or_collection_initializer" ):
+                listener.exitObject_or_collection_initializer(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitObject_or_collection_initializer" ):
@@ -6053,6 +6541,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_object_initializer
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterObject_initializer" ):
+                listener.enterObject_initializer(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitObject_initializer" ):
+                listener.exitObject_initializer(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitObject_initializer" ):
@@ -6121,6 +6617,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_member_initializer_list
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMember_initializer_list" ):
+                listener.enterMember_initializer_list(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMember_initializer_list" ):
+                listener.exitMember_initializer_list(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitMember_initializer_list" ):
@@ -6192,6 +6696,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_member_initializer
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMember_initializer" ):
+                listener.enterMember_initializer(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMember_initializer" ):
+                listener.exitMember_initializer(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitMember_initializer" ):
                 return visitor.visitMember_initializer(self)
@@ -6255,6 +6767,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_initializer_value
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInitializer_value" ):
+                listener.enterInitializer_value(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInitializer_value" ):
+                listener.exitInitializer_value(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitInitializer_value" ):
@@ -6323,6 +6843,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_collection_initializer
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCollection_initializer" ):
+                listener.enterCollection_initializer(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCollection_initializer" ):
+                listener.exitCollection_initializer(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitCollection_initializer" ):
@@ -6400,6 +6928,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_element_initializer
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterElement_initializer" ):
+                listener.enterElement_initializer(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitElement_initializer" ):
+                listener.exitElement_initializer(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitElement_initializer" ):
                 return visitor.visitElement_initializer(self)
@@ -6465,6 +7001,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_anonymous_object_initializer
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAnonymous_object_initializer" ):
+                listener.enterAnonymous_object_initializer(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAnonymous_object_initializer" ):
+                listener.exitAnonymous_object_initializer(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAnonymous_object_initializer" ):
@@ -6534,6 +7078,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_member_declarator_list
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMember_declarator_list" ):
+                listener.enterMember_declarator_list(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMember_declarator_list" ):
+                listener.exitMember_declarator_list(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitMember_declarator_list" ):
                 return visitor.visitMember_declarator_list(self)
@@ -6597,6 +7149,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_member_declarator
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMember_declarator" ):
+                listener.enterMember_declarator(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMember_declarator" ):
+                listener.exitMember_declarator(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitMember_declarator" ):
@@ -6673,6 +7233,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_unbound_type_name
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUnbound_type_name" ):
+                listener.enterUnbound_type_name(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUnbound_type_name" ):
+                listener.exitUnbound_type_name(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitUnbound_type_name" ):
@@ -6773,6 +7341,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_generic_dimension_specifier
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterGeneric_dimension_specifier" ):
+                listener.enterGeneric_dimension_specifier(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitGeneric_dimension_specifier" ):
+                listener.exitGeneric_dimension_specifier(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitGeneric_dimension_specifier" ):
                 return visitor.visitGeneric_dimension_specifier(self)
@@ -6849,6 +7425,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_isType
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIsType" ):
+                listener.enterIsType(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIsType" ):
+                listener.exitIsType(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitIsType" ):
@@ -6952,6 +7536,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_isTypePatternArms
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIsTypePatternArms" ):
+                listener.enterIsTypePatternArms(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIsTypePatternArms" ):
+                listener.exitIsTypePatternArms(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitIsTypePatternArms" ):
                 return visitor.visitIsTypePatternArms(self)
@@ -7016,6 +7608,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_isTypePatternArm
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIsTypePatternArm" ):
+                listener.enterIsTypePatternArm(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIsTypePatternArm" ):
+                listener.exitIsTypePatternArm(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitIsTypePatternArm" ):
                 return visitor.visitIsTypePatternArm(self)
@@ -7070,6 +7670,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_lambda_expression
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLambda_expression" ):
+                listener.enterLambda_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLambda_expression" ):
+                listener.exitLambda_expression(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLambda_expression" ):
@@ -7136,6 +7744,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_anonymous_function_signature
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAnonymous_function_signature" ):
+                listener.enterAnonymous_function_signature(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAnonymous_function_signature" ):
+                listener.exitAnonymous_function_signature(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAnonymous_function_signature" ):
@@ -7221,6 +7837,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_explicit_anonymous_function_parameter_list
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExplicit_anonymous_function_parameter_list" ):
+                listener.enterExplicit_anonymous_function_parameter_list(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExplicit_anonymous_function_parameter_list" ):
+                listener.exitExplicit_anonymous_function_parameter_list(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitExplicit_anonymous_function_parameter_list" ):
                 return visitor.visitExplicit_anonymous_function_parameter_list(self)
@@ -7288,6 +7912,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_explicit_anonymous_function_parameter
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExplicit_anonymous_function_parameter" ):
+                listener.enterExplicit_anonymous_function_parameter(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExplicit_anonymous_function_parameter" ):
+                listener.exitExplicit_anonymous_function_parameter(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitExplicit_anonymous_function_parameter" ):
                 return visitor.visitExplicit_anonymous_function_parameter(self)
@@ -7354,6 +7986,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_implicit_anonymous_function_parameter_list
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterImplicit_anonymous_function_parameter_list" ):
+                listener.enterImplicit_anonymous_function_parameter_list(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitImplicit_anonymous_function_parameter_list" ):
+                listener.exitImplicit_anonymous_function_parameter_list(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitImplicit_anonymous_function_parameter_list" ):
                 return visitor.visitImplicit_anonymous_function_parameter_list(self)
@@ -7410,6 +8050,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_anonymous_function_body
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAnonymous_function_body" ):
+                listener.enterAnonymous_function_body(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAnonymous_function_body" ):
+                listener.exitAnonymous_function_body(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAnonymous_function_body" ):
@@ -7468,6 +8116,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_query_expression
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterQuery_expression" ):
+                listener.enterQuery_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitQuery_expression" ):
+                listener.exitQuery_expression(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitQuery_expression" ):
                 return visitor.visitQuery_expression(self)
@@ -7523,6 +8179,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_from_clause
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFrom_clause" ):
+                listener.enterFrom_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFrom_clause" ):
+                listener.exitFrom_clause(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitFrom_clause" ):
@@ -7588,6 +8252,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_query_body
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterQuery_body" ):
+                listener.enterQuery_body(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitQuery_body" ):
+                listener.exitQuery_body(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitQuery_body" ):
@@ -7663,6 +8335,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_query_body_clause
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterQuery_body_clause" ):
+                listener.enterQuery_body_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitQuery_body_clause" ):
+                listener.exitQuery_body_clause(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitQuery_body_clause" ):
@@ -7742,6 +8422,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_let_clause
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLet_clause" ):
+                listener.enterLet_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLet_clause" ):
+                listener.exitLet_clause(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLet_clause" ):
                 return visitor.visitLet_clause(self)
@@ -7790,6 +8478,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_where_clause
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterWhere_clause" ):
+                listener.enterWhere_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitWhere_clause" ):
+                listener.exitWhere_clause(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitWhere_clause" ):
@@ -7861,6 +8557,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_combined_join_clause
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCombined_join_clause" ):
+                listener.enterCombined_join_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCombined_join_clause" ):
+                listener.exitCombined_join_clause(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitCombined_join_clause" ):
@@ -7947,6 +8651,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_orderby_clause
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOrderby_clause" ):
+                listener.enterOrderby_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOrderby_clause" ):
+                listener.exitOrderby_clause(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitOrderby_clause" ):
                 return visitor.visitOrderby_clause(self)
@@ -8008,6 +8720,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_ordering
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOrdering" ):
+                listener.enterOrdering(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOrdering" ):
+                listener.exitOrdering(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitOrdering" ):
@@ -8075,6 +8795,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_select_or_group_clause
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSelect_or_group_clause" ):
+                listener.enterSelect_or_group_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSelect_or_group_clause" ):
+                listener.exitSelect_or_group_clause(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitSelect_or_group_clause" ):
@@ -8144,6 +8872,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_query_continuation
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterQuery_continuation" ):
+                listener.enterQuery_continuation(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitQuery_continuation" ):
+                listener.exitQuery_continuation(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitQuery_continuation" ):
                 return visitor.visitQuery_continuation(self)
@@ -8195,6 +8931,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_statement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterStatement" ):
+                listener.enterStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitStatement" ):
+                listener.exitStatement(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitStatement" ):
@@ -8266,6 +9010,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_declarationStatement
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDeclarationStatement" ):
+                listener.enterDeclarationStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDeclarationStatement" ):
+                listener.exitDeclarationStatement(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitDeclarationStatement" ):
                 return visitor.visitDeclarationStatement(self)
@@ -8332,6 +9084,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_local_function_declaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLocal_function_declaration" ):
+                listener.enterLocal_function_declaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLocal_function_declaration" ):
+                listener.exitLocal_function_declaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLocal_function_declaration" ):
@@ -8400,6 +9160,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_local_function_header
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLocal_function_header" ):
+                listener.enterLocal_function_header(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLocal_function_header" ):
+                listener.exitLocal_function_header(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLocal_function_header" ):
@@ -8484,6 +9252,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_local_function_modifiers
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLocal_function_modifiers" ):
+                listener.enterLocal_function_modifiers(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLocal_function_modifiers" ):
+                listener.exitLocal_function_modifiers(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLocal_function_modifiers" ):
@@ -8570,6 +9346,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_local_function_body
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLocal_function_body" ):
+                listener.enterLocal_function_body(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLocal_function_body" ):
+                listener.exitLocal_function_body(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLocal_function_body" ):
                 return visitor.visitLocal_function_body(self)
@@ -8634,6 +9418,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_labeled_Statement
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLabeled_Statement" ):
+                listener.enterLabeled_Statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLabeled_Statement" ):
+                listener.exitLabeled_Statement(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLabeled_Statement" ):
                 return visitor.visitLabeled_Statement(self)
@@ -8681,6 +9473,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_embedded_statement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEmbedded_statement" ):
+                listener.enterEmbedded_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEmbedded_statement" ):
+                listener.exitEmbedded_statement(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitEmbedded_statement" ):
@@ -8756,6 +9556,14 @@ class CSharpParser ( CSharpParserBase ):
             return self.getTypedRuleContext(CSharpParser.Finally_clauseContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTryStatement" ):
+                listener.enterTryStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTryStatement" ):
+                listener.exitTryStatement(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitTryStatement" ):
                 return visitor.visitTryStatement(self)
@@ -8774,6 +9582,14 @@ class CSharpParser ( CSharpParserBase ):
         def block(self):
             return self.getTypedRuleContext(CSharpParser.BlockContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCheckedStatement" ):
+                listener.enterCheckedStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCheckedStatement" ):
+                listener.exitCheckedStatement(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitCheckedStatement" ):
@@ -8796,6 +9612,14 @@ class CSharpParser ( CSharpParserBase ):
             return self.getTypedRuleContext(CSharpParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterThrowStatement" ):
+                listener.enterThrowStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitThrowStatement" ):
+                listener.exitThrowStatement(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitThrowStatement" ):
                 return visitor.visitThrowStatement(self)
@@ -8811,6 +9635,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def SEMICOLON(self):
             return self.getToken(CSharpParser.SEMICOLON, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTheEmptyStatement" ):
+                listener.enterTheEmptyStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTheEmptyStatement" ):
+                listener.exitTheEmptyStatement(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitTheEmptyStatement" ):
@@ -8830,6 +9662,14 @@ class CSharpParser ( CSharpParserBase ):
         def block(self):
             return self.getTypedRuleContext(CSharpParser.BlockContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUnsafeStatement" ):
+                listener.enterUnsafeStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUnsafeStatement" ):
+                listener.exitUnsafeStatement(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitUnsafeStatement" ):
@@ -8868,6 +9708,14 @@ class CSharpParser ( CSharpParserBase ):
             return self.getTypedRuleContext(CSharpParser.For_iteratorContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterForStatement" ):
+                listener.enterForStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitForStatement" ):
+                listener.exitForStatement(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitForStatement" ):
                 return visitor.visitForStatement(self)
@@ -8885,6 +9733,14 @@ class CSharpParser ( CSharpParserBase ):
             return self.getToken(CSharpParser.BREAK, 0)
         def SEMICOLON(self):
             return self.getToken(CSharpParser.SEMICOLON, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBreakStatement" ):
+                listener.enterBreakStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBreakStatement" ):
+                listener.exitBreakStatement(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitBreakStatement" ):
@@ -8917,6 +9773,14 @@ class CSharpParser ( CSharpParserBase ):
         def ELSE(self):
             return self.getToken(CSharpParser.ELSE, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIfStatement" ):
+                listener.enterIfStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIfStatement" ):
+                listener.exitIfStatement(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitIfStatement" ):
                 return visitor.visitIfStatement(self)
@@ -8937,6 +9801,14 @@ class CSharpParser ( CSharpParserBase ):
         def expression(self):
             return self.getTypedRuleContext(CSharpParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterReturnStatement" ):
+                listener.enterReturnStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitReturnStatement" ):
+                listener.exitReturnStatement(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitReturnStatement" ):
@@ -8965,6 +9837,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def DEFAULT(self):
             return self.getToken(CSharpParser.DEFAULT, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterGotoStatement" ):
+                listener.enterGotoStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitGotoStatement" ):
+                listener.exitGotoStatement(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitGotoStatement" ):
@@ -8999,6 +9879,14 @@ class CSharpParser ( CSharpParserBase ):
                 return self.getTypedRuleContext(CSharpParser.Switch_sectionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSwitchStatement" ):
+                listener.enterSwitchStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSwitchStatement" ):
+                listener.exitSwitchStatement(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitSwitchStatement" ):
                 return visitor.visitSwitchStatement(self)
@@ -9028,6 +9916,14 @@ class CSharpParser ( CSharpParserBase ):
             return self.getTypedRuleContext(CSharpParser.Embedded_statementContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFixedStatement" ):
+                listener.enterFixedStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFixedStatement" ):
+                listener.exitFixedStatement(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitFixedStatement" ):
                 return visitor.visitFixedStatement(self)
@@ -9053,6 +9949,14 @@ class CSharpParser ( CSharpParserBase ):
         def embedded_statement(self):
             return self.getTypedRuleContext(CSharpParser.Embedded_statementContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterWhileStatement" ):
+                listener.enterWhileStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitWhileStatement" ):
+                listener.exitWhileStatement(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitWhileStatement" ):
@@ -9083,6 +9987,14 @@ class CSharpParser ( CSharpParserBase ):
             return self.getToken(CSharpParser.CLOSE_PARENS, 0)
         def SEMICOLON(self):
             return self.getToken(CSharpParser.SEMICOLON, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDoStatement" ):
+                listener.enterDoStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDoStatement" ):
+                listener.exitDoStatement(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitDoStatement" ):
@@ -9120,6 +10032,14 @@ class CSharpParser ( CSharpParserBase ):
         def AWAIT(self):
             return self.getToken(CSharpParser.AWAIT, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterForeachStatement" ):
+                listener.enterForeachStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitForeachStatement" ):
+                listener.exitForeachStatement(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitForeachStatement" ):
                 return visitor.visitForeachStatement(self)
@@ -9138,6 +10058,14 @@ class CSharpParser ( CSharpParserBase ):
         def block(self):
             return self.getTypedRuleContext(CSharpParser.BlockContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUncheckedStatement" ):
+                listener.enterUncheckedStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUncheckedStatement" ):
+                listener.exitUncheckedStatement(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitUncheckedStatement" ):
@@ -9158,6 +10086,14 @@ class CSharpParser ( CSharpParserBase ):
         def SEMICOLON(self):
             return self.getToken(CSharpParser.SEMICOLON, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpressionStatement" ):
+                listener.enterExpressionStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpressionStatement" ):
+                listener.exitExpressionStatement(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitExpressionStatement" ):
                 return visitor.visitExpressionStatement(self)
@@ -9175,6 +10111,14 @@ class CSharpParser ( CSharpParserBase ):
             return self.getToken(CSharpParser.CONTINUE, 0)
         def SEMICOLON(self):
             return self.getToken(CSharpParser.SEMICOLON, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterContinueStatement" ):
+                listener.enterContinueStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitContinueStatement" ):
+                listener.exitContinueStatement(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitContinueStatement" ):
@@ -9202,6 +10146,14 @@ class CSharpParser ( CSharpParserBase ):
             return self.getTypedRuleContext(CSharpParser.Embedded_statementContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUsingStatement" ):
+                listener.enterUsingStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUsingStatement" ):
+                listener.exitUsingStatement(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitUsingStatement" ):
                 return visitor.visitUsingStatement(self)
@@ -9228,6 +10180,14 @@ class CSharpParser ( CSharpParserBase ):
             return self.getTypedRuleContext(CSharpParser.Embedded_statementContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLockStatement" ):
+                listener.enterLockStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLockStatement" ):
+                listener.exitLockStatement(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLockStatement" ):
                 return visitor.visitLockStatement(self)
@@ -9252,6 +10212,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def BREAK(self):
             return self.getToken(CSharpParser.BREAK, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterYieldStatement" ):
+                listener.enterYieldStatement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitYieldStatement" ):
+                listener.exitYieldStatement(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitYieldStatement" ):
@@ -9683,6 +10651,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_block
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBlock" ):
+                listener.enterBlock(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBlock" ):
+                listener.exitBlock(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitBlock" ):
                 return visitor.visitBlock(self)
@@ -9766,6 +10742,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_local_variable_declaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLocal_variable_declaration" ):
+                listener.enterLocal_variable_declaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLocal_variable_declaration" ):
+                listener.exitLocal_variable_declaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLocal_variable_declaration" ):
@@ -9864,6 +10848,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_local_variable_type
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLocal_variable_type" ):
+                listener.enterLocal_variable_type(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLocal_variable_type" ):
+                listener.exitLocal_variable_type(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLocal_variable_type" ):
                 return visitor.visitLocal_variable_type(self)
@@ -9926,6 +10918,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_local_variable_declarator
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLocal_variable_declarator" ):
+                listener.enterLocal_variable_declarator(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLocal_variable_declarator" ):
+                listener.exitLocal_variable_declarator(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLocal_variable_declarator" ):
@@ -9993,6 +10993,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_local_variable_initializer
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLocal_variable_initializer" ):
+                listener.enterLocal_variable_initializer(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLocal_variable_initializer" ):
+                listener.exitLocal_variable_initializer(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLocal_variable_initializer" ):
                 return visitor.visitLocal_variable_initializer(self)
@@ -10058,6 +11066,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_local_constant_declaration
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLocal_constant_declaration" ):
+                listener.enterLocal_constant_declaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLocal_constant_declaration" ):
+                listener.exitLocal_constant_declaration(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLocal_constant_declaration" ):
                 return visitor.visitLocal_constant_declaration(self)
@@ -10105,6 +11121,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_if_body
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIf_body" ):
+                listener.enterIf_body(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIf_body" ):
+                listener.exitIf_body(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitIf_body" ):
@@ -10165,6 +11189,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_switch_section
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSwitch_section" ):
+                listener.enterSwitch_section(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSwitch_section" ):
+                listener.exitSwitch_section(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitSwitch_section" ):
@@ -10232,6 +11264,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_switch_label
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSwitch_label" ):
+                listener.enterSwitch_label(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSwitch_label" ):
+                listener.exitSwitch_label(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitSwitch_label" ):
@@ -10304,6 +11344,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_case_guard
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCase_guard" ):
+                listener.enterCase_guard(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCase_guard" ):
+                listener.exitCase_guard(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitCase_guard" ):
                 return visitor.visitCase_guard(self)
@@ -10348,6 +11396,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_statement_list
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterStatement_list" ):
+                listener.enterStatement_list(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitStatement_list" ):
+                listener.exitStatement_list(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitStatement_list" ):
@@ -10413,6 +11469,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_for_initializer
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFor_initializer" ):
+                listener.enterFor_initializer(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFor_initializer" ):
+                listener.exitFor_initializer(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitFor_initializer" ):
@@ -10489,6 +11553,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_for_iterator
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFor_iterator" ):
+                listener.enterFor_iterator(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFor_iterator" ):
+                listener.exitFor_iterator(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitFor_iterator" ):
                 return visitor.visitFor_iterator(self)
@@ -10548,6 +11620,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_catch_clauses
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCatch_clauses" ):
+                listener.enterCatch_clauses(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCatch_clauses" ):
+                listener.exitCatch_clauses(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitCatch_clauses" ):
@@ -10643,6 +11723,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_specific_catch_clause
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSpecific_catch_clause" ):
+                listener.enterSpecific_catch_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSpecific_catch_clause" ):
+                listener.exitSpecific_catch_clause(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitSpecific_catch_clause" ):
                 return visitor.visitSpecific_catch_clause(self)
@@ -10715,6 +11803,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_general_catch_clause
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterGeneral_catch_clause" ):
+                listener.enterGeneral_catch_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitGeneral_catch_clause" ):
+                listener.exitGeneral_catch_clause(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitGeneral_catch_clause" ):
                 return visitor.visitGeneral_catch_clause(self)
@@ -10775,6 +11871,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_exception_filter
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterException_filter" ):
+                listener.enterException_filter(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitException_filter" ):
+                listener.exitException_filter(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitException_filter" ):
                 return visitor.visitException_filter(self)
@@ -10824,6 +11928,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_finally_clause
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFinally_clause" ):
+                listener.enterFinally_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFinally_clause" ):
+                listener.exitFinally_clause(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitFinally_clause" ):
                 return visitor.visitFinally_clause(self)
@@ -10869,6 +11981,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_resource_acquisition
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterResource_acquisition" ):
+                listener.enterResource_acquisition(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitResource_acquisition" ):
+                listener.exitResource_acquisition(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitResource_acquisition" ):
@@ -10934,6 +12054,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_namespace_declaration
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNamespace_declaration" ):
+                listener.enterNamespace_declaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNamespace_declaration" ):
+                listener.exitNamespace_declaration(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitNamespace_declaration" ):
                 return visitor.visitNamespace_declaration(self)
@@ -10995,6 +12123,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_qualified_identifier
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterQualified_identifier" ):
+                listener.enterQualified_identifier(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitQualified_identifier" ):
+                listener.exitQualified_identifier(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitQualified_identifier" ):
@@ -11062,6 +12198,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_namespace_body
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNamespace_body" ):
+                listener.enterNamespace_body(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNamespace_body" ):
+                listener.exitNamespace_body(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitNamespace_body" ):
@@ -11133,6 +12277,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_extern_alias_directives
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExtern_alias_directives" ):
+                listener.enterExtern_alias_directives(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExtern_alias_directives" ):
+                listener.exitExtern_alias_directives(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitExtern_alias_directives" ):
                 return visitor.visitExtern_alias_directives(self)
@@ -11194,6 +12346,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_extern_alias_directive
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExtern_alias_directive" ):
+                listener.enterExtern_alias_directive(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExtern_alias_directive" ):
+                listener.exitExtern_alias_directive(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitExtern_alias_directive" ):
                 return visitor.visitExtern_alias_directive(self)
@@ -11242,6 +12402,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_using_directives
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUsing_directives" ):
+                listener.enterUsing_directives(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUsing_directives" ):
+                listener.exitUsing_directives(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitUsing_directives" ):
@@ -11316,6 +12484,14 @@ class CSharpParser ( CSharpParserBase ):
         def SEMICOLON(self):
             return self.getToken(CSharpParser.SEMICOLON, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUsingAliasDirective" ):
+                listener.enterUsingAliasDirective(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUsingAliasDirective" ):
+                listener.exitUsingAliasDirective(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitUsingAliasDirective" ):
                 return visitor.visitUsingAliasDirective(self)
@@ -11336,6 +12512,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def SEMICOLON(self):
             return self.getToken(CSharpParser.SEMICOLON, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUsingNamespaceDirective" ):
+                listener.enterUsingNamespaceDirective(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUsingNamespaceDirective" ):
+                listener.exitUsingNamespaceDirective(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitUsingNamespaceDirective" ):
@@ -11359,6 +12543,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def SEMICOLON(self):
             return self.getToken(CSharpParser.SEMICOLON, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUsingStaticDirective" ):
+                listener.enterUsingStaticDirective(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUsingStaticDirective" ):
+                listener.exitUsingStaticDirective(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitUsingStaticDirective" ):
@@ -11442,6 +12634,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_namespace_member_declarations
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNamespace_member_declarations" ):
+                listener.enterNamespace_member_declarations(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNamespace_member_declarations" ):
+                listener.exitNamespace_member_declarations(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitNamespace_member_declarations" ):
                 return visitor.visitNamespace_member_declarations(self)
@@ -11496,6 +12696,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_namespace_member_declaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNamespace_member_declaration" ):
+                listener.enterNamespace_member_declaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNamespace_member_declaration" ):
+                listener.exitNamespace_member_declaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitNamespace_member_declaration" ):
@@ -11573,6 +12781,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_type_declaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterType_declaration" ):
+                listener.enterType_declaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitType_declaration" ):
+                listener.exitType_declaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitType_declaration" ):
@@ -11665,6 +12881,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_qualified_alias_member
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterQualified_alias_member" ):
+                listener.enterQualified_alias_member(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitQualified_alias_member" ):
+                listener.exitQualified_alias_member(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitQualified_alias_member" ):
                 return visitor.visitQualified_alias_member(self)
@@ -11732,6 +12956,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_type_parameter_list
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterType_parameter_list" ):
+                listener.enterType_parameter_list(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitType_parameter_list" ):
+                listener.exitType_parameter_list(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitType_parameter_list" ):
                 return visitor.visitType_parameter_list(self)
@@ -11792,6 +13024,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_type_parameter
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterType_parameter" ):
+                listener.enterType_parameter(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitType_parameter" ):
+                listener.exitType_parameter(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitType_parameter" ):
@@ -11858,6 +13098,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_class_base
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterClass_base" ):
+                listener.enterClass_base(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitClass_base" ):
+                listener.exitClass_base(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitClass_base" ):
                 return visitor.visitClass_base(self)
@@ -11922,6 +13170,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_interface_type_list
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInterface_type_list" ):
+                listener.enterInterface_type_list(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInterface_type_list" ):
+                listener.exitInterface_type_list(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitInterface_type_list" ):
                 return visitor.visitInterface_type_list(self)
@@ -11977,6 +13233,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_type_parameter_constraints_clauses
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterType_parameter_constraints_clauses" ):
+                listener.enterType_parameter_constraints_clauses(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitType_parameter_constraints_clauses" ):
+                listener.exitType_parameter_constraints_clauses(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitType_parameter_constraints_clauses" ):
@@ -12039,6 +13303,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_type_parameter_constraints_clause
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterType_parameter_constraints_clause" ):
+                listener.enterType_parameter_constraints_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitType_parameter_constraints_clause" ):
+                listener.exitType_parameter_constraints_clause(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitType_parameter_constraints_clause" ):
                 return visitor.visitType_parameter_constraints_clause(self)
@@ -12098,6 +13370,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_type_parameter_constraints
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterType_parameter_constraints" ):
+                listener.enterType_parameter_constraints(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitType_parameter_constraints" ):
+                listener.exitType_parameter_constraints(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitType_parameter_constraints" ):
@@ -12185,6 +13465,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_primary_constraint
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPrimary_constraint" ):
+                listener.enterPrimary_constraint(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPrimary_constraint" ):
+                listener.exitPrimary_constraint(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitPrimary_constraint" ):
                 return visitor.visitPrimary_constraint(self)
@@ -12268,6 +13556,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_secondary_constraints
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSecondary_constraints" ):
+                listener.enterSecondary_constraints(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSecondary_constraints" ):
+                listener.exitSecondary_constraints(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitSecondary_constraints" ):
                 return visitor.visitSecondary_constraints(self)
@@ -12326,6 +13622,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_constructor_constraint
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterConstructor_constraint" ):
+                listener.enterConstructor_constraint(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitConstructor_constraint" ):
+                listener.exitConstructor_constraint(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitConstructor_constraint" ):
                 return visitor.visitConstructor_constraint(self)
@@ -12375,6 +13679,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_class_body
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterClass_body" ):
+                listener.enterClass_body(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitClass_body" ):
+                listener.exitClass_body(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitClass_body" ):
@@ -12429,6 +13741,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_class_member_declarations
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterClass_member_declarations" ):
+                listener.enterClass_member_declarations(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitClass_member_declarations" ):
+                listener.exitClass_member_declarations(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitClass_member_declarations" ):
@@ -12492,6 +13812,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_class_member_declaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterClass_member_declaration" ):
+                listener.enterClass_member_declaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitClass_member_declaration" ):
+                listener.exitClass_member_declaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitClass_member_declaration" ):
@@ -12564,6 +13892,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_all_member_modifiers
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAll_member_modifiers" ):
+                listener.enterAll_member_modifiers(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAll_member_modifiers" ):
+                listener.exitAll_member_modifiers(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAll_member_modifiers" ):
@@ -12660,6 +13996,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_all_member_modifier
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAll_member_modifier" ):
+                listener.enterAll_member_modifier(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAll_member_modifier" ):
+                listener.exitAll_member_modifier(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAll_member_modifier" ):
@@ -12764,6 +14108,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_common_member_declaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCommon_member_declaration" ):
+                listener.enterCommon_member_declaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCommon_member_declaration" ):
+                listener.exitCommon_member_declaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitCommon_member_declaration" ):
@@ -12925,6 +14277,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_typed_member_declaration
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTyped_member_declaration" ):
+                listener.enterTyped_member_declaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTyped_member_declaration" ):
+                listener.exitTyped_member_declaration(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitTyped_member_declaration" ):
                 return visitor.visitTyped_member_declaration(self)
@@ -13032,6 +14392,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_constant_declarators
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterConstant_declarators" ):
+                listener.enterConstant_declarators(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitConstant_declarators" ):
+                listener.exitConstant_declarators(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitConstant_declarators" ):
                 return visitor.visitConstant_declarators(self)
@@ -13092,6 +14460,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_constant_declarator
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterConstant_declarator" ):
+                listener.enterConstant_declarator(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitConstant_declarator" ):
+                listener.exitConstant_declarator(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitConstant_declarator" ):
                 return visitor.visitConstant_declarator(self)
@@ -13144,6 +14520,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_variable_declarators
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterVariable_declarators" ):
+                listener.enterVariable_declarators(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitVariable_declarators" ):
+                listener.exitVariable_declarators(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitVariable_declarators" ):
@@ -13205,6 +14589,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_variable_declarator
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterVariable_declarator" ):
+                listener.enterVariable_declarator(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitVariable_declarator" ):
+                listener.exitVariable_declarator(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitVariable_declarator" ):
                 return visitor.visitVariable_declarator(self)
@@ -13259,6 +14651,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_variable_initializer
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterVariable_initializer" ):
+                listener.enterVariable_initializer(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitVariable_initializer" ):
+                listener.exitVariable_initializer(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitVariable_initializer" ):
@@ -13316,6 +14716,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_return_type
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterReturn_type" ):
+                listener.enterReturn_type(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitReturn_type" ):
+                listener.exitReturn_type(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitReturn_type" ):
                 return visitor.visitReturn_type(self)
@@ -13369,6 +14777,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_member_name
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMember_name" ):
+                listener.enterMember_name(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMember_name" ):
+                listener.exitMember_name(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitMember_name" ):
                 return visitor.visitMember_name(self)
@@ -13411,6 +14827,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_method_body
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMethod_body" ):
+                listener.enterMethod_body(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMethod_body" ):
+                listener.exitMethod_body(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitMethod_body" ):
@@ -13471,6 +14895,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_formal_parameter_list
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFormal_parameter_list" ):
+                listener.enterFormal_parameter_list(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFormal_parameter_list" ):
+                listener.exitFormal_parameter_list(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitFormal_parameter_list" ):
@@ -13545,6 +14977,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_fixed_parameters
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFixed_parameters" ):
+                listener.enterFixed_parameters(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFixed_parameters" ):
+                listener.exitFixed_parameters(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitFixed_parameters" ):
                 return visitor.visitFixed_parameters(self)
@@ -13608,6 +15048,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_fixed_parameter
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFixed_parameter" ):
+                listener.enterFixed_parameter(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFixed_parameter" ):
+                listener.exitFixed_parameter(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitFixed_parameter" ):
@@ -13686,6 +15134,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_parameter_modifier
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParameter_modifier" ):
+                listener.enterParameter_modifier(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParameter_modifier" ):
+                listener.exitParameter_modifier(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitParameter_modifier" ):
@@ -13779,6 +15235,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_parameter_array
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParameter_array" ):
+                listener.enterParameter_array(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParameter_array" ):
+                listener.exitParameter_array(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitParameter_array" ):
                 return visitor.visitParameter_array(self)
@@ -13855,6 +15319,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_accessor_declarations
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAccessor_declarations" ):
+                listener.enterAccessor_declarations(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAccessor_declarations" ):
+                listener.exitAccessor_declarations(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAccessor_declarations" ):
@@ -13956,6 +15428,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_get_accessor_declaration
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterGet_accessor_declaration" ):
+                listener.enterGet_accessor_declaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitGet_accessor_declaration" ):
+                listener.exitGet_accessor_declaration(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitGet_accessor_declaration" ):
                 return visitor.visitGet_accessor_declaration(self)
@@ -14026,6 +15506,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_set_accessor_declaration
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSet_accessor_declaration" ):
+                listener.enterSet_accessor_declaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSet_accessor_declaration" ):
+                listener.exitSet_accessor_declaration(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitSet_accessor_declaration" ):
                 return visitor.visitSet_accessor_declaration(self)
@@ -14089,6 +15577,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_accessor_modifier
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAccessor_modifier" ):
+                listener.enterAccessor_modifier(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAccessor_modifier" ):
+                listener.exitAccessor_modifier(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAccessor_modifier" ):
@@ -14168,6 +15664,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_accessor_body
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAccessor_body" ):
+                listener.enterAccessor_body(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAccessor_body" ):
+                listener.exitAccessor_body(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAccessor_body" ):
                 return visitor.visitAccessor_body(self)
@@ -14238,6 +15742,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_event_accessor_declarations
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEvent_accessor_declarations" ):
+                listener.enterEvent_accessor_declarations(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEvent_accessor_declarations" ):
+                listener.exitEvent_accessor_declarations(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitEvent_accessor_declarations" ):
@@ -14315,6 +15827,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_add_accessor_declaration
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAdd_accessor_declaration" ):
+                listener.enterAdd_accessor_declaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAdd_accessor_declaration" ):
+                listener.exitAdd_accessor_declaration(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAdd_accessor_declaration" ):
                 return visitor.visitAdd_accessor_declaration(self)
@@ -14372,6 +15892,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_remove_accessor_declaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRemove_accessor_declaration" ):
+                listener.enterRemove_accessor_declaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRemove_accessor_declaration" ):
+                listener.exitRemove_accessor_declaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitRemove_accessor_declaration" ):
@@ -14486,6 +16014,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_overloadable_operator
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOverloadable_operator" ):
+                listener.enterOverloadable_operator(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOverloadable_operator" ):
+                listener.exitOverloadable_operator(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitOverloadable_operator" ):
@@ -14679,6 +16215,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_conversion_operator_declarator
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterConversion_operator_declarator" ):
+                listener.enterConversion_operator_declarator(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitConversion_operator_declarator" ):
+                listener.exitConversion_operator_declarator(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitConversion_operator_declarator" ):
                 return visitor.visitConversion_operator_declarator(self)
@@ -14750,6 +16294,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_constructor_initializer
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterConstructor_initializer" ):
+                listener.enterConstructor_initializer(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitConstructor_initializer" ):
+                listener.exitConstructor_initializer(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitConstructor_initializer" ):
                 return visitor.visitConstructor_initializer(self)
@@ -14813,6 +16365,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_body
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBody" ):
+                listener.enterBody(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBody" ):
+                listener.exitBody(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitBody" ):
                 return visitor.visitBody(self)
@@ -14869,6 +16429,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_struct_interfaces
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterStruct_interfaces" ):
+                listener.enterStruct_interfaces(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitStruct_interfaces" ):
+                listener.exitStruct_interfaces(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitStruct_interfaces" ):
                 return visitor.visitStruct_interfaces(self)
@@ -14919,6 +16487,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_struct_body
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterStruct_body" ):
+                listener.enterStruct_body(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitStruct_body" ):
+                listener.exitStruct_body(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitStruct_body" ):
@@ -14997,6 +16573,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_struct_member_declaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterStruct_member_declaration" ):
+                listener.enterStruct_member_declaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitStruct_member_declaration" ):
+                listener.exitStruct_member_declaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitStruct_member_declaration" ):
@@ -15102,6 +16686,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_array_type
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterArray_type" ):
+                listener.enterArray_type(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitArray_type" ):
+                listener.exitArray_type(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitArray_type" ):
                 return visitor.visitArray_type(self)
@@ -15178,6 +16770,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_rank_specifier
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRank_specifier" ):
+                listener.enterRank_specifier(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRank_specifier" ):
+                listener.exitRank_specifier(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitRank_specifier" ):
                 return visitor.visitRank_specifier(self)
@@ -15245,6 +16845,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_array_initializer
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterArray_initializer" ):
+                listener.enterArray_initializer(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitArray_initializer" ):
+                listener.exitArray_initializer(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitArray_initializer" ):
@@ -15333,6 +16941,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_variant_type_parameter_list
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterVariant_type_parameter_list" ):
+                listener.enterVariant_type_parameter_list(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitVariant_type_parameter_list" ):
+                listener.exitVariant_type_parameter_list(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitVariant_type_parameter_list" ):
                 return visitor.visitVariant_type_parameter_list(self)
@@ -15398,6 +17014,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_variant_type_parameter
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterVariant_type_parameter" ):
+                listener.enterVariant_type_parameter(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitVariant_type_parameter" ):
+                listener.exitVariant_type_parameter(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitVariant_type_parameter" ):
                 return visitor.visitVariant_type_parameter(self)
@@ -15457,6 +17081,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_variance_annotation
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterVariance_annotation" ):
+                listener.enterVariance_annotation(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitVariance_annotation" ):
+                listener.exitVariance_annotation(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitVariance_annotation" ):
                 return visitor.visitVariance_annotation(self)
@@ -15505,6 +17137,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_interface_base
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInterface_base" ):
+                listener.enterInterface_base(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInterface_base" ):
+                listener.exitInterface_base(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitInterface_base" ):
@@ -15556,6 +17196,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_interface_body
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInterface_body" ):
+                listener.enterInterface_body(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInterface_body" ):
+                listener.exitInterface_body(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitInterface_body" ):
@@ -15675,6 +17323,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_interface_member_declaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInterface_member_declaration" ):
+                listener.enterInterface_member_declaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInterface_member_declaration" ):
+                listener.exitInterface_member_declaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitInterface_member_declaration" ):
@@ -15906,6 +17562,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_interface_accessors
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInterface_accessors" ):
+                listener.enterInterface_accessors(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInterface_accessors" ):
+                listener.exitInterface_accessors(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitInterface_accessors" ):
                 return visitor.visitInterface_accessors(self)
@@ -16010,6 +17674,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_enum_base
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEnum_base" ):
+                listener.enterEnum_base(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEnum_base" ):
+                listener.exitEnum_base(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitEnum_base" ):
                 return visitor.visitEnum_base(self)
@@ -16066,6 +17738,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_enum_body
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEnum_body" ):
+                listener.enterEnum_body(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEnum_body" ):
+                listener.exitEnum_body(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitEnum_body" ):
@@ -16150,6 +17830,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_enum_member_declaration
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEnum_member_declaration" ):
+                listener.enterEnum_member_declaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEnum_member_declaration" ):
+                listener.exitEnum_member_declaration(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitEnum_member_declaration" ):
                 return visitor.visitEnum_member_declaration(self)
@@ -16225,6 +17913,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_global_attribute_section
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterGlobal_attribute_section" ):
+                listener.enterGlobal_attribute_section(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitGlobal_attribute_section" ):
+                listener.exitGlobal_attribute_section(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitGlobal_attribute_section" ):
                 return visitor.visitGlobal_attribute_section(self)
@@ -16286,6 +17982,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_global_attribute_target
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterGlobal_attribute_target" ):
+                listener.enterGlobal_attribute_target(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitGlobal_attribute_target" ):
+                listener.exitGlobal_attribute_target(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitGlobal_attribute_target" ):
                 return visitor.visitGlobal_attribute_target(self)
@@ -16341,6 +18045,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_attributes
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAttributes" ):
+                listener.enterAttributes(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAttributes" ):
+                listener.exitAttributes(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAttributes" ):
@@ -16409,6 +18121,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_attribute_section
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAttribute_section" ):
+                listener.enterAttribute_section(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAttribute_section" ):
+                listener.exitAttribute_section(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAttribute_section" ):
                 return visitor.visitAttribute_section(self)
@@ -16476,6 +18196,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_attribute_target
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAttribute_target" ):
+                listener.enterAttribute_target(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAttribute_target" ):
+                listener.exitAttribute_target(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAttribute_target" ):
                 return visitor.visitAttribute_target(self)
@@ -16537,6 +18265,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_attribute_list
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAttribute_list" ):
+                listener.enterAttribute_list(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAttribute_list" ):
+                listener.exitAttribute_list(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAttribute_list" ):
@@ -16609,6 +18345,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_attribute
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAttribute" ):
+                listener.enterAttribute(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAttribute" ):
+                listener.exitAttribute(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAttribute" ):
@@ -16688,6 +18432,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_attribute_argument
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAttribute_argument" ):
+                listener.enterAttribute_argument(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAttribute_argument" ):
+                listener.exitAttribute_argument(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAttribute_argument" ):
                 return visitor.visitAttribute_argument(self)
@@ -16760,6 +18512,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_pointer_type
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPointer_type" ):
+                listener.enterPointer_type(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPointer_type" ):
+                listener.exitPointer_type(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitPointer_type" ):
@@ -16862,6 +18622,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_fixed_pointer_declarators
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFixed_pointer_declarators" ):
+                listener.enterFixed_pointer_declarators(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFixed_pointer_declarators" ):
+                listener.exitFixed_pointer_declarators(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitFixed_pointer_declarators" ):
                 return visitor.visitFixed_pointer_declarators(self)
@@ -16922,6 +18690,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_fixed_pointer_declarator
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFixed_pointer_declarator" ):
+                listener.enterFixed_pointer_declarator(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFixed_pointer_declarator" ):
+                listener.exitFixed_pointer_declarator(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitFixed_pointer_declarator" ):
                 return visitor.visitFixed_pointer_declarator(self)
@@ -16972,6 +18748,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_fixed_pointer_initializer
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFixed_pointer_initializer" ):
+                listener.enterFixed_pointer_initializer(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFixed_pointer_initializer" ):
+                listener.exitFixed_pointer_initializer(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitFixed_pointer_initializer" ):
@@ -17043,6 +18827,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_fixed_size_buffer_declarator
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFixed_size_buffer_declarator" ):
+                listener.enterFixed_size_buffer_declarator(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFixed_size_buffer_declarator" ):
+                listener.exitFixed_size_buffer_declarator(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitFixed_size_buffer_declarator" ):
@@ -17117,6 +18909,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_stackalloc_initializer
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterStackalloc_initializer" ):
+                listener.enterStackalloc_initializer(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitStackalloc_initializer" ):
+                listener.exitStackalloc_initializer(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitStackalloc_initializer" ):
@@ -17231,6 +19031,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_right_arrow
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRight_arrow" ):
+                listener.enterRight_arrow(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRight_arrow" ):
+                listener.exitRight_arrow(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitRight_arrow" ):
                 return visitor.visitRight_arrow(self)
@@ -17281,6 +19089,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_right_shift
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRight_shift" ):
+                listener.enterRight_shift(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRight_shift" ):
+                listener.exitRight_shift(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitRight_shift" ):
                 return visitor.visitRight_shift(self)
@@ -17330,6 +19146,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_right_shift_assignment
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRight_shift_assignment" ):
+                listener.enterRight_shift_assignment(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRight_shift_assignment" ):
+                listener.exitRight_shift_assignment(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitRight_shift_assignment" ):
@@ -17398,6 +19222,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_literal
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLiteral" ):
+                listener.enterLiteral(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLiteral" ):
+                listener.exitLiteral(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitLiteral" ):
@@ -17484,6 +19316,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_boolean_literal
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBoolean_literal" ):
+                listener.enterBoolean_literal(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBoolean_literal" ):
+                listener.exitBoolean_literal(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitBoolean_literal" ):
                 return visitor.visitBoolean_literal(self)
@@ -17539,6 +19379,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_string_literal
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterString_literal" ):
+                listener.enterString_literal(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitString_literal" ):
+                listener.exitString_literal(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitString_literal" ):
@@ -17612,6 +19460,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_interpolated_regular_string
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInterpolated_regular_string" ):
+                listener.enterInterpolated_regular_string(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInterpolated_regular_string" ):
+                listener.exitInterpolated_regular_string(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitInterpolated_regular_string" ):
                 return visitor.visitInterpolated_regular_string(self)
@@ -17674,6 +19530,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_interpolated_verbatium_string
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInterpolated_verbatium_string" ):
+                listener.enterInterpolated_verbatium_string(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInterpolated_verbatium_string" ):
+                listener.exitInterpolated_verbatium_string(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitInterpolated_verbatium_string" ):
                 return visitor.visitInterpolated_verbatium_string(self)
@@ -17735,6 +19599,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_interpolated_regular_string_part
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInterpolated_regular_string_part" ):
+                listener.enterInterpolated_regular_string_part(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInterpolated_regular_string_part" ):
+                listener.exitInterpolated_regular_string_part(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitInterpolated_regular_string_part" ):
@@ -17807,6 +19679,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_interpolated_verbatium_string_part
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInterpolated_verbatium_string_part" ):
+                listener.enterInterpolated_verbatium_string_part(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInterpolated_verbatium_string_part" ):
+                listener.exitInterpolated_verbatium_string_part(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitInterpolated_verbatium_string_part" ):
@@ -17888,6 +19768,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_interpolated_string_expression
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInterpolated_string_expression" ):
+                listener.enterInterpolated_string_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInterpolated_string_expression" ):
+                listener.exitInterpolated_string_expression(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitInterpolated_string_expression" ):
@@ -18192,6 +20080,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_keyword
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterKeyword" ):
+                listener.enterKeyword(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitKeyword" ):
+                listener.exitKeyword(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitKeyword" ):
                 return visitor.visitKeyword(self)
@@ -18259,6 +20155,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_class_definition
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterClass_definition" ):
+                listener.enterClass_definition(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitClass_definition" ):
+                listener.exitClass_definition(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitClass_definition" ):
@@ -18364,6 +20268,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_struct_definition
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterStruct_definition" ):
+                listener.enterStruct_definition(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitStruct_definition" ):
+                listener.exitStruct_definition(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitStruct_definition" ):
@@ -18477,6 +20389,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_interface_definition
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInterface_definition" ):
+                listener.enterInterface_definition(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInterface_definition" ):
+                listener.exitInterface_definition(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitInterface_definition" ):
                 return visitor.visitInterface_definition(self)
@@ -18568,6 +20488,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_enum_definition
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEnum_definition" ):
+                listener.enterEnum_definition(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEnum_definition" ):
+                listener.exitEnum_definition(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitEnum_definition" ):
                 return visitor.visitEnum_definition(self)
@@ -18656,6 +20584,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_delegate_definition
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDelegate_definition" ):
+                listener.enterDelegate_definition(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDelegate_definition" ):
+                listener.exitDelegate_definition(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitDelegate_definition" ):
@@ -18756,6 +20692,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_event_declaration
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEvent_declaration" ):
+                listener.enterEvent_declaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEvent_declaration" ):
+                listener.exitEvent_declaration(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitEvent_declaration" ):
                 return visitor.visitEvent_declaration(self)
@@ -18822,6 +20766,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_field_declaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterField_declaration" ):
+                listener.enterField_declaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitField_declaration" ):
+                listener.exitField_declaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitField_declaration" ):
@@ -18892,6 +20844,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_property_declaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterProperty_declaration" ):
+                listener.enterProperty_declaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitProperty_declaration" ):
+                listener.exitProperty_declaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitProperty_declaration" ):
@@ -18978,6 +20938,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_constant_declaration
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterConstant_declaration" ):
+                listener.enterConstant_declaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitConstant_declaration" ):
+                listener.exitConstant_declaration(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitConstant_declaration" ):
                 return visitor.visitConstant_declaration(self)
@@ -19053,6 +21021,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_indexer_declaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIndexer_declaration" ):
+                listener.enterIndexer_declaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIndexer_declaration" ):
+                listener.exitIndexer_declaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitIndexer_declaration" ):
@@ -19135,6 +21111,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_destructor_definition
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDestructor_definition" ):
+                listener.enterDestructor_definition(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDestructor_definition" ):
+                listener.exitDestructor_definition(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitDestructor_definition" ):
                 return visitor.visitDestructor_definition(self)
@@ -19200,6 +21184,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_constructor_declaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterConstructor_declaration" ):
+                listener.enterConstructor_declaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitConstructor_declaration" ):
+                listener.exitConstructor_declaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitConstructor_declaration" ):
@@ -19296,6 +21288,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_method_declaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMethod_declaration" ):
+                listener.enterMethod_declaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMethod_declaration" ):
+                listener.exitMethod_declaration(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitMethod_declaration" ):
@@ -19402,6 +21402,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_method_member_name
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMethod_member_name" ):
+                listener.enterMethod_member_name(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMethod_member_name" ):
+                listener.exitMethod_member_name(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitMethod_member_name" ):
@@ -19521,6 +21529,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_operator_declaration
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOperator_declaration" ):
+                listener.enterOperator_declaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOperator_declaration" ):
+                listener.exitOperator_declaration(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitOperator_declaration" ):
                 return visitor.visitOperator_declaration(self)
@@ -19625,6 +21641,14 @@ class CSharpParser ( CSharpParserBase ):
         def getRuleIndex(self):
             return CSharpParser.RULE_arg_declaration
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterArg_declaration" ):
+                listener.enterArg_declaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitArg_declaration" ):
+                listener.exitArg_declaration(self)
+
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitArg_declaration" ):
                 return visitor.visitArg_declaration(self)
@@ -19683,6 +21707,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_method_invocation
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMethod_invocation" ):
+                listener.enterMethod_invocation(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMethod_invocation" ):
+                listener.exitMethod_invocation(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitMethod_invocation" ):
@@ -19744,6 +21776,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_object_creation_expression
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterObject_creation_expression" ):
+                listener.enterObject_creation_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitObject_creation_expression" ):
+                listener.exitObject_creation_expression(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitObject_creation_expression" ):
@@ -19886,6 +21926,14 @@ class CSharpParser ( CSharpParserBase ):
 
         def getRuleIndex(self):
             return CSharpParser.RULE_identifier
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIdentifier" ):
+                listener.enterIdentifier(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIdentifier" ):
+                listener.exitIdentifier(self)
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitIdentifier" ):
