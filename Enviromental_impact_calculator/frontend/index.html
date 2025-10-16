@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Amigabilidad Ambiental - Algoritmos</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .upload-section {
+            padding: 40px;
+            background: #f8f9fa;
+        }
+
+        .languages-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* centra TODAS las filas */
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto 30px auto;
+        }
+
+
+
+        .language-box {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border: 2px dashed #e9ecef;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+       
+        .language-box:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .language-box.has-file {
+            border-color: #28a745;
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+        }
+
+        .language-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .language-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .file-label {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .file-label:hover {
+            background: #5a6fd8;
+            transform: scale(1.05);
+        }
+
+        .file-name {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #666;
+            word-break: break-all;
+        }
+
+        .calculate-section {
+            text-align: center;
+            padding: 30px 40px;
+            background: white;
+        }
+
+        .calculate-btn {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+        }
+
+        .calculate-btn:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .results-section {
+            padding: 40px;
+            background: #f8f9fa;
+            display: none;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .score-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .score-value {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .score-excellent { color: #28a745; }
+        .score-good { color: #ffc107; }
+        .score-poor { color: #dc3545; }
+
+        .score-label {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .score-description {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .charts-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .chart-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .chart-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .metrics-table {
+            width: 100%;
+            margin-top: 30px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .metrics-table th,
+        .metrics-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .metrics-table th {
+            background: #2c3e50;
+            color: white;
+            font-weight: 600;
+        }
+
+        .metrics-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        @media (max-width: 768px) {
+            .languages-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .results-grid,
+            .charts-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌱 Calculadora de Amigabilidad Ambiental</h1>
+            <p>Analiza el impacto ambiental de tus algoritmos en diferentes lenguajes de programación</p>
+        </div>
+
+        <div class="upload-section">
+            <div class="languages-grid">
+                <div class="language-box" id="go-box">
+                    <span class="language-icon">🐹</span>
+                    <div class="language-name">Go</div>
+                    <label for="go-file" class="file-label">Seleccionar archivo</label>
+                    <input type="file" id="go-file" class="file-input" accept=".go,.txt" onchange="handleFileSelect(this, 'go')">
+                    <div class="file-name" id="go-filename"></div>
+                </div>
+
+                <div class="language-box" id="java-box">
+                    <span class="language-icon">☕</span>
+                    <div class="language-name">Java</div>
+                    <label for="java-file" class="file-label">Seleccionar archivo</label>
+                    <input type="file" id="java-file" class="file-input" accept=".java,.txt" onchange="handleFileSelect(this, 'java')">
+                    <div class="file-name" id="java-filename"></div>
+                </div>
+
+                <div class="language-box" id="csharp-box">
+                    <span class="language-icon">🔷</span>
+                    <div class="language-name">C#</div>
+                    <label for="csharp-file" class="file-label">Seleccionar archivo</label>
+                    <input type="file" id="csharp-file" class="file-input" accept=".cs,.txt" onchange="handleFileSelect(this, 'csharp')">
+                    <div class="file-name" id="csharp-filename"></div>
+                </div>
+
+                <div class="language-box" id="python-box">
+                    <span class="language-icon">🐍</span>
+                    <div class="language-name">Python</div>
+                    <label for="python-file" class="file-label">Seleccionar archivo</label>
+                    <input type="file" id="python-file" class="file-input" accept=".py,.txt" onchange="handleFileSelect(this, 'python')">
+                    <div class="file-name" id="python-filename"></div>
+                </div>
+
+                <div class="language-box" id="c-box">
+                    <span class="language-icon">⚡</span>
+                    <div class="language-name">C</div>
+                    <label for="c-file" class="file-label">Seleccionar archivo</label>
+                    <input type="file" id="c-file" class="file-input" accept=".c,.txt" onchange="handleFileSelect(this, 'c')">
+                    <div class="file-name" id="c-filename"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="calculate-section">
+            <button class="calculate-btn" id="calculate-btn" onclick="calculateEnvironmentalScore()" disabled>
+                Calcular Amigabilidad Ambiental
+            </button>
+        </div>
+
+        <div class="results-section" id="results-section">
+            <div class="results-grid">
+                <div class="score-card">
+                    <div class="score-value score-excellent" id="overall-score">85</div>
+                    <div class="score-label">Puntuación General</div>
+                    <div class="score-description">Excelente eficiencia ambiental</div>
+                </div>
+                <div class="score-card">
+                    <div class="score-value" id="best-language">🐍 Python</div>
+                    <div class="score-label">Lenguaje Más Eficiente</div>
+                    <div class="score-description">Menor impacto ambiental detectado</div>
+                </div>
+            </div>
+
+            <div class="charts-container">
+                <div class="chart-card">
+                    <div class="chart-title">Comparación por Lenguaje</div>
+                    <canvas id="languageChart" width="400" height="300"></canvas>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-title">Métricas</div>
+                    <canvas id="complexityChart" width="400" height="300"></canvas>
+                </div>
+            </div>
+
+            <table class="metrics-table">
+                <thead>
+                    <tr>
+                        <th>Lenguaje</th>
+                        <th>Asignaciones</th>
+                        <th>Funciones Recursivas</th>
+                        <th>Bucles</th>
+                        <th>Análisis ANTLR</th>
+                        <th>Puntuación</th>
+                    </tr>
+                </thead>
+                <tbody id="metrics-tbody">
+                    <!-- Los resultados se llenarán dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:8000';  // URL of your FastAPI backend
+        let uploadedFiles = {};
+        let analysisResults = {};
+
+        function handleFileSelect(input, language) {
+            const file = input.files[0];
+            const box = document.getElementById(`${language}-box`);
+            const filename = document.getElementById(`${language}-filename`);
+            
+            if (file) {
+                uploadedFiles[language] = { name: file.name, content: null };
+                box.classList.add('has-file');
+                filename.textContent = `📄 ${file.name}`;
+                
+                // Read file content
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    uploadedFiles[language].content = e.target.result;
+                    // Only enable calculate after content is loaded
+                    updateCalculateButton();
+                };
+                reader.readAsText(file);
+            } else {
+                delete uploadedFiles[language];
+                box.classList.remove('has-file');
+                filename.textContent = '';
+                updateCalculateButton();
+            }
+        }
+
+        function updateCalculateButton() {
+            const btn = document.getElementById('calculate-btn');
+            const entries = Object.values(uploadedFiles);
+            const hasFiles = entries.length > 0;
+            const allHaveContent = entries.every(f => typeof f.content === 'string' && f.content.length > 0);
+            btn.disabled = !(hasFiles && allHaveContent);
+        }
+
+        async function calculateEnvironmentalScore() {
+            const languages = Object.keys(uploadedFiles);
+            analysisResults = {};
+            
+            const calculateBtn = document.getElementById('calculate-btn');
+            calculateBtn.disabled = true;
+            calculateBtn.textContent = 'Analizando...';
+            
+            console.log('Archivos a analizar:', languages);
+            
+            try {
+                for (const lang of languages) {
+                    const code = uploadedFiles[lang] && uploadedFiles[lang].content || '';
+                    if (!code) {
+                        console.warn(`No content for ${lang}, skipping.`);
+                        continue;
+                    }
+                    console.log(`Analizando ${lang}, longitud del código:`, code.length);
+                    
+                    const response = await fetch(`${API_URL}/analyze`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            language: lang === 'csharp' ? 'c#' : lang,
+                            code
+                        })
+                    });
+                    
+                    if (!response.ok) {
+                        const errorText = await response.text();
+                        console.error(`Error response:`, errorText);
+                        throw new Error(`Error analyzing ${lang}: ${response.statusText}. ${errorText}`);
+                    }
+                    
+                    const result = await response.json();
+                    analysisResults[lang] = {
+                        operations: result.metrics.assignments || 0,
+                        recursion: result.metrics.recursive_functions_count || 0,
+                        cyclomatic: result.metrics.loops || 0,
+                        algorithmic: 'Variable',  // This metric isn't provided by the backend
+                        score: result.eco_score,
+                        interpretation: result.interpretation,
+                        metrics: result.metrics
+                    };
+                }
+                
+                if (Object.keys(analysisResults).length === 0) {
+                    alert('No se pudo analizar ningún archivo. Verifica el backend y los lenguajes.');
+                    return;
+                }
+                displayResults();
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al analizar el código: ' + error.message);
+            } finally {
+                calculateBtn.disabled = false;
+                calculateBtn.textContent = 'Calcular Amigabilidad Ambiental';
+            }
+        }
+
+        function displayResults() {
+            const resultsSection = document.getElementById('results-section');
+            resultsSection.style.display = 'block';
+            
+            // Calcular puntuación general y mejor lenguaje
+            const scores = Object.values(analysisResults).map(r => r.score);
+            const avgScore = Math.round(scores.reduce((a, b) => a + b, 0) / scores.length);
+            const bestLang = Object.keys(analysisResults).reduce((a, b) => 
+                analysisResults[a].score > analysisResults[b].score ? a : b
+            );
+            
+            // Actualizar puntuación general
+            const overallScore = document.getElementById('overall-score');
+            overallScore.textContent = avgScore;
+            overallScore.className = `score-value ${getScoreClass(avgScore)}`;
+            
+            // Actualizar mejor lenguaje
+            const langIcons = { go: '🐹', java: '☕', csharp: '🔷', python: '🐍', c: '⚡' };
+            const langNames = { go: 'Go', java: 'Java', csharp: 'C#', python: 'Python', c: 'C' };
+            document.getElementById('best-language').textContent = 
+                `${langIcons[bestLang]} ${langNames[bestLang]}`;
+            
+            // Llenar tabla de métricas
+            fillMetricsTable();
+            
+            // Crear gráficas
+            createCharts();
+            
+            // Scroll suave a resultados
+            resultsSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function getScoreClass(score) {
+            if (score >= 80) return 'score-excellent';
+            if (score >= 60) return 'score-good';
+            return 'score-poor';
+        }
+
+        function fillMetricsTable() {
+            const tbody = document.getElementById('metrics-tbody');
+            tbody.innerHTML = '';
+            
+            const langNames = { go: 'Go', java: 'Java', csharp: 'C#', python: 'Python', c: 'C' };
+            
+            Object.entries(analysisResults).forEach(([lang, data]) => {
+                const row = tbody.insertRow();
+                row.innerHTML = `
+                    <td><strong>${langNames[lang]}</strong></td>
+                    <td>${data.metrics.assignments || 0}</td>
+                    <td>${data.metrics.recursive_functions_count || 0}</td>
+                    <td>${data.metrics.loops || 0}</td>
+                    <td>${data.metrics.parsed_with_antlr ? '✅' : '❌'}</td>
+                    <td><span class="${getScoreClass(data.score)}" style="font-weight: bold;">${data.score}</span></td>
+                `;
+            });
+        }
+
+        function createCharts() {
+            createLanguageChart();
+            createComplexityChart();
+        }
+
+        function createLanguageChart() {
+            const ctx = document.getElementById('languageChart').getContext('2d');
+            const langNames = { go: 'Go', java: 'Java', csharp: 'C#', python: 'Python', c: 'C' };
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(analysisResults).map(lang => langNames[lang]),
+                    datasets: [{
+                        label: 'Puntuación Ambiental',
+                        data: Object.values(analysisResults).map(r => r.score),
+                        backgroundColor: [
+                            '#28a745',
+                            '#ffc107',
+                            '#17a2b8',
+                            '#6f42c1',
+                            '#fd7e14'
+                        ],
+                        borderColor: [
+                            '#1e7e34',
+                            '#e0a800',
+                            '#138496',
+                            '#59359a',
+                            '#e8590c'
+                        ],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        function createComplexityChart() {
+            const ctx = document.getElementById('complexityChart').getContext('2d');
+            const avgMetrics = {
+                operations: Math.round(Object.values(analysisResults).reduce((sum, r) => sum + r.operations, 0) / Object.keys(analysisResults).length),
+                recursion: Math.round(Object.values(analysisResults).reduce((sum, r) => sum + r.recursion, 0) / Object.keys(analysisResults).length),
+                cyclomatic: Math.round(Object.values(analysisResults).reduce((sum, r) => sum + r.cyclomatic, 0) / Object.keys(analysisResults).length)
+            };
+            
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Operaciones Elementales', 'Recursión', 'Complejidad'],
+                    datasets: [{
+                        label: 'Métricas Promedio',
+                        data: [avgMetrics.operations / 2, avgMetrics.recursion * 10, avgMetrics.cyclomatic * 5],
+                        backgroundColor: 'rgba(102, 126, 234, 0.2)',
+                        borderColor: 'rgba(102, 126, 234, 1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: 'rgba(102, 126, 234, 1)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        r: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97974a6b46523eeb',t:'MTc1NjkyMzkzNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
