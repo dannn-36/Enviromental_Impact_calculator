@@ -15,11 +15,10 @@ import re
 import traceback
 import os, sys
 
-# Asegura que 'generated/' esté en sys.path
-# Como generated está dentro de enviromental_impact_calculator (mismo nivel que app.py)
-GENERATED_DIR = os.path.join(os.path.dirname(__file__), "generated")
-if os.path.isdir(GENERATED_DIR) and GENERATED_DIR not in sys.path:
-    sys.path.insert(0, GENERATED_DIR)
+# Ya no necesitas esto si los archivos están en la misma carpeta
+# GENERATED_DIR = os.path.join(os.path.dirname(__file__), "generated")
+# if os.path.isdir(GENERATED_DIR) and GENERATED_DIR not in sys.path:
+#     sys.path.insert(0, GENERATED_DIR)
 
 # ANTLR imports
 try:
