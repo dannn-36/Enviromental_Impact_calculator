@@ -1,3 +1,6 @@
 {
+    "python.analysis.extraPaths": [
+        "./Enviromental_impact_calculator/generated"
+    ]
     
 }

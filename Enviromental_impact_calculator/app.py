@@ -13,12 +13,17 @@ from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 import re
 import traceback
+import os, sys
 
-# ANTLR imports (podrían fallar si no generaste los parsers)
+# Asegura que 'generated/' esté en sys.path
+# Como generated está dentro de enviromental_impact_calculator (mismo nivel que app.py)
+GENERATED_DIR = os.path.join(os.path.dirname(__file__), "generated")
+if os.path.isdir(GENERATED_DIR) and GENERATED_DIR not in sys.path:
+    sys.path.insert(0, GENERATED_DIR)
+
+# ANTLR imports
 try:
-    from antlr4 import InputStream, CommonTokenStream, FileStream, ParseTreeWalker
-    # Intentamos cargar algunos generados (excepciones si no existen)
-    # No hacemos imports globales de todos; los haré ad-hoc cuando se necesiten.
+    from antlr4 import InputStream, CommonTokenStream, ParseTreeWalker
     ANTLR_AVAILABLE = True
 except Exception:
     ANTLR_AVAILABLE = False
@@ -137,18 +142,13 @@ class RealAnalyzer:
         self.lang = language.lower()
 
     def parse_with_antlr(self, code: str):
-        """
-        Intenta parsear con ANTLR si los módulos generados existen.
-        Retorna (success: bool, msg_or_tree)
-        """
         if not ANTLR_AVAILABLE:
             return False, "antlr4 runtime not available"
 
         try:
-            # import dinamicamente los módulos generados por lenguaje
             if self.lang == "python":
-                from generated.Python3Lexer import Python3Lexer
-                from generated.Python3Parser import Python3Parser
+                from Python3Lexer import Python3Lexer
+                from Python3Parser import Python3Parser
                 input_stream = InputStream(code)
                 lexer = Python3Lexer(input_stream)
                 tokens = CommonTokenStream(lexer)
@@ -157,8 +157,8 @@ class RealAnalyzer:
                 return True, tree
             
             elif self.lang in ("c",):
-                from generated.CLexer import CLexer
-                from generated.CParser import CParser
+                from CLexer import CLexer
+                from CParser import CParser
                 input_stream = InputStream(code)
                 lexer = CLexer(input_stream)
                 tokens = CommonTokenStream(lexer)
@@ -168,12 +168,12 @@ class RealAnalyzer:
             
             elif self.lang in ("java",):
                 try:
-                    from generated.JavaLexer import JavaLexer
-                    from generated.JavaParser import JavaParser
+                    from JavaLexer import JavaLexer
+                    from JavaParser import JavaParser
                 except Exception:
-                    # Fallback correcto a la gramática Java20
-                    from generated.JavaLexer import Java20Lexer as JavaLexer
-                    from generated.JavaParser import Java20Parser as JavaParser
+                    from Java20Lexer import Java20Lexer as JavaLexer
+                    from Java20Parser import Java20Parser as JavaParser
+                
                 input_stream = InputStream(code)
                 lexer = JavaLexer(input_stream)
                 tokens = CommonTokenStream(lexer)
@@ -182,8 +182,8 @@ class RealAnalyzer:
                 return True, tree
             
             elif self.lang in ("c#", "csharp"):
-                from generated.CSharpLexer import CSharpLexer
-                from generated.CSharpParser import CSharpParser
+                from CSharpLexer import CSharpLexer
+                from CSharpParser import CSharpParser
                 input_stream = InputStream(code)
                 lexer = CSharpLexer(input_stream)
                 tokens = CommonTokenStream(lexer)
@@ -192,8 +192,8 @@ class RealAnalyzer:
                 return True, tree
             
             elif self.lang == "go":
-                from generated.GoLexer import GoLexer
-                from generated.GoParser import GoParser
+                from GoLexer import GoLexer
+                from GoParser import GoParser
                 input_stream = InputStream(code)
                 lexer = GoLexer(input_stream)
                 tokens = CommonTokenStream(lexer)
@@ -204,58 +204,58 @@ class RealAnalyzer:
             else:
                 return False, f"language {self.lang} not supported for ANTLR parse"
         except Exception as e:
-            # devuelve el stack para diagnóstico
             return False, f"antlr parse error: {e}\n{traceback.format_exc()}"
 
     def _count_loops_with_antlr(self, tree):
         if not ANTLR_AVAILABLE:
             return None
         try:
-            from antlr4 import ParseTreeWalker
             walker = ParseTreeWalker()
 
             if self.lang == "python":
-                from generated.Python3ParserListener import Python3ParserListener
+                from Python3ParserListener import Python3ParserListener
                 class L(Python3ParserListener):
                     def __init__(self): self.count = 0
                     def enterFor_stmt(self, ctx): self.count += 1
                     def enterWhile_stmt(self, ctx): self.count += 1
                 l = L(); walker.walk(l, tree); return l.count
-                
 
             if self.lang == "java":
-                from generated.JavaParserListener import JavaParserListener
-                class L(JavaParserListener):
+                try:
+                    from JavaParserListener import JavaParserListener
+                    ListenerClass = JavaParserListener
+                except Exception:
+                    from Java20ParserListener import Java20ParserListener
+                    ListenerClass = Java20ParserListener
+                
+                class L(ListenerClass):
                     def __init__(self): self.count = 0
                     def enterBasicForStatement(self, ctx): self.count += 1
                     def enterEnhancedForStatement(self, ctx): self.count += 1
                     def enterWhileStatement(self, ctx): self.count += 1
+                    def enterDoWhileStatement(self, ctx): self.count += 1
                 l = L(); walker.walk(l, tree); return l.count
-                
 
             if self.lang == "c":
-                from generated.CListener import CParserListener
-                class L(CParserListener):
+                from CListener import CListener
+                class L(CListener):
                     def __init__(self): self.count = 0
                     def enterIterationStatement(self, ctx): self.count += 1
                 l = L(); walker.walk(l, tree); return l.count
-                
 
             if self.lang == "go":
-                from generated.GoParserListener import GoParserListener
+                from GoParserListener import GoParserListener
                 class L(GoParserListener):
                     def __init__(self): self.count = 0
                     def enterForStmt(self, ctx): self.count += 1
                 l = L(); walker.walk(l, tree); return l.count
                 
-                
             if self.lang in ("c#", "csharp"):
-                from generated.CSharpParserListener import CSharpParserListener
+                from CSharpParserListener import CSharpParserListener
                 class L(CSharpParserListener):
                     def __init__(self): self.count = 0
                     def enterIteration_statement(self, ctx): self.count += 1
                 l = L(); walker.walk(l, tree); return l.count
-                
 
         except Exception:
             return None
