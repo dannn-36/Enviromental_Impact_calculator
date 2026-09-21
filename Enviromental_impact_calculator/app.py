@@ -1,351 +1,118 @@
-# app.py
 # ==============================================================
-# 🌱 Environmental Impact Analyzer - FastAPI + ANTLR (Real)
+# 🌱 Environmental Impact Analyzer - FastAPI + ANTLR
 # ==============================================================
-# Requisitos (antes de ejecutar):
-# 1) Generar parsers ANTLR en Python en carpeta `generated/` (ver conversación).
-# 2) pip install fastapi uvicorn antlr4-python3-runtime
-# 3) Ejecutar: uvicorn app:app --reload
+# Ejecutar (desde esta carpeta):
+#     pip install -r requirements.txt
+#     uvicorn app:app --reload
+# y abrir http://localhost:8000
 # ==============================================================
+import os
+import sys
+import threading
+from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-import re
-import traceback
-import os, sys
+from fastapi.responses import FileResponse
+from pydantic import BaseModel, Field
 
-# Ya no necesitas esto si los archivos están en la misma carpeta
-# GENERATED_DIR = os.path.join(os.path.dirname(__file__), "generated")
-# if os.path.isdir(GENERATED_DIR) and GENERATED_DIR not in sys.path:
-#     sys.path.insert(0, GENERATED_DIR)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-# ANTLR imports
-try:
-    from antlr4 import InputStream, CommonTokenStream, ParseTreeWalker
-    ANTLR_AVAILABLE = True
-except Exception:
-    ANTLR_AVAILABLE = False
+from analyzer import LANGUAGES, UnsupportedLanguage, analyze  # noqa: E402
 
-app = FastAPI(title="Environmental Impact Analyzer (real)")
+MAX_CODE_CHARS = 300_000
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+FRONTEND = os.path.join(BASE_DIR, "frontend", "index.html")
+EXAMPLES_DIR = os.path.join(BASE_DIR, "examples")
+
+WARMUP_SNIPPETS = {
+    "python": "def f(x):\n    return x\n",
+    "c": "int f(int x) { return x; }\n",
+    "java": "class A { int f(int x) { return x; } }\n",
+    "go": "package main\nfunc f(x int) int { return x }\n",
+    "csharp": "class A { int F(int x) { return x; } }\n",
+}
+
+
+def _warm_up():
+    # La primera vez que se usa cada parser, el runtime de ANTLR deserializa su
+    # ATN y construye cachés (1-3 s por lenguaje). Se hace al arrancar para que
+    # la primera petición del usuario sea rápida.
+    for language, code in WARMUP_SNIPPETS.items():
+        analyze(code, language)
+
+
+@asynccontextmanager
+async def lifespan(_app: FastAPI):
+    threading.Thread(target=_warm_up, daemon=True).start()
+    yield
+
+
+app = FastAPI(
+    title="Environmental Impact Analyzer",
+    description="Análisis estático (ANTLR) del impacto ambiental de algoritmos en "
+                "Python, C, Java, Go y C#.",
+    version="2.0.0",
+    lifespan=lifespan,
+)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+
 class CodeRequest(BaseModel):
-    language: str
-    code: str
+    language: str = Field(..., examples=["python"])
+    code: str = Field(..., examples=["def f(n):\n    return n\n"])
 
-# -------------------------
-# Helpers - regex detectors
-# -------------------------
-def strip_comments_and_strings(code: str, language: str) -> str:
-    # Elimina comentarios y literales de cadena para reducir falsos positivos
-    if language == "python":
-        code = re.sub(r"('''.*?'''|\"\"\".*?\"\"\")", "", code, flags=re.S)
-        code = re.sub(r"#.*?$", "", code, flags=re.M)
-        code = re.sub(r"(\".*?\"|'.*?')", "", code, flags=re.S)
-    else:
-        code = re.sub(r"//.*?$", "", code, flags=re.M)
-        code = re.sub(r"/\*.*?\*/", "", code, flags=re.S)
-        code = re.sub(r"(\".*?\"|'.*?')", "", code, flags=re.S)
-    return code
 
-def detect_functions_regex(code: str, language: str):
-    funcs = []
-    src = strip_comments_and_strings(code, language)
-    if language == "python":
-        pattern = re.compile(r'^\s*def\s+([A-Za-z_]\w*)\s*\([^)]*\)\s*:\s*(?:\n(?:[ \t]+.+))+', re.M)
-        for m in pattern.finditer(src):
-            name = m.group(1)
-            full = m.group(0)
-            # quitar la línea de la firma (evita falsos positivos de recursión)
-            nl = full.find("\n")
-            body_only = full[nl+1:] if nl != -1 else ""
-            funcs.append((name, body_only))
-    elif language in ("c", "c#", "java", "csharp"):
-        pattern = re.compile(r'([A-Za-z_][\w<>:\s\*]*?)\s+([A-Za-z_]\w*)\s*\([^;{)]*\)\s*\{', re.M)
-        for m in pattern.finditer(src):
-            name = m.group(2)
-            brace_idx = src.find('{', m.end() - 1)
-            if brace_idx == -1:
-                continue
-            depth = 0
-            i = brace_idx
-            n = len(src)
-            while i < n:
-                ch = src[i]
-                if ch == '{':
-                    depth += 1
-                elif ch == '}':
-                    depth -= 1
-                    if depth == 0:
-                        # solo el cuerpo interno, sin la firma ni la llave de apertura
-                        body_only = src[brace_idx+1:i]
-                        funcs.append((name, body_only))
-                        break
-                i += 1
-    elif language == "go":
-        pattern = re.compile(r'func\s+(?:\([^\)]*\)\s*)?([A-Za-z_]\w*)\s*\([^)]*\)\s*\{', re.M)
-        for m in pattern.finditer(src):
-            name = m.group(1)
-            brace_idx = src.find('{', m.end()-1)
-            if brace_idx == -1:
-                continue
-            depth = 0
-            i = brace_idx
-            n = len(src)
-            while i < n:
-                ch = src[i]
-                if ch == '{':
-                    depth += 1
-                elif ch == '}':
-                    depth -= 1
-                    if depth == 0:
-                        body_only = src[brace_idx+1:i]
-                        funcs.append((name, body_only))
-                        break
-                i += 1
-    return funcs
-
-def detect_loops_regex(code: str, language: str):
-    src = strip_comments_and_strings(code, language)
-    if language == "python":
-        return len(re.findall(r'^\s*(for|while)\b', src, re.M))
-    elif language == "go":
-        return len(re.findall(r'\bfor\b', src))
-    else:
-        return len(re.findall(r'\b(for|while|foreach)\b', src))
-
-def detect_assignments_regex(code: str, language: str):
-    src = strip_comments_and_strings(code, language)
-    # contar operadores de asignación compuesta en C/Java/C#/Go
-    compound = len(re.findall(r'(\+=|-=|\*=|/=|%=|&=|\|=|\^=|<<=|>>=)', src))
-    if language == "go":
-        colon = len(re.findall(r':=', src))
-        single = len(re.findall(r'(?<![:!<>=+\-*/%&|^])=(?![=~>])', src))
-        return colon + compound + single
-    else:
-        single = len(re.findall(r'(?<![!<>=+\-*/%&|^:])=(?![=~>])', src))
-        return compound + single
-
-# -------------------------
-# Analyzer "real" that uses ANTLR if available
-# -------------------------
-class RealAnalyzer:
-    def __init__(self, language: str):
-        self.lang = language.lower()
-
-    def parse_with_antlr(self, code: str):
-        if not ANTLR_AVAILABLE:
-            return False, "antlr4 runtime not available"
-
-        try:
-            if self.lang == "python":
-                from Python3Lexer import Python3Lexer
-                from Python3Parser import Python3Parser
-                input_stream = InputStream(code)
-                lexer = Python3Lexer(input_stream)
-                tokens = CommonTokenStream(lexer)
-                parser = Python3Parser(tokens)
-                tree = parser.file_input()
-                return True, tree
-            
-            elif self.lang in ("c",):
-                from CLexer import CLexer
-                from CParser import CParser
-                input_stream = InputStream(code)
-                lexer = CLexer(input_stream)
-                tokens = CommonTokenStream(lexer)
-                parser = CParser(tokens)
-                tree = parser.compilationUnit()
-                return True, tree
-            
-            elif self.lang in ("java",):
-                try:
-                    from JavaLexer import JavaLexer
-                    from JavaParser import JavaParser
-                except Exception:
-                    from Java20Lexer import Java20Lexer as JavaLexer
-                    from Java20Parser import Java20Parser as JavaParser
-                
-                input_stream = InputStream(code)
-                lexer = JavaLexer(input_stream)
-                tokens = CommonTokenStream(lexer)
-                parser = JavaParser(tokens)
-                tree = parser.compilationUnit()
-                return True, tree
-            
-            elif self.lang in ("c#", "csharp"):
-                from CSharpLexer import CSharpLexer
-                from CSharpParser import CSharpParser
-                input_stream = InputStream(code)
-                lexer = CSharpLexer(input_stream)
-                tokens = CommonTokenStream(lexer)
-                parser = CSharpParser(tokens)
-                tree = parser.compilation_unit()
-                return True, tree
-            
-            elif self.lang == "go":
-                from GoLexer import GoLexer
-                from GoParser import GoParser
-                input_stream = InputStream(code)
-                lexer = GoLexer(input_stream)
-                tokens = CommonTokenStream(lexer)
-                parser = GoParser(tokens)
-                tree = parser.sourceFile()
-                return True, tree
-            
-            else:
-                return False, f"language {self.lang} not supported for ANTLR parse"
-        except Exception as e:
-            return False, f"antlr parse error: {e}\n{traceback.format_exc()}"
-
-    def _count_loops_with_antlr(self, tree):
-        if not ANTLR_AVAILABLE:
-            return None
-        try:
-            walker = ParseTreeWalker()
-
-            if self.lang == "python":
-                from Python3ParserListener import Python3ParserListener
-                class L(Python3ParserListener):
-                    def __init__(self): self.count = 0
-                    def enterFor_stmt(self, ctx): self.count += 1
-                    def enterWhile_stmt(self, ctx): self.count += 1
-                l = L(); walker.walk(l, tree); return l.count
-
-            if self.lang == "java":
-                try:
-                    from JavaParserListener import JavaParserListener
-                    ListenerClass = JavaParserListener
-                except Exception:
-                    from Java20ParserListener import Java20ParserListener
-                    ListenerClass = Java20ParserListener
-                
-                class L(ListenerClass):
-                    def __init__(self): self.count = 0
-                    def enterBasicForStatement(self, ctx): self.count += 1
-                    def enterEnhancedForStatement(self, ctx): self.count += 1
-                    def enterWhileStatement(self, ctx): self.count += 1
-                    def enterDoWhileStatement(self, ctx): self.count += 1
-                l = L(); walker.walk(l, tree); return l.count
-
-            if self.lang == "c":
-                from CListener import CListener
-                class L(CListener):
-                    def __init__(self): self.count = 0
-                    def enterIterationStatement(self, ctx): self.count += 1
-                l = L(); walker.walk(l, tree); return l.count
-
-            if self.lang == "go":
-                from GoParserListener import GoParserListener
-                class L(GoParserListener):
-                    def __init__(self): self.count = 0
-                    def enterForStmt(self, ctx): self.count += 1
-                l = L(); walker.walk(l, tree); return l.count
-                
-            if self.lang in ("c#", "csharp"):
-                from CSharpParserListener import CSharpParserListener
-                class L(CSharpParserListener):
-                    def __init__(self): self.count = 0
-                    def enterIteration_statement(self, ctx): self.count += 1
-                l = L(); walker.walk(l, tree); return l.count
-
-        except Exception:
-            return None
-        return None
-
-    def analyze(self, code: str):
-        parsed, parse_info = self.parse_with_antlr(code)
-
-        # loops: usa ANTLR si se pudo parsear; si no, regex
-        loops = None
-        if parsed:
-            loops = self._count_loops_with_antlr(parse_info)
-        if loops is None:
-            loops = detect_loops_regex(code, self.lang)
-
-        functions = detect_functions_regex(code, self.lang)
-        assignments = detect_assignments_regex(code, self.lang)
-        func_count = len(functions)
-
-        recursion_count = 0
-        recursive_functions = []
-        for name, body_only in functions:
-            if re.search(r'(?<!\w)' + re.escape(name) + r'\s*\(', body_only):
-                recursion_count += 1
-                recursive_functions.append(name)
-
-        metrics = {
-            "parsed_with_antlr": bool(parsed),
-            "parse_info": str(parse_info) if not parsed else "parsed ok",
-            "loops": loops,
-            "functions": func_count,
-            "assignments": assignments,
-            "recursive_functions_count": recursion_count,
-            "recursive_functions": recursive_functions
-        }
-        return metrics
-
-# -------------------------
-# Scoring
-# -------------------------
-def calculate_environmental_score(metrics: dict) -> float:
-    loops = metrics.get("loops", 0)
-    assignments = metrics.get("assignments", 0)
-    recursions = metrics.get("recursive_functions_count", 0)
-    # fórmula simple y explicada:
-    score = 100 - (loops * 6 + assignments * 1.5 + recursions * 10)
-    score = max(0, min(100, score))
-    return round(score, 2)
-
-def interpret_score(score: float) -> str:
-    if score >= 80:
-        return "Excelente eficiencia ambiental 🌿"
-    if score >= 60:
-        return "Buena eficiencia 🍃"
-    if score >= 40:
-        return "Moderada 🌱"
-    return "Impacto alto ⚠️"
-
-# -------------------------
-# API endpoint
-# -------------------------
 @app.post("/analyze")
 def analyze_code(req: CodeRequest):
-    lang = req.language.strip().lower()
-    code = req.code
+    if len(req.code) > MAX_CODE_CHARS:
+        raise HTTPException(status_code=413,
+                            detail=f"El código supera el máximo de {MAX_CODE_CHARS} caracteres")
+    try:
+        return analyze(req.code, req.language)
+    except UnsupportedLanguage:
+        supported = ", ".join(LANGUAGES)
+        raise HTTPException(status_code=400,
+                            detail=f"Lenguaje no soportado: {req.language}. Soportados: {supported}")
 
-    supported = {"python", "c", "java", "c#", "csharp", "go"}
-    if lang not in supported:
-        raise HTTPException(status_code=400, detail=f"Lenguaje no soportado: {lang}")
 
-    analyzer = RealAnalyzer(lang)
-    metrics = analyzer.analyze(code)
-    score = calculate_environmental_score(metrics)
-    return {
-        "language": lang,
-        "metrics": metrics,
-        "eco_score": score,
-        "interpretation": interpret_score(score)
-    }
+@app.get("/languages")
+def languages():
+    return [
+        {
+            "key": spec.key,
+            "name": spec.display_name,
+            "aliases": list(spec.aliases),
+            "extensions": list(spec.extensions),
+            "energy_factor": spec.energy_factor,
+        }
+        for spec in LANGUAGES.values()
+    ]
 
-# -------------------------
-# Root info
-# -------------------------
-@app.get("/")
-def root():
-    info = {
-        "message": "Environmental Impact Analyzer (real). Use POST /analyze {language, code}",
-        "note": "Asegúrate de generar los parsers ANTLR en generated/ si quieres parsing sintáctico real."
-    }
-    return info
 
-# ==============================================================
-# Fin
-# ==============================================================
+@app.get("/examples")
+def examples():
+    """Código de ejemplo (mismos algoritmos en cada lenguaje) para probar la app."""
+    result = {}
+    for filename in sorted(os.listdir(EXAMPLES_DIR)):
+        ext = os.path.splitext(filename)[1].lower()
+        for spec in LANGUAGES.values():
+            if ext in spec.extensions and spec.key not in result:
+                with open(os.path.join(EXAMPLES_DIR, filename), encoding="utf-8") as f:
+                    result[spec.key] = {"filename": filename, "code": f.read()}
+    return result
+
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
+
+@app.get("/", include_in_schema=False)
+def frontend():
+    return FileResponse(FRONTEND)

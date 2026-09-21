@@ -98,7 +98,12 @@ WHILE      : 'while';
 WITH       : 'with';
 YIELD      : 'yield';
 
-NEWLINE: ({this.atStartOfInput()}? SPACES | ( '\r'? '\n' | '\r' | '\f') SPACES?) {this.onNewLine();};
+// Nota (Environmental Impact Calculator): la versión original empezaba con la
+// alternativa `{this.atStartOfInput()}? SPACES`. Un predicado semántico al
+// comienzo de una regla impide que ANTLR cachee el DFA del lexer y, con el
+// runtime de Python, multiplicaba por ~40 el tiempo de tokenizado. Solo servía
+// para espacios al inicio del archivo, que ahora simplemente se ignoran.
+NEWLINE: ( '\r'? '\n' | '\r' | '\f') SPACES? {this.onNewLine();};
 
 /// identifier   ::=  id_start id_continue*
 NAME: ID_START ID_CONTINUE*;

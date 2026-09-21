@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Amigabilidad Ambiental - Algoritmos</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Calculadora de impacto Ambiental - Algoritmos</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -17,6 +17,7 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
+            color: #2c3e50;
         }
 
         .container {
@@ -46,6 +47,25 @@
             opacity: 0.9;
         }
 
+        .status {
+            margin-top: 12px;
+            font-size: 0.9rem;
+            opacity: 0.85;
+        }
+
+        .status .dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #adb5bd;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+
+        .status.online .dot { background: #28a745; }
+        .status.offline .dot { background: #dc3545; }
+
         .upload-section {
             padding: 40px;
             background: #f8f9fa;
@@ -54,27 +74,26 @@
         .languages-grid {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center; /* centra TODAS las filas */
+            justify-content: center;
             gap: 20px;
-            max-width: 1000px;
-            margin: 0 auto 30px auto;
+            max-width: 1100px;
+            margin: 0 auto;
         }
-
-
 
         .language-box {
             background: white;
             border-radius: 15px;
             padding: 25px;
+            width: 190px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
             border: 2px dashed #e9ecef;
             transition: all 0.3s ease;
             text-align: center;
             position: relative;
-            overflow: hidden;
         }
-       
-        .language-box:hover {
+
+        .language-box:hover,
+        .language-box.dragover {
             border-color: #667eea;
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.15);
@@ -95,7 +114,6 @@
             font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 15px;
-            color: #2c3e50;
         }
 
         .file-input {
@@ -104,7 +122,7 @@
 
         .file-label {
             display: inline-block;
-            padding: 12px 24px;
+            padding: 10px 20px;
             background: #667eea;
             color: white;
             border-radius: 25px;
@@ -120,20 +138,45 @@
 
         .file-name {
             margin-top: 10px;
-            font-size: 0.9rem;
-            color: #666;
+            font-size: 0.85rem;
+            color: #555;
             word-break: break-all;
+            min-height: 1.2em;
+        }
+
+        .remove-file {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            border: none;
+            background: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            color: #6c757d;
+            display: none;
+        }
+
+        .language-box.has-file .remove-file { display: block; }
+
+        .hint {
+            text-align: center;
+            color: #6c757d;
+            margin-top: 20px;
+            font-size: 0.9rem;
         }
 
         .calculate-section {
             text-align: center;
             padding: 30px 40px;
             background: white;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
-        .calculate-btn {
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-            color: white;
+        .calculate-btn,
+        .secondary-btn {
             border: none;
             padding: 18px 50px;
             font-size: 1.3rem;
@@ -141,19 +184,41 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: 600;
+        }
+
+        .calculate-btn {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
             box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
         }
 
-        .calculate-btn:hover {
+        .secondary-btn {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+            font-size: 1.1rem;
+            padding: 16px 36px;
+        }
+
+        .calculate-btn:hover:not(:disabled),
+        .secondary-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
         }
 
         .calculate-btn:disabled {
             background: #6c757d;
             cursor: not-allowed;
-            transform: none;
             box-shadow: none;
+        }
+
+        .error-banner {
+            display: none;
+            margin: 0 40px 20px;
+            padding: 15px 20px;
+            border-radius: 10px;
+            background: #f8d7da;
+            color: #721c24;
+            white-space: pre-line;
         }
 
         .results-section {
@@ -184,7 +249,7 @@
         }
 
         .score-excellent { color: #28a745; }
-        .score-good { color: #ffc107; }
+        .score-good { color: #e0a800; }
         .score-poor { color: #dc3545; }
 
         .score-label {
@@ -215,48 +280,119 @@
             font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 20px;
-            color: #2c3e50;
             text-align: center;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin-top: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
         }
 
         .metrics-table {
             width: 100%;
-            margin-top: 30px;
             background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-collapse: collapse;
         }
 
         .metrics-table th,
         .metrics-table td {
-            padding: 15px;
+            padding: 12px 14px;
             text-align: left;
             border-bottom: 1px solid #e9ecef;
+            white-space: nowrap;
         }
 
         .metrics-table th {
             background: #2c3e50;
             color: white;
             font-weight: 600;
+            font-size: 0.9rem;
         }
 
         .metrics-table tr:hover {
             background: #f8f9fa;
         }
 
+        .details {
+            margin-top: 30px;
+            display: grid;
+            gap: 20px;
+        }
+
+        .detail-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .detail-card summary {
+            padding: 18px 22px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .detail-body {
+            padding: 0 22px 22px;
+        }
+
+        .detail-body h4 {
+            margin: 15px 0 8px;
+            color: #34495e;
+        }
+
+        .breakdown {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .chip {
+            background: #eef0fb;
+            border-radius: 20px;
+            padding: 6px 14px;
+            font-size: 0.9rem;
+        }
+
+        .syntax-errors {
+            background: #fff3cd;
+            color: #856404;
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-family: Consolas, monospace;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: #e9ecef;
+        }
+
+        .badge.warn { background: #fff3cd; color: #856404; }
+        .badge.ok { background: #d4edda; color: #155724; }
+        .badge.bad { background: #f8d7da; color: #721c24; }
+
         @media (max-width: 768px) {
-            .languages-grid {
-                grid-template-columns: 1fr;
-            }
-            
+            body { padding: 8px; }
+
+            .upload-section,
+            .results-section { padding: 20px 16px; }
+
             .results-grid,
             .charts-container {
                 grid-template-columns: 1fr;
             }
-            
+
             .header h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -264,235 +400,235 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🌱 Calculadora de Amigabilidad Ambiental</h1>
-            <p>Analiza el impacto ambiental de tus algoritmos en diferentes lenguajes de programación</p>
+            <h1>🌱 Calculadora de Impacto Ambiental</h1>
+            <p>Analiza estáticamente (con ANTLR) el impacto ambiental de tus algoritmos en diferentes lenguajes</p>
+            <div class="status" id="api-status"><span class="dot"></span><span id="api-status-text">Comprobando el servidor…</span></div>
         </div>
 
         <div class="upload-section">
-            <div class="languages-grid">
-                <div class="language-box" id="go-box">
-                    <span class="language-icon">🐹</span>
-                    <div class="language-name">Go</div>
-                    <label for="go-file" class="file-label">Seleccionar archivo</label>
-                    <input type="file" id="go-file" class="file-input" accept=".go,.txt" onchange="handleFileSelect(this, 'go')">
-                    <div class="file-name" id="go-filename"></div>
-                </div>
-
-                <div class="language-box" id="java-box">
-                    <span class="language-icon">☕</span>
-                    <div class="language-name">Java</div>
-                    <label for="java-file" class="file-label">Seleccionar archivo</label>
-                    <input type="file" id="java-file" class="file-input" accept=".java,.txt" onchange="handleFileSelect(this, 'java')">
-                    <div class="file-name" id="java-filename"></div>
-                </div>
-
-                <div class="language-box" id="csharp-box">
-                    <span class="language-icon">🔷</span>
-                    <div class="language-name">C#</div>
-                    <label for="csharp-file" class="file-label">Seleccionar archivo</label>
-                    <input type="file" id="csharp-file" class="file-input" accept=".cs,.txt" onchange="handleFileSelect(this, 'csharp')">
-                    <div class="file-name" id="csharp-filename"></div>
-                </div>
-
-                <div class="language-box" id="python-box">
-                    <span class="language-icon">🐍</span>
-                    <div class="language-name">Python</div>
-                    <label for="python-file" class="file-label">Seleccionar archivo</label>
-                    <input type="file" id="python-file" class="file-input" accept=".py,.txt" onchange="handleFileSelect(this, 'python')">
-                    <div class="file-name" id="python-filename"></div>
-                </div>
-
-                <div class="language-box" id="c-box">
-                    <span class="language-icon">⚡</span>
-                    <div class="language-name">C</div>
-                    <label for="c-file" class="file-label">Seleccionar archivo</label>
-                    <input type="file" id="c-file" class="file-input" accept=".c,.txt" onchange="handleFileSelect(this, 'c')">
-                    <div class="file-name" id="c-filename"></div>
-                </div>
-            </div>
+            <div class="languages-grid" id="languages-grid"></div>
+            <p class="hint">Selecciona o arrastra un archivo en cada lenguaje que quieras comparar.</p>
         </div>
 
         <div class="calculate-section">
+            <button class="secondary-btn" id="examples-btn" onclick="loadExamples()">Cargar ejemplos</button>
             <button class="calculate-btn" id="calculate-btn" onclick="calculateEnvironmentalScore()" disabled>
-                Calcular Amigabilidad Ambiental
+                Calcular Impacto Ambiental
             </button>
         </div>
+
+        <div class="error-banner" id="error-banner"></div>
 
         <div class="results-section" id="results-section">
             <div class="results-grid">
                 <div class="score-card">
-                    <div class="score-value score-excellent" id="overall-score">85</div>
+                    <div class="score-value" id="overall-score">–</div>
                     <div class="score-label">Puntuación General</div>
-                    <div class="score-description">Excelente eficiencia ambiental</div>
+                    <div class="score-description" id="overall-description"></div>
                 </div>
                 <div class="score-card">
-                    <div class="score-value" id="best-language">🐍 Python</div>
+                    <div class="score-value" id="best-language">–</div>
                     <div class="score-label">Lenguaje Más Eficiente</div>
-                    <div class="score-description">Menor impacto ambiental detectado</div>
+                    <div class="score-description">Mayor puntuación ajustada por el consumo energético del lenguaje</div>
                 </div>
             </div>
 
             <div class="charts-container">
                 <div class="chart-card">
                     <div class="chart-title">Comparación por Lenguaje</div>
-                    <canvas id="languageChart" width="400" height="300"></canvas>
+                    <canvas id="languageChart"></canvas>
                 </div>
                 <div class="chart-card">
-                    <div class="chart-title">Métricas</div>
-                    <canvas id="complexityChart" width="400" height="300"></canvas>
+                    <div class="chart-title">Penalizaciones (puntos restados)</div>
+                    <canvas id="penaltyChart"></canvas>
                 </div>
             </div>
 
-            <table class="metrics-table">
-                <thead>
-                    <tr>
-                        <th>Lenguaje</th>
-                        <th>Asignaciones</th>
-                        <th>Funciones Recursivas</th>
-                        <th>Bucles</th>
-                        <th>Análisis ANTLR</th>
-                        <th>Puntuación</th>
-                    </tr>
-                </thead>
-                <tbody id="metrics-tbody">
-                    <!-- Los resultados se llenarán dinámicamente -->
-                </tbody>
-            </table>
+            <div class="table-wrapper">
+                <table class="metrics-table">
+                    <thead>
+                        <tr>
+                            <th>Lenguaje</th>
+                            <th>Sintaxis</th>
+                            <th>Líneas</th>
+                            <th>Funciones</th>
+                            <th>Bucles</th>
+                            <th>Anidamiento máx.</th>
+                            <th>Ciclomática media</th>
+                            <th>Asignaciones</th>
+                            <th>Operaciones est.</th>
+                            <th>Recursivas</th>
+                            <th>Complejidad</th>
+                            <th>Puntuación</th>
+                            <th>Ajustada</th>
+                        </tr>
+                    </thead>
+                    <tbody id="metrics-tbody"></tbody>
+                </table>
+            </div>
+
+            <div class="details" id="details"></div>
         </div>
     </div>
 
     <script>
-        const API_URL = 'http://localhost:8000';  // URL of your FastAPI backend
+        // Si la página la sirve FastAPI se usa el mismo origen; si se abre el
+        // archivo directamente (file://) se asume el backend en localhost:8000.
+        const API_URL = window.location.protocol.startsWith('http') ? '' : 'http://localhost:8000';
+
+        const LANGUAGES = [
+            { key: 'go', name: 'Go', icon: '🐹', accept: '.go,.txt', color: '#17a2b8' },
+            { key: 'java', name: 'Java', icon: '☕', accept: '.java,.txt', color: '#fd7e14' },
+            { key: 'csharp', name: 'C#', icon: '🔷', accept: '.cs,.txt', color: '#6f42c1' },
+            { key: 'python', name: 'Python', icon: '🐍', accept: '.py,.txt', color: '#28a745' },
+            { key: 'c', name: 'C', icon: '⚡', accept: '.c,.h,.txt', color: '#e0a800' },
+        ];
+        const LANG = Object.fromEntries(LANGUAGES.map(l => [l.key, l]));
+
+        const PENALTY_LABELS = {
+            complejidad: 'Complejidad',
+            operaciones: 'Operaciones',
+            ciclomatica: 'Ciclomática',
+            recursion: 'Recursión',
+            memoria: 'Memoria',
+        };
+
         let uploadedFiles = {};
         let analysisResults = {};
+        const charts = {};
 
-        function handleFileSelect(input, language) {
-            const file = input.files[0];
-            const box = document.getElementById(`${language}-box`);
-            const filename = document.getElementById(`${language}-filename`);
-            
-            if (file) {
-                uploadedFiles[language] = { name: file.name, content: null };
-                box.classList.add('has-file');
-                filename.textContent = `📄 ${file.name}`;
-                
-                // Read file content
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    uploadedFiles[language].content = e.target.result;
-                    // Only enable calculate after content is loaded
-                    updateCalculateButton();
-                };
-                reader.readAsText(file);
-            } else {
-                delete uploadedFiles[language];
-                box.classList.remove('has-file');
-                filename.textContent = '';
-                updateCalculateButton();
+        function escapeHtml(value) {
+            return String(value).replace(/[&<>"']/g, ch => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            }[ch]));
+        }
+
+        function renderLanguageBoxes() {
+            const grid = document.getElementById('languages-grid');
+            grid.innerHTML = LANGUAGES.map(l => `
+                <div class="language-box" id="${l.key}-box">
+                    <button class="remove-file" title="Quitar archivo" onclick="clearFile('${l.key}')">✕</button>
+                    <span class="language-icon">${l.icon}</span>
+                    <div class="language-name">${l.name}</div>
+                    <label for="${l.key}-file" class="file-label">Seleccionar archivo</label>
+                    <input type="file" id="${l.key}-file" class="file-input" accept="${l.accept}">
+                    <div class="file-name" id="${l.key}-filename"></div>
+                </div>`).join('');
+
+            for (const l of LANGUAGES) {
+                const box = document.getElementById(`${l.key}-box`);
+                const input = document.getElementById(`${l.key}-file`);
+                input.addEventListener('change', () => readFile(input.files[0], l.key));
+                box.addEventListener('dragover', e => { e.preventDefault(); box.classList.add('dragover'); });
+                box.addEventListener('dragleave', () => box.classList.remove('dragover'));
+                box.addEventListener('drop', e => {
+                    e.preventDefault();
+                    box.classList.remove('dragover');
+                    if (e.dataTransfer.files.length) readFile(e.dataTransfer.files[0], l.key);
+                });
             }
         }
 
+        function readFile(file, language) {
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = e => setFile(language, file.name, e.target.result);
+            reader.readAsText(file);
+        }
+
+        function setFile(language, name, content) {
+            uploadedFiles[language] = { name, content };
+            document.getElementById(`${language}-box`).classList.add('has-file');
+            document.getElementById(`${language}-filename`).textContent = `📄 ${name}`;
+            updateCalculateButton();
+        }
+
+        function clearFile(language) {
+            delete uploadedFiles[language];
+            document.getElementById(`${language}-box`).classList.remove('has-file');
+            document.getElementById(`${language}-filename`).textContent = '';
+            document.getElementById(`${language}-file`).value = '';
+            updateCalculateButton();
+        }
+
         function updateCalculateButton() {
-            const btn = document.getElementById('calculate-btn');
             const entries = Object.values(uploadedFiles);
-            const hasFiles = entries.length > 0;
-            const allHaveContent = entries.every(f => typeof f.content === 'string' && f.content.length > 0);
-            btn.disabled = !(hasFiles && allHaveContent);
+            document.getElementById('calculate-btn').disabled =
+                !(entries.length > 0 && entries.every(f => typeof f.content === 'string' && f.content.trim().length > 0));
+        }
+
+        function showError(message) {
+            const banner = document.getElementById('error-banner');
+            banner.textContent = message;
+            banner.style.display = message ? 'block' : 'none';
+        }
+
+        async function checkApi() {
+            const status = document.getElementById('api-status');
+            const text = document.getElementById('api-status-text');
+            try {
+                const res = await fetch(`${API_URL}/health`);
+                if (!res.ok) throw new Error();
+                status.className = 'status online';
+                text.textContent = 'Servidor de análisis conectado';
+            } catch {
+                status.className = 'status offline';
+                text.textContent = 'No se puede conectar con el servidor (¿está corriendo "uvicorn app:app"?)';
+            }
+        }
+
+        async function loadExamples() {
+            showError('');
+            try {
+                const res = await fetch(`${API_URL}/examples`);
+                if (!res.ok) throw new Error(res.statusText);
+                const examples = await res.json();
+                for (const [lang, ex] of Object.entries(examples)) {
+                    if (LANG[lang]) setFile(lang, ex.filename, ex.code);
+                }
+            } catch (error) {
+                showError('No se pudieron cargar los ejemplos: ' + error.message);
+            }
+        }
+
+        async function analyzeOne(lang) {
+            const response = await fetch(`${API_URL}/analyze`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({ language: lang, code: uploadedFiles[lang].content })
+            });
+            if (!response.ok) {
+                let detail = response.statusText;
+                try { detail = (await response.json()).detail || detail; } catch { /* respuesta no JSON */ }
+                throw new Error(detail);
+            }
+            return response.json();
         }
 
         async function calculateEnvironmentalScore() {
             const languages = Object.keys(uploadedFiles);
-            analysisResults = {};
-            
             const calculateBtn = document.getElementById('calculate-btn');
             calculateBtn.disabled = true;
             calculateBtn.textContent = 'Analizando...';
-            
-            console.log('Archivos a analizar:', languages);
-            
+            showError('');
+
             try {
-                for (const lang of languages) {
-                    const code = uploadedFiles[lang] && uploadedFiles[lang].content || '';
-                    if (!code) {
-                        console.warn(`No content for ${lang}, skipping.`);
-                        continue;
-                    }
-                    console.log(`Analizando ${lang}, longitud del código:`, code.length);
-                    
-                    const response = await fetch(`${API_URL}/analyze`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            language: lang === 'csharp' ? 'c#' : lang,
-                            code
-                        })
-                    });
-                    
-                    if (!response.ok) {
-                        const errorText = await response.text();
-                        console.error(`Error response:`, errorText);
-                        throw new Error(`Error analyzing ${lang}: ${response.statusText}. ${errorText}`);
-                    }
-                    
-                    const result = await response.json();
-                    analysisResults[lang] = {
-                        operations: result.metrics.assignments || 0,
-                        recursion: result.metrics.recursive_functions_count || 0,
-                        cyclomatic: result.metrics.loops || 0,
-                        algorithmic: 'Variable',  // This metric isn't provided by the backend
-                        score: result.eco_score,
-                        interpretation: result.interpretation,
-                        metrics: result.metrics
-                    };
-                }
-                
-                if (Object.keys(analysisResults).length === 0) {
-                    alert('No se pudo analizar ningún archivo. Verifica el backend y los lenguajes.');
-                    return;
-                }
+                const settled = await Promise.allSettled(languages.map(analyzeOne));
+                analysisResults = {};
+                const errors = [];
+                settled.forEach((outcome, i) => {
+                    const lang = languages[i];
+                    if (outcome.status === 'fulfilled') analysisResults[lang] = outcome.value;
+                    else errors.push(`${LANG[lang].name}: ${outcome.reason.message}`);
+                });
+
+                if (errors.length) showError('Algunos archivos no se pudieron analizar:\n' + errors.join('\n'));
+                if (Object.keys(analysisResults).length === 0) return;
                 displayResults();
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Error al analizar el código: ' + error.message);
             } finally {
-                calculateBtn.disabled = false;
+                updateCalculateButton();
                 calculateBtn.textContent = 'Calcular Amigabilidad Ambiental';
             }
-        }
-
-        function displayResults() {
-            const resultsSection = document.getElementById('results-section');
-            resultsSection.style.display = 'block';
-            
-            // Calcular puntuación general y mejor lenguaje
-            const scores = Object.values(analysisResults).map(r => r.score);
-            const avgScore = Math.round(scores.reduce((a, b) => a + b, 0) / scores.length);
-            const bestLang = Object.keys(analysisResults).reduce((a, b) => 
-                analysisResults[a].score > analysisResults[b].score ? a : b
-            );
-            
-            // Actualizar puntuación general
-            const overallScore = document.getElementById('overall-score');
-            overallScore.textContent = avgScore;
-            overallScore.className = `score-value ${getScoreClass(avgScore)}`;
-            
-            // Actualizar mejor lenguaje
-            const langIcons = { go: '🐹', java: '☕', csharp: '🔷', python: '🐍', c: '⚡' };
-            const langNames = { go: 'Go', java: 'Java', csharp: 'C#', python: 'Python', c: 'C' };
-            document.getElementById('best-language').textContent = 
-                `${langIcons[bestLang]} ${langNames[bestLang]}`;
-            
-            // Llenar tabla de métricas
-            fillMetricsTable();
-            
-            // Crear gráficas
-            createCharts();
-            
-            // Scroll suave a resultados
-            resultsSection.scrollIntoView({ behavior: 'smooth' });
         }
 
         function getScoreClass(score) {
@@ -501,106 +637,160 @@
             return 'score-poor';
         }
 
-        function fillMetricsTable() {
-            const tbody = document.getElementById('metrics-tbody');
-            tbody.innerHTML = '';
-            
-            const langNames = { go: 'Go', java: 'Java', csharp: 'C#', python: 'Python', c: 'C' };
-            
-            Object.entries(analysisResults).forEach(([lang, data]) => {
-                const row = tbody.insertRow();
-                row.innerHTML = `
-                    <td><strong>${langNames[lang]}</strong></td>
-                    <td>${data.metrics.assignments || 0}</td>
-                    <td>${data.metrics.recursive_functions_count || 0}</td>
-                    <td>${data.metrics.loops || 0}</td>
-                    <td>${data.metrics.parsed_with_antlr ? '✅' : '❌'}</td>
-                    <td><span class="${getScoreClass(data.score)}" style="font-weight: bold;">${data.score}</span></td>
-                `;
-            });
+        function displayResults() {
+            const resultsSection = document.getElementById('results-section');
+            resultsSection.style.display = 'block';
+
+            const entries = Object.entries(analysisResults);
+            const avgScore = Math.round(entries.reduce((sum, [, r]) => sum + r.eco_score, 0) / entries.length);
+            const [bestLang] = entries.reduce((best, cur) =>
+                cur[1].eco_score_language_adjusted > best[1].eco_score_language_adjusted ? cur : best);
+
+            const overallScore = document.getElementById('overall-score');
+            overallScore.textContent = avgScore;
+            overallScore.className = `score-value ${getScoreClass(avgScore)}`;
+            document.getElementById('overall-description').textContent =
+                entries.length > 1 ? `Media de ${entries.length} lenguajes` : analysisResults[bestLang].interpretation;
+
+            document.getElementById('best-language').textContent = `${LANG[bestLang].icon} ${LANG[bestLang].name}`;
+
+            fillMetricsTable();
+            fillDetails();
+            createLanguageChart();
+            createPenaltyChart();
+            resultsSection.scrollIntoView({ behavior: 'smooth' });
         }
 
-        function createCharts() {
-            createLanguageChart();
-            createComplexityChart();
+        function fillMetricsTable() {
+            const tbody = document.getElementById('metrics-tbody');
+            tbody.innerHTML = Object.entries(analysisResults).map(([lang, r]) => {
+                const m = r.metrics;
+                const syntax = r.syntax_ok
+                    ? '<span class="badge ok">✅ OK</span>'
+                    : `<span class="badge warn">⚠️ ${r.syntax_errors.length} error(es)</span>`;
+                return `
+                    <tr>
+                        <td><strong>${LANG[lang].icon} ${LANG[lang].name}</strong></td>
+                        <td>${syntax}</td>
+                        <td>${m.lines_of_code}</td>
+                        <td>${m.functions}</td>
+                        <td>${m.loops}</td>
+                        <td>${m.max_loop_depth}</td>
+                        <td>${m.cyclomatic_avg}</td>
+                        <td>${m.assignments}</td>
+                        <td>${m.estimated_operations.toLocaleString('es')}</td>
+                        <td>${m.recursive_functions_count}</td>
+                        <td><strong>${escapeHtml(m.estimated_complexity)}</strong></td>
+                        <td><span class="${getScoreClass(r.eco_score)}" style="font-weight: bold;">${r.eco_score}</span></td>
+                        <td><span class="${getScoreClass(r.eco_score_language_adjusted)}">${r.eco_score_language_adjusted}</span></td>
+                    </tr>`;
+            }).join('');
+        }
+
+        function fillDetails() {
+            const container = document.getElementById('details');
+            container.innerHTML = Object.entries(analysisResults).map(([lang, r]) => {
+                const breakdown = Object.entries(r.eco_score_breakdown)
+                    .map(([k, v]) => `<span class="chip">${PENALTY_LABELS[k] || escapeHtml(k)}: −${v}</span>`).join('');
+                const functions = r.functions.length ? `
+                    <div class="table-wrapper" style="margin-top: 0">
+                        <table class="metrics-table">
+                            <thead><tr><th>Función</th><th>Líneas</th><th>Complejidad</th><th>Ciclomática</th>
+                                <th>Bucles (anid.)</th><th>Llamadas</th><th>Recursión</th></tr></thead>
+                            <tbody>${r.functions.map(f => `
+                                <tr>
+                                    <td><code>${escapeHtml(f.name)}</code></td>
+                                    <td>${f.line}–${f.end_line}</td>
+                                    <td><strong>${escapeHtml(f.complexity)}</strong></td>
+                                    <td>${f.cyclomatic}</td>
+                                    <td>${f.loops} (${f.max_loop_depth})</td>
+                                    <td>${f.calls}</td>
+                                    <td>${f.recursive
+                                        ? `<span class="badge bad">${escapeHtml(f.recursion_kind)}${f.recursion_branching > 1 ? ` ×${f.recursion_branching}` : ''}</span>`
+                                        : '—'}</td>
+                                </tr>`).join('')}
+                            </tbody>
+                        </table>
+                    </div>` : '<p>No se encontraron funciones (código de nivel superior).</p>';
+                const errors = r.syntax_errors.length ? `
+                    <h4>Errores de sintaxis</h4>
+                    <div class="syntax-errors">${r.syntax_errors.map(e =>
+                        `Línea ${e.line}:${e.column} → ${escapeHtml(e.message)}`).join('\n')}</div>` : '';
+                return `
+                    <details class="detail-card">
+                        <summary>${LANG[lang].icon} ${LANG[lang].name} — ${escapeHtml(uploadedFiles[lang]?.name || '')}
+                            · ${escapeHtml(r.interpretation)}</summary>
+                        <div class="detail-body">
+                            <h4>Desglose de la puntuación (${r.eco_score} = 100 − penalizaciones)</h4>
+                            <div class="breakdown">${breakdown}
+                                <span class="chip">Factor energético del lenguaje: ×${r.language_energy_factor} (C = 1)</span>
+                                <span class="chip">Parseo: ${r.parse_time_ms} ms (${r.prediction_mode})</span>
+                            </div>
+                            ${errors}
+                            <h4>Funciones</h4>
+                            ${functions}
+                        </div>
+                    </details>`;
+            }).join('');
+        }
+
+        function replaceChart(id, config) {
+            if (charts[id]) charts[id].destroy();
+            charts[id] = new Chart(document.getElementById(id).getContext('2d'), config);
         }
 
         function createLanguageChart() {
-            const ctx = document.getElementById('languageChart').getContext('2d');
-            const langNames = { go: 'Go', java: 'Java', csharp: 'C#', python: 'Python', c: 'C' };
-            
-            new Chart(ctx, {
+            const langs = Object.keys(analysisResults);
+            replaceChart('languageChart', {
                 type: 'bar',
                 data: {
-                    labels: Object.keys(analysisResults).map(lang => langNames[lang]),
-                    datasets: [{
-                        label: 'Puntuación Ambiental',
-                        data: Object.values(analysisResults).map(r => r.score),
-                        backgroundColor: [
-                            '#28a745',
-                            '#ffc107',
-                            '#17a2b8',
-                            '#6f42c1',
-                            '#fd7e14'
-                        ],
-                        borderColor: [
-                            '#1e7e34',
-                            '#e0a800',
-                            '#138496',
-                            '#59359a',
-                            '#e8590c'
-                        ],
-                        borderWidth: 2
-                    }]
+                    labels: langs.map(l => LANG[l].name),
+                    datasets: [
+                        {
+                            label: 'Puntuación del código',
+                            data: langs.map(l => analysisResults[l].eco_score),
+                            backgroundColor: langs.map(l => LANG[l].color),
+                        },
+                        {
+                            label: 'Ajustada por lenguaje',
+                            data: langs.map(l => analysisResults[l].eco_score_language_adjusted),
+                            backgroundColor: langs.map(l => LANG[l].color + '88'),
+                        }
+                    ]
                 },
                 options: {
                     responsive: true,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 100
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    }
+                    aspectRatio: 1,
+                    scales: { y: { beginAtZero: true, max: 100 } },
                 }
             });
         }
 
-        function createComplexityChart() {
-            const ctx = document.getElementById('complexityChart').getContext('2d');
-            const avgMetrics = {
-                operations: Math.round(Object.values(analysisResults).reduce((sum, r) => sum + r.operations, 0) / Object.keys(analysisResults).length),
-                recursion: Math.round(Object.values(analysisResults).reduce((sum, r) => sum + r.recursion, 0) / Object.keys(analysisResults).length),
-                cyclomatic: Math.round(Object.values(analysisResults).reduce((sum, r) => sum + r.cyclomatic, 0) / Object.keys(analysisResults).length)
-            };
-            
-            new Chart(ctx, {
+        function createPenaltyChart() {
+            const keys = Object.keys(PENALTY_LABELS);
+            replaceChart('penaltyChart', {
                 type: 'radar',
                 data: {
-                    labels: ['Operaciones Elementales', 'Recursión', 'Complejidad'],
-                    datasets: [{
-                        label: 'Métricas Promedio',
-                        data: [avgMetrics.operations / 2, avgMetrics.recursion * 10, avgMetrics.cyclomatic * 5],
-                        backgroundColor: 'rgba(102, 126, 234, 0.2)',
-                        borderColor: 'rgba(102, 126, 234, 1)',
+                    labels: keys.map(k => PENALTY_LABELS[k]),
+                    datasets: Object.entries(analysisResults).map(([lang, r]) => ({
+                        label: LANG[lang].name,
+                        data: keys.map(k => r.eco_score_breakdown[k]),
+                        backgroundColor: LANG[lang].color + '33',
+                        borderColor: LANG[lang].color,
                         borderWidth: 2,
-                        pointBackgroundColor: 'rgba(102, 126, 234, 1)'
-                    }]
+                        pointBackgroundColor: LANG[lang].color,
+                    }))
                 },
                 options: {
                     responsive: true,
-                    scales: {
-                        r: {
-                            beginAtZero: true
-                        }
-                    }
+                    aspectRatio: 1,
+                    scales: { r: { beginAtZero: true, suggestedMax: 45 } }
                 }
             });
         }
+
+        renderLanguageBoxes();
+        checkApi();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97974a6b46523eeb',t:'MTc1NjkyMzkzNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
