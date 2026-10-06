@@ -1,4 +1,35 @@
+<div align="center">
+
 # 🌱 Calculadora de Impacto Ambiental de Algoritmos
+
+**¿Cuánto contamina tu código?** Sube un archivo en Python, C, Java, Go o C# y obtén su complejidad,<br>sus funciones recursivas y una nota ambiental de 0 a 100, sin ejecutarlo.
+
+![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-API-009688?logo=fastapi&logoColor=white)
+![ANTLR](https://img.shields.io/badge/ANTLR-4.13.2-E33B2E)
+![Chart.js](https://img.shields.io/badge/Chart.js-gr%C3%A1ficas-FF6384?logo=chartdotjs&logoColor=white)
+![Lenguajes](https://img.shields.io/badge/analiza-Python%20%C2%B7%20C%20%C2%B7%20Java%20%C2%B7%20Go%20%C2%B7%20C%23-2ea44f)
+![Tests](https://img.shields.io/badge/tests-69%20con%20pytest-0A9EDC?logo=pytest&logoColor=white)
+
+<img src="docs/media/demo.gif" alt="Mini video: se cargan los ejemplos en 5 lenguajes, se calcula la puntuación, Java resulta el más eficiente, Fibonacci recursivo aparece como O(2^n) y al reescribirlo de forma iterativa la nota sube de 48 a 87" width="100%">
+
+<sub><a href="docs/media/demo.mp4">▶ Ver el video en alta calidad (MP4, 51 s)</a></sub>
+
+[El dato curioso](#el-dato-curioso-) · [Capturas](#capturas) · [Inicio rápido](#inicio-rápido) · [Cómo funciona](#cómo-funciona-el-análisis) · [API](#api-rest) · [La puntuación](#la-puntuación-ambiental)
+
+</div>
+
+---
+
+## El dato curioso 🌀
+
+Mismo problema, dos implementaciones. El analizador detecta que el Fibonacci recursivo hace dos llamadas a sí mismo por invocación (**O(2ⁿ)**), mientras que la versión iterativa es un solo bucle (**O(n)**). La nota casi se duplica:
+
+<p align="center">
+  <img src="docs/media/recursivo-vs-iterativo.png" alt="Fibonacci recursivo obtiene 48 puntos (moderada) y Fibonacci iterativo obtiene 87 puntos (excelente eficiencia ambiental)" width="85%">
+</p>
+
+---
 
 Herramienta web que **analiza estáticamente** código fuente en **Python, C, Java, Go y C#** y estima su impacto ambiental: cuánto trabajo de CPU y memoria implica ejecutarlo y, por tanto, cuánta energía consume.
 
@@ -11,19 +42,20 @@ El análisis es **sintáctico de verdad**: el código no se examina con expresio
 ## Índice
 
 1. [Qué hace](#qué-hace)
-2. [Inicio rápido](#inicio-rápido)
-3. [Uso de la interfaz web](#uso-de-la-interfaz-web)
-4. [API REST](#api-rest)
-5. [Cómo funciona el análisis](#cómo-funciona-el-análisis)
-6. [Métricas que se calculan](#métricas-que-se-calculan)
-7. [Estimación de la complejidad](#estimación-de-la-complejidad)
-8. [La puntuación ambiental](#la-puntuación-ambiental)
-9. [Estructura del proyecto](#estructura-del-proyecto)
-10. [Regenerar los parsers de ANTLR](#regenerar-los-parsers-de-antlr)
-11. [Tests](#tests)
-12. [Añadir un lenguaje nuevo](#añadir-un-lenguaje-nuevo)
-13. [Limitaciones](#limitaciones)
-14. [Solución de problemas](#solución-de-problemas)
+2. [Capturas](#capturas)
+3. [Inicio rápido](#inicio-rápido)
+4. [Uso de la interfaz web](#uso-de-la-interfaz-web)
+5. [API REST](#api-rest)
+6. [Cómo funciona el análisis](#cómo-funciona-el-análisis)
+7. [Métricas que se calculan](#métricas-que-se-calculan)
+8. [Estimación de la complejidad](#estimación-de-la-complejidad)
+9. [La puntuación ambiental](#la-puntuación-ambiental)
+10. [Estructura del proyecto](#estructura-del-proyecto)
+11. [Regenerar los parsers de ANTLR](#regenerar-los-parsers-de-antlr)
+12. [Tests](#tests)
+13. [Añadir un lenguaje nuevo](#añadir-un-lenguaje-nuevo)
+14. [Limitaciones](#limitaciones)
+15. [Solución de problemas](#solución-de-problemas)
 
 ---
 
@@ -51,6 +83,29 @@ Resultado con los ejemplos incluidos (los mismos algoritmos escritos en los cinc
 | `es_par` / `es_impar` | O(n) | mutua |
 
 Los cinco lenguajes dan **el mismo resultado**, lo que demuestra que el análisis depende de la estructura del algoritmo y no de la sintaxis de cada lenguaje.
+
+---
+
+## Capturas
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <img src="docs/media/inicio.png" alt="Pantalla inicial con una casilla por lenguaje y los ejemplos cargados">
+      <p align="center"><b>1. Sube tu código</b> · una casilla por lenguaje, o «Cargar ejemplos»</p>
+    </td>
+    <td width="50%" valign="top">
+      <img src="docs/media/resultados.png" alt="Puntuación general, lenguaje más eficiente, barras por lenguaje y radar de penalizaciones">
+      <p align="center"><b>2. Compara</b> · nota general, lenguaje ganador y por qué cada uno pierde puntos</p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <img src="docs/media/detalle-funciones.png" alt="Detalle por lenguaje: desglose de penalizaciones y tabla de funciones con complejidad, ciclomática, bucles, llamadas y tipo de recursión">
+      <p align="center"><b>3. Mira el detalle</b> · cada función con su complejidad O(…), su ciclomática y si es recursiva (directa o mutua)</p>
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -190,6 +245,10 @@ Un código con errores de sintaxis **no** devuelve error HTTP: se analiza lo que
 | `GET` | `/examples` | Código de los ejemplos de `examples/` |
 | `GET` | `/health` | Comprobación de que el servidor responde |
 | `GET` | `/docs` | Documentación Swagger |
+
+<p align="center">
+  <img src="docs/media/api-swagger.png" alt="Documentación Swagger de la API con los endpoints analyze, languages, examples y health" width="80%">
+</p>
 
 ### Ejemplo con `curl`
 
@@ -357,6 +416,7 @@ Se usa el logaritmo para que el lenguaje module la nota sin dominarla: un buen a
 Enviromental_impact_calculator/          ← raíz del repositorio
 ├── README.md
 ├── mockup.html                           prototipo visual original
+├── docs/media/                           capturas y video del README
 └── Enviromental_impact_calculator/       ← aplicación
     ├── app.py                            API FastAPI + sirve la interfaz web
     ├── requirements.txt
